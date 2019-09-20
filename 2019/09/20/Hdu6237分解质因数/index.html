@@ -71,19 +71,19 @@
   };
 </script>
 
-  <meta name="description" content="学弟你不要想太多。技能点去点去就行了。 &amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;">
-<meta name="keywords" content="杂记">
+  <meta name="description" content="我觉得这道题挺有意思的，很多人把这道题标签设置欧拉函数，不是很理解。。 2017ccpc哈尔滨数论题 题意：现在有n堆石子，且已知每堆石子的数量，每次操作你可以从任一堆中取一颗石子放到另一堆中，问最少操作几次使得每一堆石子的数量均是某一个数的倍数。即n个数都有一个公因子,a[i]%x==0 (x &amp;gt; 1) 思路：求出所有数之和sum，显然x一定要是sum的约数，并且最优解时x一定可以是质数">
+<meta name="keywords" content="分解质因数,贪心">
 <meta property="og:type" content="article">
-<meta property="og:title" content="今日最佳">
-<meta property="og:url" content="http://yoursite.com/2019/08/27/chickensoup827/index.html">
+<meta property="og:title" content="Hdu6237分解质因数">
+<meta property="og:url" content="http://yoursite.com/2019/09/20/Hdu6237分解质因数/index.html">
 <meta property="og:site_name" content="Mini   LCT">
-<meta property="og:description" content="学弟你不要想太多。技能点去点去就行了。 &amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;">
+<meta property="og:description" content="我觉得这道题挺有意思的，很多人把这道题标签设置欧拉函数，不是很理解。。 2017ccpc哈尔滨数论题 题意：现在有n堆石子，且已知每堆石子的数量，每次操作你可以从任一堆中取一颗石子放到另一堆中，问最少操作几次使得每一堆石子的数量均是某一个数的倍数。即n个数都有一个公因子,a[i]%x==0 (x &amp;gt; 1) 思路：求出所有数之和sum，显然x一定要是sum的约数，并且最优解时x一定可以是质数">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-28T09:20:08.401Z">
+<meta property="og:updated_time" content="2019-09-20T12:15:13.337Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="今日最佳">
-<meta name="twitter:description" content="学弟你不要想太多。技能点去点去就行了。 &amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;">
-  <link rel="canonical" href="http://yoursite.com/2019/08/27/chickensoup827/">
+<meta name="twitter:title" content="Hdu6237分解质因数">
+<meta name="twitter:description" content="我觉得这道题挺有意思的，很多人把这道题标签设置欧拉函数，不是很理解。。 2017ccpc哈尔滨数论题 题意：现在有n堆石子，且已知每堆石子的数量，每次操作你可以从任一堆中取一颗石子放到另一堆中，问最少操作几次使得每一堆石子的数量均是某一个数的倍数。即n个数都有一个公因子,a[i]%x==0 (x &amp;gt; 1) 思路：求出所有数之和sum，显然x一定要是sum的约数，并且最优解时x一定可以是质数">
+  <link rel="canonical" href="http://yoursite.com/2019/09/20/Hdu6237分解质因数/">
 
 
 <script id="page.configurations">
@@ -92,7 +92,7 @@
   };
 </script>
 
-  <title>今日最佳 | Mini   LCT</title>
+  <title>Hdu6237分解质因数 | Mini   LCT</title>
   
 
 
@@ -281,7 +281,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/27/chickensoup827/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/20/Hdu6237分解质因数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="miniLCT">
@@ -295,7 +295,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">今日最佳
+          <h1 class="post-title" itemprop="name headline">Hdu6237分解质因数
 
               
             
@@ -316,21 +316,11 @@
                 
               
 
-              <time title="创建时间：2019-08-27 22:20:15" itemprop="dateCreated datePublished" datetime="2019-08-27T22:20:15+08:00">2019-08-27</time>
+              <time title="创建时间：2019-09-20 22:49:15 / 修改时间：20:15:13" itemprop="dateCreated datePublished" datetime="2019-09-20T22:49:15+08:00">2019-09-20</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-08-28 17:20:08" itemprop="dateModified" datetime="2019-08-28T17:20:08+08:00">2019-08-28</time>
-              </span>
             
           
             <span class="post-meta-item">
@@ -341,7 +331,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/一开始我们什么都相信，后来的我们什么都不信/" itemprop="url" rel="index"><span itemprop="name">一开始我们什么都相信，后来的我们什么都不信</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Number-Theory/" itemprop="url" rel="index"><span itemprop="name">Number Theory</span></a></span>
 
                 
                 
@@ -350,7 +340,7 @@
           
 
           
-            <span id="/2019/08/27/chickensoup827/" class="post-meta-item leancloud_visitors" data-flag-title="今日最佳">
+            <span id="/2019/09/20/Hdu6237分解质因数/" class="post-meta-item leancloud_visitors" data-flag-title="Hdu6237分解质因数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -371,8 +361,8 @@
       <span class="post-meta-item-text">评论数：</span>
     
   
-    <a href="/2019/08/27/chickensoup827/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/08/27/chickensoup827/" itemprop="commentCount"></span>
+    <a href="/2019/09/20/Hdu6237分解质因数/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/20/Hdu6237分解质因数/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -385,7 +375,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">374</span>
+              <span title="本文字数">2k</span>
             </span>
           
             <span class="post-meta-item">
@@ -395,7 +385,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">1 分钟</span>
+              <span title="阅读时长">7 分钟</span>
             </span>
           
 
@@ -408,9 +398,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>学弟你不要想太多。技能点去点去就行了。</p>
-<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;–超哥语录</p>
-
+        <p>我觉得这道题挺有意思的，很多人把这道题标签设置欧拉函数，不是很理解。。</p>
+<p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6237" target="_blank" rel="noopener">2017ccpc哈尔滨数论题</a></p>
+<h3 id="题意："><a href="#题意：" class="headerlink" title="题意："></a>题意：</h3><p>现在有n堆石子，且已知每堆石子的数量，每次操作你可以从任一堆中取一颗石子放到另一堆中，问最少操作几次使得每一堆石子的数量均是某一个数的倍数。即n个数都有一个公因子,a[i]%x==0 (x &gt; 1)</p>
+<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>求出所有数之和sum，<del>显然</del>x一定要是sum的约数，并且最优解时x一定可以是质数</p>
+<p>显然这样的x最多不超过30个，所以可以暴力枚举所有满足上述条件的x</p>
+<p>处理的时候算出所有的b[i] = a[i]-a[i]/x*x</p>
+<p>然后将b[]从大到小排序，遍历一遍就可以得出当前最小移动次数</p>
+<p>所有移动次数中取最小就是答案</p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/************************************************</span></span><br><span class="line"><span class="comment"> # @Author:      miniLCT</span></span><br><span class="line"><span class="comment"> # @DateTime:    2019-09-18 16:39:45</span></span><br><span class="line"><span class="comment"> # @Description: You build it.You run it</span></span><br><span class="line"><span class="comment"> ***********************************************/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> eps 1e-8</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> close ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e6</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">1e9</span>;</span><br><span class="line"><span class="keyword">const</span> ll linf = <span class="number">0x3f3f3f3f3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> PI = <span class="built_in">acos</span>(<span class="number">-1.0</span>);</span><br><span class="line">ll mod = <span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> n,sum,cnt;</span><br><span class="line"><span class="keyword">int</span> a[maxn],b[maxn],prime[<span class="number">100</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_prime</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(prime,<span class="number">0</span>,<span class="keyword">sizeof</span>(prime));</span><br><span class="line">	cnt = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> maxx = <span class="built_in">sqrt</span>(x);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= maxx; i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(x%i==<span class="number">0</span>)prime[cnt++] = i;</span><br><span class="line">		<span class="keyword">while</span>(x&amp;&amp;((x%i)==<span class="number">0</span>))&#123;</span><br><span class="line">			x /= i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(x &gt; <span class="number">1</span>)prime[cnt++] = x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">int</span> t ;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; t;</span><br><span class="line">	<span class="keyword">while</span>(t--)&#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">		sum = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n;i++)&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;a[i]);</span><br><span class="line">			sum += a[i];</span><br><span class="line">		&#125;</span><br><span class="line">		get_prime(sum);</span><br><span class="line">		<span class="keyword">int</span> ans = linf;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cnt;i++)&#123;</span><br><span class="line">			<span class="keyword">int</span> min_ = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">int</span> fyz = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n;k++)&#123;</span><br><span class="line">				b[k] = a[k] % prime[i];</span><br><span class="line">				fyz += b[k];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(fyz % prime[i] != <span class="number">0</span>)<span class="keyword">continue</span>;</span><br><span class="line">			sort(b+<span class="number">1</span>, b+n+<span class="number">1</span>, greater&lt;<span class="keyword">int</span> &gt;());</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k = fyz / prime[i] +<span class="number">1</span>; k &lt;= n;k++)&#123;</span><br><span class="line">				min_ += b[k];</span><br><span class="line">				<span class="keyword">if</span>(b[k] == <span class="number">0</span>)<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			ans = min(ans, min_);</span><br><span class="line">		&#125; </span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/******************************************************</span></span><br><span class="line"><span class="comment"> stuff you should look for</span></span><br><span class="line"><span class="comment">  * int overflow, array bounds</span></span><br><span class="line"><span class="comment">  * special cases (n=1?), set tle</span></span><br><span class="line"><span class="comment">  * do smth instead of nothing and stay organized</span></span><br><span class="line"><span class="comment">*******************************************************/</span></span><br></pre></td></tr></table></figure>
     </div>
      
     
@@ -430,7 +426,9 @@
           
         
         <div class="post-tags">
-            <a href="/tags/杂记/" rel="tag"><i class="fa fa-tag"></i> 杂记</a>
+            <a href="/tags/分解质因数/" rel="tag"><i class="fa fa-tag"></i> 分解质因数</a>
+          
+            <a href="/tags/贪心/" rel="tag"><i class="fa fa-tag"></i> 贪心</a>
           
         </div>
         <div class="post-widgets">
@@ -454,8 +452,8 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-              <a href="/2019/08/20/templateofMST/" rel="next" title="Minimum Spanning tree MST最小生成树 &lt; template &gt;">
-                <i class="fa fa-chevron-left"></i> Minimum Spanning tree MST最小生成树 &lt; template &gt;
+              <a href="/2019/09/20/TeamRound2/" rel="next" title="Team Round #2：2018CCPC吉林站">
+                <i class="fa fa-chevron-left"></i> Team Round #2：2018CCPC吉林站
               </a>
             
           </div>
@@ -463,10 +461,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-              <a href="/2019/09/15/TeamRound1/" rel="prev" title="Team Round #1: 2019 USP-ICMC">
-                Team Round #1: 2019 USP-ICMC <i class="fa fa-chevron-right"></i>
-              </a>
-            
           </div>
         </div>
     </footer>
@@ -499,8 +493,17 @@
 
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -629,6 +632,23 @@
 
         </div>
       </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题意："><span class="nav-number">1.</span> <span class="nav-text">题意：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路："><span class="nav-number">2.</span> <span class="nav-text">思路：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码："><span class="nav-number">3.</span> <span class="nav-text">代码：</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
         <div class="back-to-top motion-element">
           <i class="fa fa-arrow-up"></i>
           
