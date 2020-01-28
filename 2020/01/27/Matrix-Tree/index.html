@@ -71,18 +71,18 @@
   };
 </script>
 
-  <meta name="description" content="对于一张图，建立矩阵$C，C[i][i] = i$的度数，若i，j之间有边，那么$C[i][j] = -1$,否则为0。这张图的生成树等于C的$n-1$阶行列式的值。  介绍：题目：容斥+基尔霍夫矩阵 这道题也可用状压dp，没弄懂qwq[FJOI2007]轮状病毒">
+  <meta name="description" content="对于一张图，建立矩阵$C$，$C[i][i]$ = $i$的度数，若i，j之间有边，那么$C[i][j] = -1$,否则为0。这张图的生成树等于C的$n-1$阶行列式的值。  介绍：题目：容斥+基尔霍夫矩阵 这道题也可用状压dp，没弄懂qwq[FJOI2007]轮状病毒">
 <meta name="keywords" content="计数,Matrix-Tree">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Matrix-Tree 基尔霍夫矩阵树定理及一些题目">
 <meta property="og:url" content="http://yoursite.com/2020/01/27/Matrix-Tree/index.html">
 <meta property="og:site_name" content="Mini   LCT">
-<meta property="og:description" content="对于一张图，建立矩阵$C，C[i][i] = i$的度数，若i，j之间有边，那么$C[i][j] = -1$,否则为0。这张图的生成树等于C的$n-1$阶行列式的值。  介绍：题目：容斥+基尔霍夫矩阵 这道题也可用状压dp，没弄懂qwq[FJOI2007]轮状病毒">
+<meta property="og:description" content="对于一张图，建立矩阵$C$，$C[i][i]$ = $i$的度数，若i，j之间有边，那么$C[i][j] = -1$,否则为0。这张图的生成树等于C的$n-1$阶行列式的值。  介绍：题目：容斥+基尔霍夫矩阵 这道题也可用状压dp，没弄懂qwq[FJOI2007]轮状病毒">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-28T03:07:22.485Z">
+<meta property="og:updated_time" content="2020-01-28T05:51:16.937Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Matrix-Tree 基尔霍夫矩阵树定理及一些题目">
-<meta name="twitter:description" content="对于一张图，建立矩阵$C，C[i][i] = i$的度数，若i，j之间有边，那么$C[i][j] = -1$,否则为0。这张图的生成树等于C的$n-1$阶行列式的值。  介绍：题目：容斥+基尔霍夫矩阵 这道题也可用状压dp，没弄懂qwq[FJOI2007]轮状病毒">
+<meta name="twitter:description" content="对于一张图，建立矩阵$C$，$C[i][i]$ = $i$的度数，若i，j之间有边，那么$C[i][j] = -1$,否则为0。这张图的生成树等于C的$n-1$阶行列式的值。  介绍：题目：容斥+基尔霍夫矩阵 这道题也可用状压dp，没弄懂qwq[FJOI2007]轮状病毒">
   <link rel="canonical" href="http://yoursite.com/2020/01/27/Matrix-Tree/">
 
 
@@ -329,7 +329,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-01-28 11:07:22" itemprop="dateModified" datetime="2020-01-28T11:07:22+08:00">2020-01-28</time>
+                <time title="修改时间：2020-01-28 13:51:16" itemprop="dateModified" datetime="2020-01-28T13:51:16+08:00">2020-01-28</time>
               </span>
             
           
@@ -385,7 +385,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">134</span>
+              <span title="本文字数">138</span>
             </span>
           
             <span class="post-meta-item">
@@ -409,7 +409,7 @@
 
       
         <blockquote>
-<p>对于一张图，建立矩阵$C，C[i][i] = i$的度数，若i，j之间有边，那么$C[i][j] = -1$,否则为0。这张图的生成树等于C的$n-1$阶行列式的值。</p>
+<p>对于一张图，建立矩阵$C$，$C[i][i]$ = $i$的度数，若i，j之间有边，那么$C[i][j] = -1$,否则为0。这张图的生成树等于C的$n-1$阶行列式的值。</p>
 </blockquote>
 <h4 id="介绍："><a href="#介绍：" class="headerlink" title="介绍："></a>介绍：</h4><h4 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h4><p><a href="https://codeforces.com/contest/53/problem/E" target="_blank" rel="noopener">容斥+基尔霍夫矩阵</a> 这道题也可用状压dp，没弄懂qwq<br><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1002" target="_blank" rel="noopener">[FJOI2007]轮状病毒</a></p>
 
@@ -779,6 +779,51 @@
 
 
 
+  
+    
+      <script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
 

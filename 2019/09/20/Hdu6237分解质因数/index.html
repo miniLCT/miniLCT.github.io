@@ -79,7 +79,7 @@
 <meta property="og:site_name" content="Mini   LCT">
 <meta property="og:description" content="我觉得这道题挺有意思的，很多人把这道题标签设置欧拉函数，不是很理解。。 2017ccpc哈尔滨数论题 题意：现在有n堆石子，且已知每堆石子的数量，每次操作你可以从任一堆中取一颗石子放到另一堆中，问最少操作几次使得每一堆石子的数量均是某一个数的倍数。即n个数都有一个公因子,a[i]%x==0 (x &amp;gt; 1) 思路：求出所有数之和sum，显然x一定要是sum的约数，并且最优解时x一定可以是质数">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-23T08:55:15.402Z">
+<meta property="og:updated_time" content="2020-01-28T05:48:50.131Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hdu6237分解质因数">
 <meta name="twitter:description" content="我觉得这道题挺有意思的，很多人把这道题标签设置欧拉函数，不是很理解。。 2017ccpc哈尔滨数论题 题意：现在有n堆石子，且已知每堆石子的数量，每次操作你可以从任一堆中取一颗石子放到另一堆中，问最少操作几次使得每一堆石子的数量均是某一个数的倍数。即n个数都有一个公因子,a[i]%x==0 (x &amp;gt; 1) 思路：求出所有数之和sum，显然x一定要是sum的约数，并且最优解时x一定可以是质数">
@@ -329,7 +329,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-11-23 16:55:15" itemprop="dateModified" datetime="2019-11-23T16:55:15+08:00">2019-11-23</time>
+                <time title="修改时间：2020-01-28 13:48:50" itemprop="dateModified" datetime="2020-01-28T13:48:50+08:00">2020-01-28</time>
               </span>
             
           
@@ -789,6 +789,51 @@
 
 
 
+  
+    
+      <script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
 
