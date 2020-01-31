@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Fibonacci的一些性质]]></title>
+    <url>%2F2020%2F01%2F28%2Ffibonacci%2F</url>
+    <content type="text"><![CDATA[我装作看窗外的样子， 看窗户上映着的你。 —- 摘自远古时期某个人的qq签名(悲痛.jpg) 序论(杂论)心血来潮想整理一下。 Fibonacci 还是很著名的 oeis A000045 斐波那契数与三角形关系 表达式 初等代数解法&emsp; 略 线性代数解法&emsp; 暂时略 数论解法&emsp; &emsp;&emsp;暂时略 组合数解法&emsp;&emsp; 暂时略 近似值解法&emsp;&emsp; 暂时略 计算机 ：矩阵快速幂优化这个由于写mathjax本地可以之后部署可能还会有锅就很懒就不想写一大堆式子。之前也遇到过一部分用过这个的题目，贴一下矩阵快速幂板子吧。用矩阵快速幂一定一定一定要想清楚，开数组啊，清零啊什么的。一些性质 这里的前提是$f_1 = f_2 = 1，f_{n+2} = f_{n+1}+f_{n} \quad(n\ge 1)$ $F_{m+n}=F_{m-1} \cdot F_n+F_m \cdot F_{n+1}$ 上式令$m=n$，得到$F_{2n} = F_n(F_{n+1}+F_{n-1})$ 由上 归纳证明可得，$\mathsf{\forall} k \in \mathbb{N}, \quad F_n | F_{nk}$ $F_1+F_3+\dots +F_{2n-1} = F_{2n},F_2 + F_4 + \dots + F_{2n} = F_{2n + 1} - 1$ $\sum_{i=1}^n F_i = F_{n+2} - 1$ $\sum_{i=1}^n F_i^2 = F_n \cdot F_{n+1}$ $\sum_{i=1}^n k\cdot F_k = n\cdot f_{n+2}-f_{n+3}+2， n\ge 1$ 卡西尼性质(Cassini’s identity) : $F_n^2=(-1)^{n-1} + F_{n-1} \cdot F_{n+1}$ $F_n^2+F_{n-1}^2 = F_{2n-1}$ $gcd(F_a, F_b)=F_{gcd(a, b)}$ 齐肯多夫定理:任何正整数都可以表示成若干个不连续的斐波那契数之和。利用贪心的算法可以每回都找到最大可能的斐波那契数。 以斐波那契数列相邻两项作为输入会使欧几里德算法达到最坏复杂度 任意取连续的k项，其$\sum$不会出现在数列中 在Fibonacci数列中，每一项模K后（K为正整数）所形成的数列一定会循环，下面会讨论一下这个性质。 相关数列：lucas数列，卢卡斯数列和斐波那契数列的一些关系，组合数学上的一些恒等式 &emsp;&emsp; 反费波那西数列，巴都万数列，佩尔数列 等等 &emsp; 在此就不一一赘述。 模意义下的周期性定义：对于任意整数$n$,数列{$f_i (mod\quad n)$}为周期数列，皮萨诺周期$\pi(n)$记作该数列的周期，例如模3的斐波那契数列前若干项是$0, 1, 1, 2, 0, 2, 2, 1, 0, 1, 1, 2, 0, 2, 2, 1, 0, 1, 1, 2, 0, 2, 2, 1, 0…………$oeisA082115&emsp;这一数列的周期是8，即$\pi(3)=8$ 性质： 有趣的一个点是除了$\pi(2) = 3$ 以外，皮萨诺周期都是偶数。 模$n$意义下的Pisano numbers总是不超过$6n$，并且只有在$n=2 \times 5^k$时猜取得等号。 模 $n$ 周期（皮萨诺周期）$\pi(p^k) = p^{k-1} \pi(p)$$\pi(nm) = lcm(\pi(n), \pi(m)), \forall n \perp m$$\pi(2)=3, \pi(3)=8, \pi(5)=20$$\forall p \equiv \pm 1\pmod {10}, \pi(p)|p-1$$\forall p \equiv \pm 2\pmod {5}, \pi(p)|2p+2$ 求法problem 计算$F(n) mod \ P \quad(n\le10^{30000000},P\le10^{12})$论文 &emsp;The Period of the Fibonacci Sequence Modulo j 中文证明的博客 &emsp;好像前置技能是会二次剩余。以下是我的理解：求F mod n的循环节长度step1： 把n进行素因子分解，$n = p_1^{a_1}\cdot p_2^{a_2}…p_k^{a_k}$step2： 分别计算 F 数模每个$P_m$的循环节长度，假设长度分别为$x_1,x_2,…x_k$。step3： 那么 F 模n的循环节长度为$L = lcm(x_1,x_2…x_k)$ 如此，便可求出循环节长度。那么第二步是关键，如何求 F 模 $p_m$的循环节长度。 这里用了个定理， F 模数字$p_m$的最小循环节长度等于$\pi(p)\times p_{m-1}$，其中$\pi(p)$表示 F 模素数 p 的最小循环节长度。如此只要求出$\pi(p)$. 用以下定理便可以求出$\pi(p)$:如果5是模p的二次剩余（$p\equiv\pm 1(mod \ 5)$），那么循环节长度是$p-1$的因子，否则($p\equiv\pm 2 (mod \ 5)$)是$2(p+1)$的因子。对于小于等于5的素数。$\pi(2)=3, \pi(3)=8, \pi(5)=20$ 一些代码： java求小于1000项的f（from claris）连注释都打上了qwq 123456789101112131415161718import java.math.BigInteger;import java.util.Scanner;public class Main&#123; public static void main(String[] args)&#123; BigInteger f[] = new BigInteger[1005];//数组用法和c++类似 //二维数组BigInteger[][] f = new BigInteger[1005][1005] f[1] = BigInteger.valueOf(1);f[2] = BigInteger.valueOf(1); for (int i=3;i&lt;=1000;i++)f[i]=f[i-2].add(f[i-1]); Scanner input = new Scanner(System.in); int n , t; //用for(...;t−−;)替代会报错，因为要求第二个表达式必须返回bool for(t=input.nextInt();t&gt;0;t--)&#123; n=input.nextInt(); System.out.println(f[n]); &#125; &#125;&#125; 快速倍增法由等式 F_{2k} = F_k(2F_{k+1}-F{k}) F_{2k+1}=F_{k+1}^2+F_k^2于是可以通过这样的方法快速计算两个相邻的斐波那契数（常数比矩乘小）。代码如下，返回值是一个二元组$（F_n，F_{n+1}）$。1234567891011//from oi-wikipair&lt;int, int&gt; fib(int n) &#123; if (n == 0) return &#123;0, 1&#125;; auto p = fib(n &gt;&gt; 1); int c = p.first * (2 * p.second - p.first); int d = p.first * p.first + p.second * p.second; if (n &amp; 1) return &#123;d, c + d&#125;; else return &#123;c, d&#125;;&#125; 求循环节长度 51nod119512 一些题目：51nod1195斐波那契数列的循环节51nod1263 一些参考代码：]]></content>
+      <categories>
+        <category>γνῶθι σεαυτόν</category>
+      </categories>
+      <tags>
+        <tag>math</tag>
+        <tag>Fibonacci</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Matrix-Tree 基尔霍夫矩阵树定理及一些题目]]></title>
     <url>%2F2020%2F01%2F27%2FMatrix-Tree%2F</url>
     <content type="text"><![CDATA[对于一张图，建立矩阵$C$，$C[i][i]$ = $i$的度数，若i，j之间有边，那么$C[i][j] = -1$,否则为0。这张图的生成树等于C的$n-1$阶行列式的值。 介绍：题目：容斥+基尔霍夫矩阵 这道题也可用状压dp，没弄懂qwq[FJOI2007]轮状病毒]]></content>
@@ -21,6 +33,7 @@
       </categories>
       <tags>
         <tag>多项式</tag>
+        <tag>math</tag>
       </tags>
   </entry>
   <entry>
@@ -31,6 +44,7 @@
         <category>γνωθι σεαυτόν</category>
       </categories>
       <tags>
+        <tag>math</tag>
         <tag>组合数学</tag>
       </tags>
   </entry>
@@ -53,6 +67,7 @@
         <category>Number Theory</category>
       </categories>
       <tags>
+        <tag>math</tag>
         <tag>number theory</tag>
       </tags>
   </entry>
