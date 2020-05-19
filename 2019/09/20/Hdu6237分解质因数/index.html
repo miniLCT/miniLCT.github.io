@@ -11,6 +11,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon200.png?v=7.2.0">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png?v=7.2.0">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png?v=7.2.0">
@@ -71,18 +73,18 @@
   };
 </script>
 
-  <meta name="description" content="我觉得这道题挺有意思的，很多人把这道题标签设置欧拉函数，不是很理解。。 2017ccpc哈尔滨数论题 题意：现在有n堆石子，且已知每堆石子的数量，每次操作你可以从任一堆中取一颗石子放到另一堆中，问最少操作几次使得每一堆石子的数量均是某一个数的倍数。即n个数都有一个公因子,a[i]%x==0 (x &amp;gt; 1) 思路：求出所有数之和sum，显然x一定要是sum的约数，并且最优解时x一定可以是质数">
-<meta name="keywords" content="分解质因数,贪心,number theory">
+  <meta name="description" content="2017ccpc哈尔滨一道有趣数论的题目">
+<meta name="keywords" content="hdu,Number Theory,Math,分解质因数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hdu6237分解质因数">
 <meta property="og:url" content="http://yoursite.com/2019/09/20/Hdu6237分解质因数/index.html">
 <meta property="og:site_name" content="Mini   LCT">
-<meta property="og:description" content="我觉得这道题挺有意思的，很多人把这道题标签设置欧拉函数，不是很理解。。 2017ccpc哈尔滨数论题 题意：现在有n堆石子，且已知每堆石子的数量，每次操作你可以从任一堆中取一颗石子放到另一堆中，问最少操作几次使得每一堆石子的数量均是某一个数的倍数。即n个数都有一个公因子,a[i]%x==0 (x &amp;gt; 1) 思路：求出所有数之和sum，显然x一定要是sum的约数，并且最优解时x一定可以是质数">
+<meta property="og:description" content="2017ccpc哈尔滨一道有趣数论的题目">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-28T05:48:50.131Z">
+<meta property="og:updated_time" content="2020-03-19T02:26:57.968Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hdu6237分解质因数">
-<meta name="twitter:description" content="我觉得这道题挺有意思的，很多人把这道题标签设置欧拉函数，不是很理解。。 2017ccpc哈尔滨数论题 题意：现在有n堆石子，且已知每堆石子的数量，每次操作你可以从任一堆中取一颗石子放到另一堆中，问最少操作几次使得每一堆石子的数量均是某一个数的倍数。即n个数都有一个公因子,a[i]%x==0 (x &amp;gt; 1) 思路：求出所有数之和sum，显然x一定要是sum的约数，并且最优解时x一定可以是质数">
+<meta name="twitter:description" content="2017ccpc哈尔滨一道有趣数论的题目">
   <link rel="canonical" href="http://yoursite.com/2019/09/20/Hdu6237分解质因数/">
 
 
@@ -200,7 +202,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签<span class="badge">23</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签<span class="badge">39</span></a>
 
   </li>
         
@@ -213,7 +215,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类<span class="badge">8</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类<span class="badge">15</span></a>
 
   </li>
         
@@ -226,7 +228,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档<span class="badge">24</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档<span class="badge">45</span></a>
 
   </li>
         <li class="menu-item menu-item-search">
@@ -329,7 +331,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-01-28 13:48:50" itemprop="dateModified" datetime="2020-01-28T13:48:50+08:00">2020-01-28</time>
+                <time title="修改时间：2020-03-19 10:26:57" itemprop="dateModified" datetime="2020-03-19T10:26:57+08:00">2020-03-19</time>
               </span>
             
           
@@ -341,7 +343,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Number-Theory/" itemprop="url" rel="index"><span itemprop="name">Number Theory</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a></span>
 
                 
                 
@@ -385,7 +387,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">2k</span>
+              <span title="本文字数">314</span>
             </span>
           
             <span class="post-meta-item">
@@ -395,8 +397,10 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">7 分钟</span>
+              <span title="阅读时长">1 分钟</span>
             </span>
+          
+            <div class="post-description"><center>2017ccpc哈尔滨一道有趣数论的题目</center></div>
           
 
         </div>
@@ -416,7 +420,7 @@
 <p>处理的时候算出所有的b[i] = a[i]-a[i]/x*x</p>
 <p>然后将b[]从大到小排序，遍历一遍就可以得出当前最小移动次数</p>
 <p>所有移动次数中取最小就是答案</p>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/************************************************</span></span><br><span class="line"><span class="comment"> # @Author:      miniLCT</span></span><br><span class="line"><span class="comment"> # @DateTime:    2019-09-18 16:39:45</span></span><br><span class="line"><span class="comment"> # @Description: You build it.You run it</span></span><br><span class="line"><span class="comment"> ***********************************************/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> eps 1e-8</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> close ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e6</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">1e9</span>;</span><br><span class="line"><span class="keyword">const</span> ll linf = <span class="number">0x3f3f3f3f3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> PI = <span class="built_in">acos</span>(<span class="number">-1.0</span>);</span><br><span class="line">ll mod = <span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> n,sum,cnt;</span><br><span class="line"><span class="keyword">int</span> a[maxn],b[maxn],prime[<span class="number">100</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_prime</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(prime,<span class="number">0</span>,<span class="keyword">sizeof</span>(prime));</span><br><span class="line">	cnt = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> maxx = <span class="built_in">sqrt</span>(x);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= maxx; i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(x%i==<span class="number">0</span>)prime[cnt++] = i;</span><br><span class="line">		<span class="keyword">while</span>(x&amp;&amp;((x%i)==<span class="number">0</span>))&#123;</span><br><span class="line">			x /= i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(x &gt; <span class="number">1</span>)prime[cnt++] = x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">int</span> t ;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; t;</span><br><span class="line">	<span class="keyword">while</span>(t--)&#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">		sum = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n;i++)&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;a[i]);</span><br><span class="line">			sum += a[i];</span><br><span class="line">		&#125;</span><br><span class="line">		get_prime(sum);</span><br><span class="line">		<span class="keyword">int</span> ans = linf;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cnt;i++)&#123;</span><br><span class="line">			<span class="keyword">int</span> min_ = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">int</span> fyz = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n;k++)&#123;</span><br><span class="line">				b[k] = a[k] % prime[i];</span><br><span class="line">				fyz += b[k];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(fyz % prime[i] != <span class="number">0</span>)<span class="keyword">continue</span>;</span><br><span class="line">			sort(b+<span class="number">1</span>, b+n+<span class="number">1</span>, greater&lt;<span class="keyword">int</span> &gt;());</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k = fyz / prime[i] +<span class="number">1</span>; k &lt;= n;k++)&#123;</span><br><span class="line">				min_ += b[k];</span><br><span class="line">				<span class="keyword">if</span>(b[k] == <span class="number">0</span>)<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			ans = min(ans, min_);</span><br><span class="line">		&#125; </span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/******************************************************</span></span><br><span class="line"><span class="comment"> stuff you should look for</span></span><br><span class="line"><span class="comment">  * int overflow, array bounds</span></span><br><span class="line"><span class="comment">  * special cases (n=1?), set tle</span></span><br><span class="line"><span class="comment">  * do smth instead of nothing and stay organized</span></span><br><span class="line"><span class="comment">*******************************************************/</span></span><br></pre></td></tr></table></figure>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/************************************************</span></span><br><span class="line"><span class="comment"> # @Author:      miniLCT</span></span><br><span class="line"><span class="comment"> # @DateTime:    2019-09-18 16:39:45</span></span><br><span class="line"><span class="comment"> # @Description: You build it.You run it</span></span><br><span class="line"><span class="comment"> ***********************************************/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> eps 1e-8</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> close ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e6</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">1e9</span>;</span><br><span class="line"><span class="keyword">const</span> ll linf = <span class="number">0x3f3f3f3f3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> PI = <span class="built_in">acos</span>(<span class="number">-1.0</span>);</span><br><span class="line">ll mod = <span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> n,sum,cnt;</span><br><span class="line"><span class="keyword">int</span> a[maxn],b[maxn],prime[<span class="number">100</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_prime</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(prime,<span class="number">0</span>,<span class="keyword">sizeof</span>(prime));</span><br><span class="line">	cnt = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> maxx = <span class="built_in">sqrt</span>(x);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= maxx; i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(x%i==<span class="number">0</span>)prime[cnt++] = i;</span><br><span class="line">		<span class="keyword">while</span>(x&amp;&amp;((x%i)==<span class="number">0</span>))&#123;</span><br><span class="line">			x /= i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(x &gt; <span class="number">1</span>)prime[cnt++] = x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">int</span> t ;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; t;</span><br><span class="line">	<span class="keyword">while</span>(t--)&#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">		sum = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n;i++)&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;a[i]);</span><br><span class="line">			sum += a[i];</span><br><span class="line">		&#125;</span><br><span class="line">		get_prime(sum);</span><br><span class="line">		<span class="keyword">int</span> ans = linf;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cnt;i++)&#123;</span><br><span class="line">			<span class="keyword">int</span> min_ = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">int</span> zz = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n;k++)&#123;</span><br><span class="line">				b[k] = a[k] % prime[i];</span><br><span class="line">				zz += b[k];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(zz % prime[i] != <span class="number">0</span>)<span class="keyword">continue</span>;</span><br><span class="line">			sort(b+<span class="number">1</span>, b+n+<span class="number">1</span>, greater&lt;<span class="keyword">int</span> &gt;());</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k = zz / prime[i] +<span class="number">1</span>; k &lt;= n;k++)&#123;</span><br><span class="line">				min_ += b[k];</span><br><span class="line">				<span class="keyword">if</span>(b[k] == <span class="number">0</span>)<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			ans = min(ans, min_);</span><br><span class="line">		&#125; </span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/******************************************************</span></span><br><span class="line"><span class="comment"> stuff you should look for</span></span><br><span class="line"><span class="comment">  * int overflow, array bounds</span></span><br><span class="line"><span class="comment">  * special cases (n=1?), set tle</span></span><br><span class="line"><span class="comment">  * do smth instead of nothing and stay organized</span></span><br><span class="line"><span class="comment">*******************************************************/</span></span><br></pre></td></tr></table></figure>
     </div>
      
     
@@ -436,11 +440,13 @@
           
         
         <div class="post-tags">
+            <a href="/tags/hdu/" rel="tag"><i class="fa fa-tag"></i> hdu</a>
+          
+            <a href="/tags/Number-Theory/" rel="tag"><i class="fa fa-tag"></i> Number Theory</a>
+          
+            <a href="/tags/Math/" rel="tag"><i class="fa fa-tag"></i> Math</a>
+          
             <a href="/tags/分解质因数/" rel="tag"><i class="fa fa-tag"></i> 分解质因数</a>
-          
-            <a href="/tags/贪心/" rel="tag"><i class="fa fa-tag"></i> 贪心</a>
-          
-            <a href="/tags/number-theory/" rel="tag"><i class="fa fa-tag"></i> number theory</a>
           
         </div>
         <div class="post-widgets">
@@ -534,7 +540,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -565,7 +571,21 @@
         
           
         
-        <span class="site-state-item-count">8</span>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -626,7 +646,39 @@
         
           
         
-        <span class="site-state-item-count">23</span>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">39</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -712,14 +764,14 @@
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">129k</span>
+    <span title="站点总字数">48k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">7:09</span>
+    <span title="站点阅读时长">2:40</span>
 </div>
 
         
