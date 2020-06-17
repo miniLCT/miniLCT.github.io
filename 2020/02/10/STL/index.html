@@ -82,7 +82,8 @@
 <meta property="og:description" content="本文记录了STL的学习">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2020/02/10/16vCELgoKOjUlXQ.png">
-<meta property="og:updated_time" content="2020-03-19T02:44:40.868Z">
+<meta property="og:image" content="https://i.loli.net/2020/05/20/wYmRcEa56Aexhok.png">
+<meta property="og:updated_time" content="2020-05-20T12:48:09.857Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="陌生的STL 和 pbds初步">
 <meta name="twitter:description" content="本文记录了STL的学习">
@@ -333,7 +334,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-03-19 10:44:40" itemprop="dateModified" datetime="2020-03-19T10:44:40+08:00">2020-03-19</time>
+                <time title="修改时间：2020-05-20 20:48:09" itemprop="dateModified" datetime="2020-05-20T20:48:09+08:00">2020-05-20</time>
               </span>
             
           
@@ -389,7 +390,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">930</span>
+              <span title="本文字数">2k</span>
             </span>
           
             <span class="post-meta-item">
@@ -399,7 +400,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">3 分钟</span>
+              <span title="阅读时长">7 分钟</span>
             </span>
           
             <div class="post-description"><center>本文记录了STL的学习</center></div>
@@ -416,14 +417,14 @@
       
         <blockquote>
 <p>真的有很多人，他们的代码如诗一般。</p>
-<p>有两个有趣的事情。 ①<del>部分</del>很多 $ACMer$ 对 $Vector$ 有这样的想法 : 这个东西是会带大常数的，可是现场赛没卡过，所以很喜欢用（外国选手也非常喜欢？）。 ②我们常常感觉 $stack$ 和 $queue$ 常数特别大，事实上，他的空间特别大， 比时间问题大多了。不信开个$queue<int> a[1000000]$ 试试呗😂。事实上，$std::queue $ 和 $std::stack$ 是默认基于 $std::deque$ 实现的。</int></p>
+<p>有两个有趣的事情。 ①<del>部分</del>很多 $ACMer$ 对 $Vector$ 有这样的想法 : 这个东西是会带大常数的，可是现场赛没卡过，所以很喜欢用（外国选手也非常喜欢？）。 ②我们常常感觉 $stack$ 和 $queue$ 常数特别大，事实上，他的空间特别大， 比时间问题大多了。不信开个$queue\lt int\gt a[1000000]$ 试试呗😂。事实上，$std::queue $ 和 $std::stack$ 是默认基于 $std::deque$ 实现的。</p>
 </blockquote>
 <p>起因是看到著名OI爷<a href="https://codeforces.com/profile/jiangly" target="_blank" rel="noopener">jiangly</a>的代码，虎躯一震。他的代码风格真的好好啊！他对于stl的掌控，真的！！！%%%%%%%</p>
 <p>回想自己，经常问队友什么什么怎么用，就很<strong>离谱</strong>。</p>
 <p><img src="https://i.loli.net/2020/02/10/16vCELgoKOjUlXQ.png" alt="像这种窒息的对话常常出现，就很无奈。。"><br>遂学习一波</p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>不知道从什么地方开始写，就来碎碎念。</p>
-<p>打过 $OI$ 的爷们会感觉 $stl$ 在时间效率上比较低下。而在 $XCPC$ 中，是开$-O2$ 优化的。 &emsp;&emsp;&emsp;<font color="red">当然，不要觉得，编译器什么都可以优化。</font></p>
-<h3 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h3><p>没系统的学过，之前看过但是都忘记了。除了字典树$(trie)$等几个算法或数据结构外,都用的不多把（包括trie也是可以用数组模拟的）？除此之外的地方，指针也基本上可以被引用代替。</p>
+<p>打过 $OI$ 的会感觉 $stl$ 在时间效率上比较低下。而在 $XCPC$ 中，是开$-O2$ 优化的。 &emsp;&emsp;&emsp;<font color="red">当然，不要觉得，编译器什么都可以优化。</font></p>
+<h2 id="内容1"><a href="#内容1" class="headerlink" title="内容1"></a>内容1</h2><h3 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h3><p>没系统的学过，之前看过但是都忘记了。除了字典树$(trie)$等几个算法或数据结构外,都用的不多把（包括trie也是可以用数组模拟的）？除此之外的地方，指针也基本上可以被引用代替。</p>
 <h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>在扩展欧几里得算法中用到了实参引用。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//找出a,b最大公因数，且求出x，y满足ax+by =gcd(a,b)。</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">ext_gcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> &amp;x,<span class="keyword">int</span> &amp;y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> d = a;</span><br><span class="line">	<span class="keyword">if</span>(b != <span class="number">0</span>)&#123;</span><br><span class="line">		d = ext_gcd(b , a%b ,y , x);</span><br><span class="line">		y -= (a / b) * x;</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		x = <span class="number">1</span>;</span><br><span class="line">		y = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> d;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>和指针传参效果一样，但是相比于用指针传递参数而言要方便很多。在要传占用内存较大的变量或类时可以用指针传递来加快效率。</p>
 <h3 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h3><p>在结构体中，我们经常会用到运算符重载。旨在实现扩展c++自带的类型，或者达到自己的运算（或比较）目的。<br>比如在fft中重写Complex。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">C</span> &#123;</span></span><br><span class="line">    LD r, i;</span><br><span class="line">    C(LD r = <span class="number">0</span>, LD i = <span class="number">0</span>) : r(r), i(i) &#123;&#125;</span><br><span class="line">&#125; A[MAXN], B[MAXN];</span><br><span class="line">C <span class="keyword">operator</span>+(<span class="keyword">const</span> C&amp; a, <span class="keyword">const</span> C&amp; b) &#123; <span class="keyword">return</span> C(a.r + b.r, a.i + b.i); &#125;</span><br><span class="line">C <span class="keyword">operator</span>-(<span class="keyword">const</span> C&amp; a, <span class="keyword">const</span> C&amp; b) &#123; <span class="keyword">return</span> C(a.r - b.r, a.i - b.i); &#125;</span><br><span class="line">C <span class="keyword">operator</span>*(<span class="keyword">const</span> C&amp; a, <span class="keyword">const</span> C&amp; b) &#123; <span class="keyword">return</span> C(a.r * b.r - a.i * b.i, a.r * b.i + a.i * b.r); &#125;</span><br></pre></td></tr></table></figure></p>
@@ -431,7 +432,57 @@
 <p>比如以前遍历 $set$ 的一般写法是:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> &lt;<span class="keyword">int</span>&gt; iterator::itr;</span><br><span class="line"><span class="keyword">for</span> (itr = st.begin(); itr != st.end(); itr++)&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *itr &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>比如遍历某容器时现可以写作:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> it : st)&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; it &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这种写法中，$for$ 循环会从头到尾遍历一遍 $st$ 容器，将其中的值取出。需要注意的是，如果要修改元素的值的话，应该声明成引用$auto\&amp;\quad i$。</p>
-<h3 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h3><p>$cf$</p>
+<h3 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h3><p>$cf$ 上著名选手 tourist 的代码就有很多模板。然而我很多看不懂用不来。<br>卑微如我只能写个快读模板。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">read</span><span class="params">(T &amp;x)</span> </span>&#123;</span><br><span class="line">    x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> f = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(ch)) &#123;</span><br><span class="line">        <span class="keyword">if</span> (ch == <span class="string">'-'</span>) f = <span class="number">-1</span>;</span><br><span class="line">        ch = getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">isdigit</span>(ch)) &#123;</span><br><span class="line">        x = x * <span class="number">10</span> + (ch ^ <span class="number">48</span>);</span><br><span class="line">        ch = getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    x *= f;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(T x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">putchar</span>(<span class="string">'-'</span>);</span><br><span class="line">        x = -x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (x &gt; <span class="number">9</span>) write(x / <span class="number">10</span>);</span><br><span class="line">    <span class="built_in">putchar</span>(x % <span class="number">10</span> + <span class="string">'0'</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="内容2"><a href="#内容2" class="headerlink" title="内容2"></a>内容2</h2><h3 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h3><p>vector 的实现基于动态数组，结合倍增思想（空间开不下了就全部删掉再开 $2$ 倍）。单次操作复杂度基本都是均摊 $O(1)$ 的。</p>
+<h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; a;<span class="comment">//新建一个空的vector </span></span><br><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; b(<span class="number">5</span>,<span class="number">3</span>);<span class="comment">//新建一个包含 5 个 3 的 vector</span></span><br><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; c(<span class="number">5</span>);<span class="comment">// = vector &lt;int&gt; c(5,0);</span></span><br><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; d(b.begin()+<span class="number">1</span>,b.end()<span class="number">-1</span>);<span class="comment">// 用 [b.begin()+1,b.end()-1) 这一段构成的数组生成 vector </span></span><br><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; e(d);<span class="comment">// 生成一个和 d 相同的 vector e</span></span><br><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">iota(v.begin(),v.end(),<span class="number">0</span>); <span class="comment">//在vector里创建一个0,1...n-1的数列</span></span><br></pre></td></tr></table></figure>
+<h4 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h4><ul>
+<li>back() &emsp;v.back() 返回 v 的最后一个元素的引用 </li>
+<li>front() &emsp;v.front() 返回 v 的第一个元素的引用</li>
+<li>begin() &emsp;v.begin()返回一个迭代器，指向 v 的第一个元素。</li>
+<li>end() &emsp;v.end()返回一个迭代器，指向 v 的最后一个元素的后一个位置。</li>
+<li>clear() &emsp;v.clear() 表示将 v 清空（内存不释放）。  Complexity：与容器大小线性。</li>
+<li>empty() &emsp;v.empty()返回一个布尔值，表示 v 是否为空。</li>
+<li><p>erase </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(<span class="number">10</span>);</span><br><span class="line">iota(v.begin(), v.end(), <span class="number">1</span>);</span><br><span class="line">v.erase(v.begin() + <span class="number">5</span>);  <span class="comment">//删除 v.begin()+5 这个位置的元素</span></span><br><span class="line">v.erase(v.begin(), v.begin() + <span class="number">3</span>);  <span class="comment">//删除 [v.begin(),v.end()) 这个区间之间的所有元素</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> i : v) <span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="string">" "</span>;</span><br><span class="line"><span class="comment">//输出结果 4 5 7 8 9 10</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>insert</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; v(<span class="number">3</span>,<span class="number">1</span>);</span><br><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; :: iterator it=v.begin();</span><br><span class="line">it=v.insert(it,<span class="number">2</span>);<span class="comment">//在 it 处插入一个 2</span></span><br><span class="line">v.insert(it,<span class="number">2</span>,<span class="number">3</span>);<span class="comment">//在 it 处插入 2 个 3 ，注意这个语句执行完之后 it 就失效了</span></span><br><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; u(<span class="number">3</span>,<span class="number">1</span>);</span><br><span class="line">u.insert(u.begin(),v.begin(),v.end());<span class="comment">//在 u.begin() 处插入 [v.begin(),v.end()) 这个范围内的元素</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>resize<br>这个聚好用！<br>多组时候可以这样v.clear();v.resize(n);<br>unique_sort时候可以这样 (sort(c.begin(),c.end()), c.resize(distance(c.begin(),unique(c.begin(),c.end()))))好像有点长，有个很简短写法我忘记了。。 a.resize(unique(a.begin(),a.end())-a.begin());大概这样？</p>
+</li>
+<li><p>emplace_back()/push_back()&emsp; 在 v 的最后插入一个元素。</p>
+</li>
+<li>pop_back()&emsp;弹出最后一个元素。</li>
+</ul>
+<h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><p>单次操作的复杂度基本都是 $O(log\ Size)$的。<br>一样的操作就省略了。</p>
+<h4 id="基本操作-1"><a href="#基本操作-1" class="headerlink" title="基本操作"></a>基本操作</h4><ul>
+<li>count<br><code>S.count(x)</code>表示求 $S$ 中 $x$ 元素的出现次数。由于 $set$ 中各个元素互不相同，所以只会返回 $0$ 或 $1$ 。<br>单次操作时间复杂度为 $O(log \ Size)$<br>​1000000 次 count 用时在 0.3s 到 1s 左右，取决于电脑运行效率。</li>
+<li><p>erase<br>用于删除元素</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">S.erase(it);<span class="comment">// 删除 set 迭代器 it 指向的元素。删除完之后这个迭代器就失效了。</span></span><br><span class="line">S.erase(x);<span class="comment">// 删除元素 x </span></span><br><span class="line">S.erase(it1,it2);<span class="comment">// 删除 [it1,it2) 的所有元素 </span></span><br><span class="line">S.erase(it,S.end());<span class="comment">// 上一种用法的一个实例</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>find<br><code>S.find(x)</code>返回一个迭代器，这个迭代器指向的元素值为 $x$。</p>
+</li>
+<li>insert<br><code>S.insert(x)</code> 表示在 S 中插入元素 $x$ ，并返回一个 <code>pair <set <int> :: iterator,bool&gt;</set></code> ，第一个元素表示插入元素 $x$ 之后 $x$ 的迭代器（如果原本就有 $x$ 就返回原来的 $x$ 的迭代器），第二个元素表示这次插入是否有效，如果 $x$ 原先不在 $S$ 中，那么返回 $true$，否则返回 $false$。<br>​<code>S.insert(it1,it2) </code>表示在 S 中插入 $[it1,it2)$ 的所有元素。</li>
+<li><p>swap </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">S.swap(S1);<span class="comment">//复杂度是常数</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>lower_bound/upper_bound<br>返回的是迭代器。<strong>大于等于</strong> / <strong>大于</strong></p>
+</li>
+</ul>
+<h3 id="multiset"><a href="#multiset" class="headerlink" title="multiset"></a>multiset</h3><p>​multiset 是可重集，也就是说容器内可以有多个相同元素。我以前很喜欢用。<br>大部分用法和 set 一样，这里讲不太一样的。<br>奥！！一定要说的一个点是 multiset 的常数比 set 的常数大若干倍！</p>
+<h4 id="较为不同的"><a href="#较为不同的" class="headerlink" title="较为不同的"></a>较为不同的</h4><ul>
+<li>count<br><code>S.count(x)</code>单次 count 复杂度在 $O(log\ Size + S.count(x))$<br><img src="https://i.loli.net/2020/05/20/wYmRcEa56Aexhok.png" alt="实测 from others"></li>
+<li>erase<br><code>S.erase(x)</code>的作用是删除 S 中所有等于 x 的元素。<br>删除一个的时候写成<code>S.erase(S.find(x))</code></li>
+</ul>
+<h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><p>基于 rbtree。<br>一般用于离散化，单次操作的时间复杂度基本都是 $0(log \ Size)$</p>
+<p>用得好map真的很方便！ dqy 就比较会。</p>
+<h3 id="unordered-map"><a href="#unordered-map" class="headerlink" title="unordered_map"></a>unordered_map</h3><p>基于 hash 表。是map的弱化版，由于实现原理不同，map有的很多功能他都么得，但是他单次操作时间复杂度$O(1)$，但在 cf 上可以被卡。neal文章有写 <a href="https://codeforces.com/blog/entry/62393" target="_blank" rel="noopener">Blowing up unordered_map, and how to stop getting hacked on it</a><br>​<br>需要 c++11 以上的编译器才可以使用。</p>
+<h3 id="priority-queue"><a href="#priority-queue" class="headerlink" title="priority_queue"></a>priority_queue</h3><p>优先队列，堆，完全可以用 set 代替，功能比 set 弱，单次操作 $O(log \ Size)$，没有迭代器，系统默认大根堆。</p>
+<p>但他常数比set小，约为0.5倍。</p>
+<p>定义一个 int 类型的大根堆 priority_queue<int> q;</int></p>
+<p>定义一个 char 类型的大根堆 priority_queue<char , vector<char>, greater<char> &gt; Q;</char></char></p>
+<p>重载比较运算符：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">cmp</span>&#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">operator</span> <span class="params">()</span> <span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">        <span class="comment">//......</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">priority_queue &lt;<span class="keyword">int</span>,<span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt;,cmp&gt; Q3;</span><br></pre></td></tr></table></figure></p>
+<h3 id="pb-ds初步："><a href="#pb-ds初步：" class="headerlink" title="pb_ds初步："></a>pb_ds初步：</h3><p>主要看的是于纪平《C++的pb_ds库在OI中的应用.pdf》</p>
 
     </div>
      
@@ -734,7 +785,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#指针"><span class="nav-number">1.1.</span> <span class="nav-text">指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用"><span class="nav-number">1.2.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符重载"><span class="nav-number">1.3.</span> <span class="nav-text">运算符重载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#auto关键字"><span class="nav-number">1.4.</span> <span class="nav-text">auto关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模板"><span class="nav-number">1.5.</span> <span class="nav-text">模板</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内容1"><span class="nav-number">2.</span> <span class="nav-text">内容1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#指针"><span class="nav-number">2.1.</span> <span class="nav-text">指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用"><span class="nav-number">2.2.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符重载"><span class="nav-number">2.3.</span> <span class="nav-text">运算符重载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#auto关键字"><span class="nav-number">2.4.</span> <span class="nav-text">auto关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模板"><span class="nav-number">2.5.</span> <span class="nav-text">模板</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内容2"><span class="nav-number">3.</span> <span class="nav-text">内容2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vector"><span class="nav-number">3.1.</span> <span class="nav-text">vector</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化"><span class="nav-number">3.1.1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本操作"><span class="nav-number">3.1.2.</span> <span class="nav-text">基本操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set"><span class="nav-number">3.2.</span> <span class="nav-text">set</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本操作-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">基本操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multiset"><span class="nav-number">3.3.</span> <span class="nav-text">multiset</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#较为不同的"><span class="nav-number">3.3.1.</span> <span class="nav-text">较为不同的</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#map"><span class="nav-number">3.4.</span> <span class="nav-text">map</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#unordered-map"><span class="nav-number">3.5.</span> <span class="nav-text">unordered_map</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#priority-queue"><span class="nav-number">3.6.</span> <span class="nav-text">priority_queue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pb-ds初步："><span class="nav-number">3.7.</span> <span class="nav-text">pb_ds初步：</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -770,14 +821,15 @@
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">48k</span>
+    <span title="站点总字数">50k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">2:40</span>
+    <span title="站点阅读时长">2:46</span>
+  <a href="http://www.beian.miit.gov.cn">浙ICP备20021511号</a>
 </div>
 
         
