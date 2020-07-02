@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[由Codeforces Round #635 (Div. 2)D题引发的碎碎念]]></title>
-    <url>%2F2020%2F04%2F16%2FCF635div2%2F</url>
-    <content type="text"><![CDATA[是一些无聊的碎碎念罢了 最近有非常多的 $up$ 主录播 Codeforces 和 Atc 。 个人感觉总结还是蛮重要的。因为负能量实在是太多了 很想很想 ak 一场 div2 的，虽然我知道我现在还没什么概率能做出最后一题。 最近三场 Codeforces 如下: #633 是最最最可惜的一场，他的 E 题是一个打表找规律的题目，赛中我对题意理由有一些问题导致表都没打出来（甚至反驳了样例）。。但事实上，这确实是这三道题中最可能做出来的一道。 #634 虽然是 div3 ，但最后一题涉及到的基环树之前并没有好好看过。。所以不会也么得办法 #635 的E题甚至是靠 某欧钩 的 某著名魔方 lover 指点群友时偷瞄了一眼到最后才冲出来。 之前以为交互题会在CD左右前两天还特意写了一些，但出乎意料的实在 F 题，到比赛结束也没读过题，现在赛后也补不动。 好，接下来是 关于Codeforces Round #635 (Div. 2)引发的碎碎念。 A B C 还是蛮常规的但是 B 题 $\mathbf{WA}$ 了一发。 好的接下来到了流水账的 D 题。 这道题暴露了我不会用 set ， 不会用 vector ，码力极差。 先描述一下 D 题: 从给定的三个数组中各取一个数字，求这三个数字两两之差的平方和的最小值。 读了一遍题，心想： D 就要化式子吗玩得这么大？CN-Round 又上当了。 果断放一下，去看 E 。 读了一下 E ，看数据范围猜想是区间dp，可能要加上前缀和优化之类的或者用到了什么没学过的字符串的性质？ 回去看 D 。拿起笔开始化式子。化到一半，突然想起来，有一次问过邓哥类似题目，枚举一个，另外两个随便搞搞就行了。 于是这个题其实是一个很 EZ 的题目，枚举第一个数 $x$ ，在后面维护两个 $set$ ，一个是查接近 $x$ 的 $y$ ， 另一个查 $\frac{x+y}{2}$ ，查一下前驱后继 就行了。 接着我就发现在细节处我不会写？写的相当的难受。特别是前驱后继在边界时候。 随后改成 vector ， 但是我的数组从 1 开始，当时我真不知道怎么 sort。。。 后来改成了vector 从 0 开始并且优化一下查询 直接查接近 $x$ 的 $y , z$ 就行了。 但是写完我 $\mathbf{WA}$ 了。 心态蹦了。 可是不能不写这么 EZ 的题啊，然后又开始重构，用数组。 又因为一个 神奇 错误 又 $\mathbf{WA}$ 了。好在还是找到了。 写完的时候由 $solve() -&gt; solve1() -&gt; solve2() -&gt; slove3() $。 赛后感觉要 FST 了，因为我看很多人都是比较了六次，而我比较了三次。好在没有 FST 。 打完这场深深感觉自己码力的不足，真的很 EZ 的题目都不能秒切是真的很不行。 而且我刷的都是水题，很久没有学新算法去做难一点点题了。昨天邓哥和我说他有点入门某算法我很惭愧。对比自己是这么学习的呢，我一般浏览这个东西是干嘛的，记一下这个干什么用，叫什么名字。也没有自己打代码，也没有去好好理解。就啥也不会。打模拟赛就只会嘴巴，啥也写不出。而且现在也不咋打了。 感慨万千却不去改变，是本人了。 但还是记录一下希望不要继续颓废了罢。]]></content>
-      <categories>
-        <category>Roast</category>
-      </categories>
-      <tags>
-        <tag>cf</tag>
-        <tag>Roast</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[dp计划1]]></title>
     <url>%2F2020%2F03%2F30%2Fdp1%2F</url>
     <content type="text"><![CDATA[你能优化来我的人生吗？ 已完成？/50 DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCodecf#544 div.3-E. K Balanced TeamsDescriptionSolutionCode1234567891011121314151617181920212223242526272829303132// She is Pretty pretty!#include &lt;bits/stdc++.h&gt;using namespace std;#define ll long long#define ff first#define ss second#define mp make_pair#define pb push_backconst int N = 5005;int n, k, a[N], dp[N][N];int main() &#123; ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0); cin &gt;&gt; n &gt;&gt; k; for (int i = 1; i &lt;= n; i++) &#123; cin &gt;&gt; a[i]; &#125; sort(a + 1, a + n + 1); int zz = n; for (int i = n; i &gt;= 1; i--) &#123; while (a[zz] &gt; a[i] + 5) zz--; for (int j = 1; j &lt;= k; j++) &#123; dp[i][j] = max(dp[i + 1][j], dp[zz + 1][j - 1] + (zz + 1 - i)); &#125; &#125; cout &lt;&lt; dp[1][k]; return 0;&#125; 美团2017年CodeM大赛-初赛A轮-合并回文子串Description$a,b$ 两个串保持字符顺序不变组合成字符串$c$ ,求字符串 $c$ 可能形成的最长回文子串的长度。 Solution区间dp。官方题解设 $f[l1][r1][l2][r2]$ 表示$A[l1] \sim A[r1]$ 和 $B[l2] \sim B[r2]$ 是否能合并成一个回文串。所以dp转移如图所示， $dp[l1][r1][l2][r2] |= dp[l1+1][r1-1][l2][r2];$ $dp[l1][r1][l2][r2] |= dp[l1+1][r1][l2][r2-1];$ $dp[l1][r1][l2][r2] |= dp[l1][r1][l2+1][r2-1];$ $dp[l1][r1][l2][r2] |= dp[l1][r1-1][l2+1][r2];$需要注意的是，当两个串选出的字符只有一个时候，认为是可以构成回文串的。（边界条件） Complexity: $O(T\times n^4)$ Code12345678910111213141516171819202122232425262728293031char a[maxn], b[maxn];int dp[maxn][maxn][maxn][maxn];//区间dpint main() &#123; CASET &#123; scanf("%s%s", a + 1, b + 1); int lena = strlen(a + 1); int lenb = strlen(b + 1); int ans = 0; memset(dp , 0 , sizeof dp); for (int i = 0; i &lt;= lena; i++) &#123; // a的长度 for (int j = 0; j &lt;= lenb; j++) &#123; // b的长度 for (int l1 = 1, r1 = l1 + i - 1; r1 &lt;= lena; l1++, r1++) &#123; //枚举a的起点终点部分 for (int l2 = 1, r2 = l2 + j - 1; r2 &lt;= lenb; l2++, r2++) &#123; //枚举b的起点终点部分 if (i + j &lt;= 1) &#123; dp[l1][r1][l2][r2] = 1; &#125; else &#123; if(a[l1]==a[r1]&amp;&amp;r1&gt;0) dp[l1][r1][l2][r2] |= dp[l1+1][r1-1][l2][r2]; if(a[l1]==b[r2]&amp;&amp;r2&gt;0) dp[l1][r1][l2][r2] |= dp[l1+1][r1][l2][r2-1]; if(b[l2]==b[r2]&amp;&amp;r2&gt;0) dp[l1][r1][l2][r2] |= dp[l1][r1][l2+1][r2-1]; if(b[l2]==a[r1]&amp;&amp;r1&gt;0) dp[l1][r1][l2][r2] |= dp[l1][r1-1][l2+1][r2]; &#125; if (dp[l1][r1][l2][r2]) ans = max(ans, r1 - l1 + r2 - l2 + 2); &#125; &#125; &#125; &#125; cout &lt;&lt; ans &lt;&lt; endl; &#125;&#125; 2018年长沙理工大学程序设计竞赛-数学考试Description给定一个序列，选取两个不相交的长度为 k 的区间求和， MAX 这个和。 Solutionnowcoder官方题解前缀和+暴力dp对序列求前缀和得到 $sum$ 。设 $dp1_i$表示位置$i$ 之前最大的区间和，$dp2_i$表示位置$i$之后最大区间和。线性更新一下就OK了。 Complexity: $O(T\times n)$ Code12345678910111213141516171819202122232425int a[maxn], dp1[maxn], dp2[maxn], sum[maxn], n, k, ans;int32_t main() &#123; close; CASET &#123; cin &gt;&gt; n &gt;&gt; k; memset(dp1, 0xcf, sizeof dp1); memset(dp2, 0xcf, sizeof dp1); ans = -linf; for (int i = 1; i &lt;= n; i++) &#123; cin &gt;&gt; a[i]; sum[i] = sum[i - 1] + a[i]; &#125; // dp1 之前一段的max dp2 之后的一段 for (int i = k; i &lt;= n - k; i++) &#123; dp1[i] = max(sum[i] - sum[i - k], dp1[i - 1]); &#125; for (int i = n - k + 1; i &gt;= k + 1; i--) &#123; dp2[i] = max(sum[i + k - 1] - sum[i - 1], dp2[i + 1]); &#125; for (int i = k; i &lt;= n - k; i++) &#123; ans = max(ans, dp1[i] + dp2[i + 1]); &#125; cout &lt;&lt; ans &lt;&lt; endl; &#125;&#125; others 线段树：博客123456789101112131415161718192021222324252627282930313233343536373839404142434445464748#include&lt;bits/stdc++.h&gt;using namespace std;#define ll long longll sum[422222],a[422222];struct stree&#123; int p,l,r; ll ma;&#125;;stree t[800020];void build(int p,int l,int r)&#123; //递归建立线段树 t[p].l=l,t[p].r=r; //线段树的区间左端点和右端点赋值。 if(l==r)&#123;t[p].ma=a[l];return;&#125; int mid=l+r&gt;&gt;1; build(p*2,l,mid); //递归左儿子 build(p*2+1,mid+1,r); //递归右儿子 t[p].ma=max(t[2*p].ma,t[2*p+1].ma); //区间最大值赋值。&#125;ll ask(int p,int l,int r)&#123; //在节点p对应区间找原数组里l到r的最大值 if(t[p].l&gt;=l&amp;&amp;t[p].r&lt;=r)return t[p].ma; //若p对应区间被包含在[l,r]区间里，则直接返回。 int mid=t[p].l+t[p].r&gt;&gt;1; ll ma=-1e18; if(l&lt;=mid)ma=max(ma,ask(p*2,l,r)); //递归找左节点 if(r&gt;mid)ma=max(ma,ask(p*2+1,l,r)); //递归找右节点 return ma;&#125;int main()&#123; int t; cin&gt;&gt;t; while(t--)&#123; int n,k,i,x; ll s=0; cin&gt;&gt;n&gt;&gt;k; for(i=1;i&lt;=n;i++)&#123; scanf("%d",&amp;x); s+=x; sum[i]=s; &#125; for(i=1;i&lt;=n-k+1;i++)&#123; a[i]=sum[i+k-1]-sum[i-1]; &#125; build(1,1,n-k+1); ll ma=-1e18; for(i=1;i&lt;=n-2*k+1;i++)&#123; ma=max(ma,a[i]+ask(1,i+k,n-k+1)); &#125; cout&lt;&lt;ma&lt;&lt;endl; &#125;&#125; expansion 不限制长度—在一个数列里找两个不相交区间使得他们权值和最大 区间数目变多—找 $m$ 个长度为 $k$ 的不相交区间使得他们的权值和最大 $(1\leq n \leq 5000)$ 区间数目变多且不限制长度—找 $m$ 个不相交长度不限的区间使他们的权值和最大 $(1\leq n \leq 5000)$ 官方 some ideas:bonus1: 设 $f_i$表示前 $[1,i]$ 的最大子段和， $g_i$表示 $[i,n]$ 的最大子段和。那么有$ans = \mathbb {MAX}\{ f_i+g_{i+1}\}$bonus2: 设 $f_{i,j}$ 表示前 $i$ 个数， 分成$j$ 段长度为 $k$ 的连续子段的最大值，那么有转移方程: $f_{i,j} = \mathbb{MAX} (f_{i-1,j} \ , f_{i-k,j-1}+s_i-s_{i-k})$bonus3: 设$f_{i,j,0/1}$ 表示前 $i$ 个数，分成 $j$ 段，第 $i$个不选/选的最大值，考虑第 $i$ 个是不是新开一段。于是有以下的转移方程。 \begin{cases} f_{i,j,0}=max(f_{i-1,j,0},f_{i-1,j,1})\\ f_{i,j,1}=max(f_{i-1,j,1},f_{i-1,j-1,1},f_{i-1,j-1,0})+a_i\\ \end{cases} DescriptionSolutionCodeCodeforces Round #635 (Div. 2)-E. Kaavi and Magic SpellDescription：给定一个长度为 $n$ 的字符串 $S$ 和一个长度为 $m$ 的字符串$T$, 有 $1\le m \le n$,开始有一个空串 $A$, 接下来对 $S$ 串进行 n 次操作： 把 S 的首字符加到 A 的开头 把 S 的首字符加到 A 的结尾问在操作过程中使得 A 的前 m 个字符为 字符串 T 的方案数。认为长度不同或者是操作序列中有某个地方不同是不同情况。 Solution:区间 $DP$。不妨假设 $T$ 串为 “asd”$A$ 串为”asd*(补到与S串等长)”定义 $dp[l][r]$ 为满足 $\forall \ l \le i \le r, S_i=T_i$能构造出来的操作序列。假设删除$S_i$往 $A$ 里添加（此时$A$有$i-1$个元素），考虑状态转移方程。考虑两个东西： $dp[l][r]$和$r-l+1=i$ 如果有$S_i=T_l$ 那么就把 $S_i$放到$[l+1,r]$区间的前面，构成$[l,r]$ 即有$dp[l][r]+=dp[l+1][r]$ 如果有$S_i=T_r$ 那么就把 $S_i$放到$[l,r-1]$区间的后面，构成$[l,r]$ 即有$dp[l][r]+=dp[l][r-1]$ 初始化状态：区间长度为 1 时如果有字符相等那么就会存在$dp[i][i] += dp[i][i-1]$的情况，对于这种情况其实就是单个字符$S_i$在空串基础上前插或后插后成为了符合条件的串之一，实际上应该是$dp[i][i] += 1$，所以我们就预处理一下使$ dp[i][i-1] = 1 $即可。 统计答案：即 统计 A 的前缀部分 $ans=\sum_{i=m}^ndp[1][i]$ Code:1234567891011121314151617181920212223242526272829303132333435363738// She is Pretty pretty!const int N = 3100;const int mod = 998244353;char s[N], t[N];ll dp[N][N];void add(ll &amp;a, int b) &#123; a += b; if (a &gt;= mod) a -= mod;&#125;int main() &#123; ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0); int n, m; cin &gt;&gt; s + 1 &gt;&gt; t + 1; n = strlen(s + 1), m = strlen(t + 1); for (int i = 1; i &lt;= n+10; i++) &#123; dp[i][i - 1] = 1; &#125; for (int i = 1, len = 1; i &lt;= n; i++, len++) &#123; for (int l = 1;; l++) &#123; int r = l + len - 1; if(r &gt; n)break; if (l &gt; m || s[i] == t[l]) &#123; add(dp[l][r], dp[l + 1][r]); &#125; if (r &gt; m || s[i] == t[r]) &#123; add(dp[l][r], dp[l][r - 1]); &#125; &#125; &#125; ll ans = 0; for (int i = n; i &gt;= m; i--) &#123; add(ans, dp[1][i]); &#125; cout &lt;&lt; ans &lt;&lt; endl; return 0;&#125; DescriptionSolutionCodeEDU59-E. Vasya and Binary StringDescription：给个长度为 $n (n\le100)$ 的 $01$ 串 $s$ ,以及长度为 $n$ 数组 $a$.每次可以选择任意长度 $L$ 的连续子串（要求子串每个字符相同）从原串中去掉，并获得 $a[L]$ 的值。问可能获得的最大值 Solution:观察数据范围，考虑到用区间 $dp$。令$dp[ l ][ r ][ k ] $代表的是 $[l, r]$这段区间内，前面有 $k-1$ 个连续的和 $s[l]$ 相同且连续的字符传进来的最大值。$solve( l, r, k)$ 代表的是处理区间$[L, R]$, 正在处理 $[L, R]$这个区间， 前面有$k-1$个连续的和$s[l]$相同且连续的字符。考虑转移状态方程：$dp[l][r][k] = a[k] + solve(l+1,r,1)$。 在 $l$ 这个位置切断连续字符。$dp[l][r][k] = solve( l+1, i-1, 1) + solve(i, r, k+1)$ 其中 $s[l] == s[i]$ 加入新的连续字符。 Code:1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798// @DateTime: 2020-04-26 13:39:03//~ while (clock()&lt;=69*CLOCKS_PER_SEC)//~ #pragma comment(linker, "/stack:200000000")#pragma GCC optimize("O3")#pragma GCC optimize("-Ofast", "-funroll-all-loops", "-ffast-math")//~ #pragma GCC target ("avx2")//~ #pragma GCC// target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")#include &lt;algorithm&gt;#include &lt;cassert&gt;#include &lt;chrono&gt;#include &lt;cmath&gt;#include &lt;cstdio&gt;#include &lt;cstring&gt;#include &lt;iostream&gt;#include &lt;map&gt;#include &lt;queue&gt;#include &lt;random&gt;#include &lt;set&gt;#include &lt;stack&gt;#include &lt;string&gt;#include &lt;vector&gt;//#include &lt;ext/pb_ds/assoc_container.hpp&gt;//#include &lt;ext/pb_ds/tree_policy.hpp&gt;// using namespace __gnu_pbds;using namespace std;using LL = long long;#define eps 1e-8#define fi first#define se second#define eb emplace_back#define SZ(a) int(a.size())#define ALL(x) (x).begin(), (x).end()#define trav(a, x) for (auto &amp;a : x)#define close \ std::ios::sync_with_stdio(false), cin.tie(nullptr), cout.tie(nullptr)#define FOR(i, x, y) for (LL i = (x), _##i = (y); i &lt; _##i; ++i)#define FORD(i, x, y) for (LL i = (x), _##i = (y); i &gt; _##i; --i)#define SORT_UNIQUE(c) \ (sort(c.begin(), c.end()), \ c.resize(distance(c.begin(), unique(c.begin(), c.end()))))#define CASET \ int ___T; \ cin &gt;&gt; ___T; \ for (int __CS = 1; __CS &lt;= ___T; __CS++)typedef long long ll;typedef unsigned long long ull;typedef vector&lt;int&gt; vi;typedef pair&lt;int, int&gt; pii;mt19937 dlsrand(random_device&#123;&#125;());mt19937 mrand(std::chrono::system_clock::now().time_since_epoch().count());int rnd(int x) &#123; return mrand() % x; &#125;ll gcd(ll a, ll b) &#123; return b ? gcd(b, a % b) : a; &#125;LL bin(LL x, LL n, LL MOD) &#123; LL ret = MOD != 1; for (x %= MOD; n; n &gt;&gt;= 1, x = x * x % MOD) if (n &amp; 1) ret = ret * x % MOD; return ret;&#125;inline LL get_inv(LL x, LL p) &#123; return bin(x, p - 2, p); &#125;const double PI = acos(-1.0);constexpr int N = 201 + 10;constexpr int mod = 1e9 + 7;constexpr int INF = 0x3f3f3f3f;constexpr ll linf = 0x3f3f3f3f3f3f3f3f;constexpr ull base = 2333, P_1 = 19260811, P_2 = 999998639;void add(int &amp;a, int b) &#123; a += b; if (a &gt;= mod) a -= mod;&#125;void dec(int &amp;a, int b) &#123; a -= b; if (a &lt; 0) a += mod;&#125;ll n, a[N], dp[N][N][N];char s[N];ll solve(int l, int r, int k) &#123; if (l &gt; r) return 0; if (l == r) return a[k]; ll &amp;ret = dp[l][r][k]; if (ret) return ret; ret = a[k] + solve(l + 1, r, 1); for (int i = l + 1; i &lt;= r; i++) &#123; if (s[i] == s[l]) &#123; ret = max(ret, solve(i, r, k + 1) + solve(l + 1, i - 1, 1)); &#125; &#125; return ret;&#125;int main() &#123; close; cin &gt;&gt; n &gt;&gt; s + 1; for (int i = 1; i &lt;= n; i++) &#123; cin &gt;&gt; a[i]; &#125; cout &lt;&lt; solve(1, n, 1);&#125; Beautiful MirrorsDescription魔镜魔镜我美嘛easy版本，一个人问魔镜他美嘛，魔镜会有$p_i$ %d 概率说他美，他美就会开心，否则不开心，回到第一天，求开心的期望天数。 Solution概率求期望题目不妨设 dp[i] 表示第i到 n+1 天期望步数。那么有 dp[n+1] = 0则有： \begin{cases} dp_1=1+p_1\cdot dp_2+ (1-p_1)\cdot dp_1 \\ dp_2=1+p_2\cdot dp_3+ (1-p_2)\cdot dp_1 \\ \cdots\\ dp_n=1+p_n\cdot dp_{n+1}+(1-p_n)dp_1 \end{cases}求解得到： \begin{cases} dp_1=dp_2+\frac{1}{p_1} \\ dp_1=dp_3+\frac{1}{p_2}+\frac{1}{p2\cdot p1} \\ \cdots\\ dp_1=dp_{n+1}+\frac{1}{p_n}+\frac{1}{p_n\cdot p_{n-1}}+\cdots +\frac{1}{p_n\cdot p_{n-1}\cdots p_1} \end{cases}推得：$dp_1=\frac{1+p_1+p_1p_2+\cdots p_1p_2\cdots p_{n-1}}{p_1p_2\cdots p_n}$ Code12345678910111213141516ll dp[maxn], a[maxn], b[maxn];int main()&#123; ll ans = 0, n, x; cin &gt;&gt; n; ll inv = get_inv(100,mod); for(int i = 1; i &lt;= n; i++)&#123; cin &gt;&gt; x; a[i] = x * inv % mod; b[i] = get_inv(a[i], mod); &#125; for(int i = 1; i &lt;= n; i++)&#123; dp[i] = (dp[i-1] + 1) * b[i] % mod; &#125; cout &lt;&lt; dp[n] &lt;&lt;endl;&#125; Beautiful Mirrors with queriesDescription在上题的基础上，要求的是回到 $u$ 。 Solution考虑$[L , R], ans = \frac{1+p_l+p_lp_{l+1}\cdots +(p_l\cdots p_r)}{p_lp_{l+1}\cdots p_r}$对于求这个，考虑:定义 $s_i=p_ip_2\cdots p_i,t_i=p_1+p_1\cdot p_2+\cdots + p_1 p_2\cdots p_i$ 维护前缀积和累和$ans=\frac{A}{B}, A=\frac{t_{r-1}-r_{l-2}}{s_{l-2}}, B=\frac{s_r}{r_{l-1}}$ Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364set&lt;ll&gt; S;int n, q, v[maxn];int p[maxn], t[maxn], inv[maxn], s[maxn];int query(int l, int r) &#123; if (l == 1) &#123; ll A = (t[r - 1] + 1) % mod; ll B = s[r] % mod; return A * get_inv(B, mod) % mod; &#125; ll A = (t[r - 1] - t[l - 2] + mod) % mod * get_inv(s[l - 1], mod) % mod; ll B = s[r] * get_inv(s[l - 1], mod) % mod; // cout &lt;&lt; "A == " &lt;&lt; A &lt;&lt; " B === " &lt;&lt; B &lt;&lt; endl; return A * get_inv(B, mod) % mod;&#125;int32_t main() &#123; close; cin &gt;&gt; n &gt;&gt; q; S.insert(1); S.insert(n + 1); v[1] = 1; int inv100 = get_inv(100, mod); for (int i = 1; i &lt;= n; i++) &#123; cin &gt;&gt; p[i]; p[i] = p[i] * inv100 % mod; &#125; s[0] = 1, t[0] = 0; for (int i = 1; i &lt;= n; i++) &#123; s[i] = s[i - 1] * p[i] % mod; t[i] = (t[i - 1] + s[i]) % mod; &#125; ll ans = query(1, n); for (int i = 0; i &lt; q; i++) &#123; int x; cin &gt;&gt; x; if (v[x]) &#123; v[x] = 0; S.erase(x); auto L = S.lower_bound(x); // auto L = lower_bound(ALL(S),x); auto R = L; L--; // ans = (ans + query(*L, *R - 1)) % mod; // ans = (ans - query(*L, x - 1) + mod) % mod; // ans = (ans - query(x, *R - 1) + mod) % mod; add(ans, query(*L, *R - 1)); dec(ans, query(*L, x - 1)); dec(ans, query(x, *R - 1)); &#125; else &#123; v[x] = 1; // auto L = lower_bound(ALL(S),x); auto L = S.lower_bound(x); auto R = L; L--; // ans = (ans - query(*L, *R - 1) + mod) % mod; // ans = (ans + query(*L, x - 1)) % mod; // ans = (ans + query(x, *R - 1)) % mod; dec(ans, query(*L, *R - 1)); add(ans, query(*L, x - 1)); add(ans, query(x, *R - 1)); S.insert(x); &#125; cout &lt;&lt; ans &lt;&lt; endl; &#125;&#125; DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode DescriptionSolutionCode]]></content>
@@ -66,8 +54,8 @@
       </categories>
       <tags>
         <tag>Online</tag>
-        <tag>GYM Training</tag>
         <tag>Team Round（2020）</tag>
+        <tag>GYM Training</tag>
       </tags>
   </entry>
   <entry>
@@ -79,9 +67,9 @@
       </categories>
       <tags>
         <tag>2019 Multi-University Training Contest</tag>
-        <tag>hdu</tag>
-        <tag>GYM Training</tag>
         <tag>Team Round（2020）</tag>
+        <tag>GYM Training</tag>
+        <tag>hdu</tag>
       </tags>
   </entry>
   <entry>
@@ -114,8 +102,8 @@
         <category>Team Round（2020）</category>
       </categories>
       <tags>
-        <tag>GYM Training</tag>
         <tag>Team Round（2020）</tag>
+        <tag>GYM Training</tag>
         <tag>Official ICPC Contest</tag>
       </tags>
   </entry>
@@ -139,9 +127,9 @@
       </categories>
       <tags>
         <tag>2019 Multi-University Training Contest</tag>
-        <tag>hdu</tag>
-        <tag>GYM Training</tag>
         <tag>Team Round（2020）</tag>
+        <tag>GYM Training</tag>
+        <tag>hdu</tag>
       </tags>
   </entry>
   <entry>
@@ -177,9 +165,9 @@
       </categories>
       <tags>
         <tag>2019 Multi-University Training Contest</tag>
-        <tag>hdu</tag>
-        <tag>GYM Training</tag>
         <tag>Team Round（2020）</tag>
+        <tag>GYM Training</tag>
+        <tag>hdu</tag>
       </tags>
   </entry>
   <entry>
@@ -214,8 +202,8 @@
         <category>Team Round（2020）</category>
       </categories>
       <tags>
-        <tag>GYM Training</tag>
         <tag>Team Round（2020）</tag>
+        <tag>GYM Training</tag>
         <tag>xxPCPC</tag>
       </tags>
   </entry>
@@ -275,8 +263,8 @@
         <category>Team Round（2020）</category>
       </categories>
       <tags>
-        <tag>GYM Training</tag>
         <tag>Team Round（2020）</tag>
+        <tag>GYM Training</tag>
         <tag>Official ICPC Contest</tag>
       </tags>
   </entry>
@@ -300,8 +288,8 @@
         <category>Team Round（2019）</category>
       </categories>
       <tags>
-        <tag>GYM Training</tag>
         <tag>Team Round（2019）</tag>
+        <tag>GYM Training</tag>
         <tag>School Championship</tag>
       </tags>
   </entry>
@@ -314,9 +302,9 @@
       </categories>
       <tags>
         <tag>2019 Multi-University Training Contest</tag>
-        <tag>hdu</tag>
-        <tag>GYM Training</tag>
         <tag>Team Round（2019）</tag>
+        <tag>GYM Training</tag>
+        <tag>hdu</tag>
       </tags>
   </entry>
   <entry>
@@ -328,9 +316,9 @@
       </categories>
       <tags>
         <tag>2019 Multi-University Training Contest</tag>
-        <tag>hdu</tag>
-        <tag>GYM Training</tag>
         <tag>Team Round（2019）</tag>
+        <tag>GYM Training</tag>
+        <tag>hdu</tag>
       </tags>
   </entry>
   <entry>
@@ -353,8 +341,8 @@
         <category>Team Round（2019）</category>
       </categories>
       <tags>
-        <tag>GYM Training</tag>
         <tag>Team Round（2019）</tag>
+        <tag>GYM Training</tag>
         <tag>ICPC Region</tag>
       </tags>
   </entry>
@@ -366,8 +354,8 @@
         <category>Team Round（2019）</category>
       </categories>
       <tags>
-        <tag>GYM Training</tag>
         <tag>Team Round（2019）</tag>
+        <tag>GYM Training</tag>
         <tag>ICPC Region</tag>
       </tags>
   </entry>
@@ -392,8 +380,8 @@
         <category>Team Round（2019）</category>
       </categories>
       <tags>
-        <tag>GYM Training</tag>
         <tag>Team Round（2019）</tag>
+        <tag>GYM Training</tag>
         <tag>ICPC/CCPC</tag>
       </tags>
   </entry>
@@ -405,8 +393,8 @@
         <category>Team Round（2019）</category>
       </categories>
       <tags>
-        <tag>GYM Training</tag>
         <tag>Team Round（2019）</tag>
+        <tag>GYM Training</tag>
       </tags>
   </entry>
   <entry>
@@ -417,8 +405,8 @@
         <category>Team Round（2019）</category>
       </categories>
       <tags>
-        <tag>GYM Training</tag>
         <tag>Team Round（2019）</tag>
+        <tag>GYM Training</tag>
       </tags>
   </entry>
   <entry>
@@ -429,8 +417,8 @@
         <category>Team Round（2019）</category>
       </categories>
       <tags>
-        <tag>GYM Training</tag>
         <tag>Team Round（2019）</tag>
+        <tag>GYM Training</tag>
         <tag>ICPC/CCPC</tag>
       </tags>
   </entry>
@@ -456,8 +444,8 @@
         <category>Team Round（2019）</category>
       </categories>
       <tags>
-        <tag>GYM Training</tag>
         <tag>Team Round（2019）</tag>
+        <tag>GYM Training</tag>
         <tag>ICPC/CCPC</tag>
       </tags>
   </entry>
@@ -469,8 +457,8 @@
         <category>Team Round（2019）</category>
       </categories>
       <tags>
-        <tag>GYM Training</tag>
         <tag>Team Round（2019）</tag>
+        <tag>GYM Training</tag>
       </tags>
   </entry>
   <entry>
