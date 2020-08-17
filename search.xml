@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title></title>
+    <url>%2F2020%2F08%2F17%2Fcombinatorics%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[迷惑行为]]></title>
-    <url>%2F2020%2F08%2F14%2F0816%2F</url>
+    <url>%2F2020%2F08%2F16%2F0816%2F</url>
     <content type="text"><![CDATA[失望是相互增长的不是吗？]]></content>
       <categories>
         <category>Roast</category>
@@ -86,9 +91,9 @@
         <category>Team Round（2020）</category>
       </categories>
       <tags>
+        <tag>Online</tag>
         <tag>Team Round（2020）</tag>
         <tag>GYM Training</tag>
-        <tag>Online</tag>
       </tags>
   </entry>
   <entry>
@@ -100,8 +105,8 @@
       </categories>
       <tags>
         <tag>2019 Multi-University Training Contest</tag>
-        <tag>Team Round（2020）</tag>
         <tag>hdu</tag>
+        <tag>Team Round（2020）</tag>
         <tag>GYM Training</tag>
       </tags>
   </entry>
@@ -160,8 +165,8 @@
       </categories>
       <tags>
         <tag>2019 Multi-University Training Contest</tag>
-        <tag>Team Round（2020）</tag>
         <tag>hdu</tag>
+        <tag>Team Round（2020）</tag>
         <tag>GYM Training</tag>
       </tags>
   </entry>
@@ -198,8 +203,8 @@
       </categories>
       <tags>
         <tag>2019 Multi-University Training Contest</tag>
-        <tag>Team Round（2020）</tag>
         <tag>hdu</tag>
+        <tag>Team Round（2020）</tag>
         <tag>GYM Training</tag>
       </tags>
   </entry>
@@ -248,8 +253,8 @@
         <category>学习笔记</category>
       </categories>
       <tags>
-        <tag>Template</tag>
         <tag>Fibonacci</tag>
+        <tag>Template</tag>
       </tags>
   </entry>
   <entry>
@@ -309,8 +314,8 @@
         <category>Math</category>
       </categories>
       <tags>
-        <tag>Combinatorics</tag>
         <tag>Math</tag>
+        <tag>Combinatorics</tag>
       </tags>
   </entry>
   <entry>
@@ -335,8 +340,8 @@
       </categories>
       <tags>
         <tag>2019 Multi-University Training Contest</tag>
-        <tag>Team Round（2019）</tag>
         <tag>hdu</tag>
+        <tag>Team Round（2019）</tag>
         <tag>GYM Training</tag>
       </tags>
   </entry>
@@ -349,8 +354,8 @@
       </categories>
       <tags>
         <tag>2019 Multi-University Training Contest</tag>
-        <tag>Team Round（2019）</tag>
         <tag>hdu</tag>
+        <tag>Team Round（2019）</tag>
         <tag>GYM Training</tag>
       </tags>
   </entry>
@@ -463,9 +468,9 @@
         <category>Math</category>
       </categories>
       <tags>
-        <tag>Math</tag>
         <tag>hdu</tag>
         <tag>Number Theory</tag>
+        <tag>Math</tag>
         <tag>分解质因数</tag>
       </tags>
   </entry>
@@ -513,8 +518,8 @@
         <category>学习笔记</category>
       </categories>
       <tags>
-        <tag>MST</tag>
         <tag>Template</tag>
+        <tag>MST</tag>
       </tags>
   </entry>
   <entry>
