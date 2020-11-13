@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Team Round #1: ICPC Central Russia Regional Contest]]></title>
+    <url>%2F2020%2F11%2F13%2FCRRC19%2F</url>
+    <content type="text"><![CDATA[传送门 ADescription两杯水混合温度80，求两杯水体积。 Solution观察到数据很小，暴力枚举。有特判。。。 Code12345678910111213141516171819202122int main()&#123; int t1 , t2; cin &gt;&gt; t1 &gt;&gt; t2; if(t1 == 80)&#123; cout &lt;&lt; "1 0" &lt;&lt; endl; return 0; &#125; if(t2 == 80) &#123; cout &lt;&lt; "0 1" &lt;&lt; endl; return 0; &#125; for(int v1 = 1; v1 &lt;= 1000; v1++)&#123; for(int v2 = 1; v2 &lt;= 1000; v2++)&#123; if(t1 * v1 + t2 * v2 == 80 * (v1 + v2))&#123; cout &lt;&lt; v1 &lt;&lt; " " &lt;&lt; v2 &lt;&lt; endl; return 0; &#125; &#125; &#125; return 0;&#125; BDescription电路电阻。 Solution发现单调性。二分一下。 Code12345678910111213141516171819202122232425262728int n , R, r[maxn];double chk(double x)&#123; double res = 0; for(int i = 1; i &lt;= n; i++) &#123; res += (r[i] * x) / (r[i] + x); &#125; return res;&#125;int main()&#123; // close; cin &gt;&gt; n &gt;&gt; R; for(int i = 1; i &lt;= n; i++)&#123; // cin &gt;&gt; r[i]; read(r[i]); &#125; double le = 0, ri = INF; for(int i = 1; i &lt;= 100; i++)&#123; double mid = (le + ri) / 2.0; if(chk(mid) &gt; R)&#123; ri = mid; &#125;else &#123; le = mid; &#125; &#125; printf("%.8f\n", le); return 0;&#125; CDescription没看 Solution听说是模拟 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148#include &lt;bits/stdc++.h&gt;using namespace std;#pragma GCC optimize("O3")#pragma GCC optimize("-Ofast","-funroll-all-loops","-ffast-math")#define endl '\n'int mp[1000];char s[11000];int main() &#123; scanf("%s", s+1); int len = strlen(s+1); for(int i = 1; i &lt;= len; i++) mp[s[i]]++; //[:|||:] if(mp['[']) &#123; int tp = mp['[']; for(int i = 1; i &lt;= tp; i++) &#123; //cout &lt;&lt; R"([:|||:])" &lt;&lt; endl; puts("[:|||:]"); mp['[']--; mp[']']--; mp[':'] -= 2; mp['|'] -= 3; &#125; &#125; //:-| if(mp['|']) &#123; int tp = mp['|']; for(int i = 1; i &lt;= tp; i++) &#123; //cout &lt;&lt; R"(:-|)" &lt;&lt; endl; puts(":-|"); mp[':']--; mp['-']--; mp['|']--; &#125; &#125; //:~( if(mp['~']) &#123; int tp = mp['~']; for(int i = 1; i &lt;= tp; i++) &#123; //cout &lt;&lt; R"(:~()" &lt;&lt; endl; puts(":~("); mp[':']--; mp['~']--; mp['(']--; &#125; &#125; //:-X if(mp['X']) &#123; int tp = mp['X']; for(int i = 1; i &lt;= tp; i++) &#123; //cout &lt;&lt; R"(:-X)" &lt;&lt; endl; puts(":-X"); mp[':']--; mp['-']--; mp['X']--; &#125; &#125; //%0 if(mp['%']) &#123; int tp = mp['%']; for(int i = 1; i &lt;= tp; i++) &#123; //cout &lt;&lt; R"(%0)" &lt;&lt; endl; puts("%0"); mp['0']--; mp['%']--; &#125; &#125; //8-0 if(mp['8']) &#123; int tp = mp['8']; for(int i = 1; i &lt;= tp; i++) &#123; //cout &lt;&lt; R"(8-0)" &lt;&lt; endl; puts("8-0"); mp['0']--; mp['8']--; mp['-']--; &#125; &#125; //:-E if(mp['E']) &#123; int tp = mp['E']; for(int i = 1; i &lt;= tp; i++) &#123; //cout &lt;&lt; R"(:-E)" &lt;&lt; endl; puts(":-E"); mp[':']--; mp['-']--; mp['E']--; &#125; &#125; //:-0 if(mp['0']) &#123; int tp = mp['0']; for(int i = 1; i &lt;= tp; i++) &#123; //cout &lt;&lt; R"(:-0)" &lt;&lt; endl; puts(":-0"); mp[':']--; mp['-']--; mp['0']--; &#125; &#125; //:C if(mp['C']) &#123; int tp = mp['C']; for(int i = 1; i &lt;= tp; i++) &#123; //cout &lt;&lt; R"(:C)" &lt;&lt; endl; puts(":C"); mp[':']--; mp['C']--; &#125; &#125; //:D if(mp['D']) &#123; int tp = mp['D']; for(int i = 1; i &lt;= tp; i++) &#123; //cout &lt;&lt; R"(:D)" &lt;&lt; endl; puts(":D"); mp[':']--; mp['D']--;; &#125; &#125; //:-P if(mp['P']) &#123; int tp = mp['P']; for(int i = 1; i &lt;= tp; i++) &#123; //cout &lt;&lt; R"(:-P)" &lt;&lt; endl; puts(":-P"); mp[':']--; mp['P']--; mp['-']--; &#125; &#125; if(mp['\\']) &#123; int tp = mp['\\']; for(int i = 1; i &lt;= tp; i++) &#123; //cout &lt;&lt; R"(:-\)" &lt;&lt; endl; puts(":-\\"); mp['\\']--; mp['-']--; mp[':']--; &#125; &#125; while(mp[';']) &#123; if(mp['(']) &#123; //cout &lt;&lt; R"(;-()" &lt;&lt; endl, puts(";-("), mp[';']--, mp['-']--, mp['(']--; continue; &#125; if(mp[')']) &#123; //cout &lt;&lt; R"(;-))" &lt;&lt; endl, puts(";-)"), mp[';']--, mp['-']--, mp[')']--; continue; &#125; &#125; while(mp[':']) &#123; if(mp[')']) &#123; //:) //cout &lt;&lt; R"(:))" &lt;&lt; endl, puts(":)"), mp[':']--, mp[')']--; continue; &#125; if(mp['(']) &#123; //:( //cout &lt;&lt; R"(:()" &lt;&lt; endl, puts(":("), mp[':']--, mp['(']--; continue; &#125; &#125; //cout &lt;&lt; "LOL" &lt;&lt; endl; puts("LOL"); return 0;&#125; DDescription给定a,b，求$a^x==x^b$时候的x。 Solution多校Claris有个题有个思想，拿三个素数check，maxn不能开太大，会TLE。 Code123456789101112131415161718192021int main()&#123; int a , b; cin &gt;&gt; a &gt;&gt; b; vi pri; pri.eb(P_1), pri.eb(P_2), pri.eb(Erica); for(int i = 1; i &lt; maxn; i++)&#123; int fl = 1; for(auto it : pri)&#123; if(bin(a, i , it) != bin(i, b , it)) &#123; fl = 0; &#125; &#125; if(fl) &#123; cout &lt;&lt; i &lt;&lt; endl; return 0; &#125; &#125; cout &lt;&lt; 0 &lt;&lt; endl; return 0;&#125; EDescriptionSolution待补（gugu） CodeFDescription取一个或两个或全部字符，最后一次操作的人获胜。 Solution记忆化搜索。 Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546#include &lt;bits/stdc++.h&gt;using namespace std;string s;map&lt;multiset&lt;int&gt;, int&gt; mp;multiset&lt;int&gt; st;int dfs() &#123; if(st.size() == 1) return true; if(mp.count(st)) return mp[st]; vector&lt;int&gt; sg, v; for(auto x : st) v.push_back(x); for(auto x : v) &#123; if(x) &#123; st.erase(st.find(x)); st.insert(x-1); sg.push_back(dfs()); st.erase(st.find(x-1)); st.insert(x); &#125; if(x &gt;= 2) &#123; st.erase(st.find(x)); st.insert(x-2); sg.push_back(dfs()); st.erase(st.find(x-2)); st.insert(x); &#125; if(x &gt; 2) &#123; st.erase(st.find(x)); sg.push_back(dfs()); st.insert(x); &#125; &#125; int flag = 0; for(auto x : sg) if(x == 0) flag = 1; return mp[st] = flag;&#125;bool doit() &#123; mp.clear(); cin &gt;&gt; s; vector&lt;int&gt; a(30, 0); for(auto x : s) a[x-'A']++; for(int i = 0; i &lt; 26; i++) st.insert(a[i]); if(dfs() == 1) cout &lt;&lt; "Alice"; else cout &lt;&lt; "Bob";&#125;int main() &#123; doit(); //st.insert(4); st.insert(4); st.insert(4); st.insert(4); //st.insert(4); st.insert(4); st.insert(4); //cout &lt;&lt; dfs(); return 0;&#125;//AAAAAAAAAAAAAAAAAAAABBBBBBBBCCCCCCCDDDDD 别人的代码。不明白啊qwq。。得补补吧呜呜。123456789101112131415161718192021222324#include &lt;bits/stdc++.h&gt;using namespace std;const int N = 50;int sg[N];int main(void) &#123; for (int i = 1; i &lt; N; ++i) sg[i] = i % 3 + (i % 3 == 0 ? 3 : 0); int c[26] = &#123; 0 &#125;; string s; cin &gt;&gt; s; for (char ch : s) c[ch - 'A']++; int ans = 0; for (int i = 0; i &lt; 26; ++i) if (c[i]) ans ^= sg[c[i]]; printf("%s\n", ans == 0 ? "Bob" : "Alice"); return 0;&#125; GDescriptionSolution待补 CodeHDescription签到 Solution签到 Code1234567int main()&#123; int n; cin &gt;&gt; n ; cout &lt;&lt; (n &amp; 1 ? 2 : 1) &lt;&lt; endl; return 0;&#125; IDescriptionSolution待补 CodeJDescription$k(k\le 5)$个数使得${a_1}^{3}+\cdots {a_k}^3=x(x\le 10^{100000})$，构造出来。 Solution观察到k很小，然后用$(x-1)^3,(x+1)^3$展开后发现和为$2x^3+6x$,那么用两个-x抵一下，然后分类对mod&emsp; 6讨论一下。 Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849import java.math.BigInteger;import java.util.Scanner;public class Main &#123; public static void main(String[] args) &#123; Scanner cin = new Scanner(System.in); BigInteger Erica = BigInteger.valueOf(6); BigInteger ONE = BigInteger.ONE; BigInteger FU = BigInteger.valueOf(-1); BigInteger x = cin.nextBigInteger(); BigInteger modd = x.mod(Erica); if(modd.equals(BigInteger.valueOf(0)))&#123; System.out.println(4); BigInteger xx = x.divide(Erica); System.out.println(xx.multiply(FU)+ " " + xx.multiply(FU) + " " + xx.add(ONE) + " "+ xx.subtract(ONE)); return ; &#125; if(modd.equals(ONE))&#123; System.out.println(5); BigInteger xx = (x.subtract(ONE)).divide(Erica); System.out.println("1 "+xx.subtract(ONE)+" " + xx.add(ONE) + " " + xx.multiply(FU) + " " + xx.multiply(FU)); return ; &#125; if(modd.equals(BigInteger.valueOf(2)))&#123; System.out.println(5); BigInteger xx = (x.subtract(BigInteger.valueOf(8))).divide(Erica); System.out.println("2 "+xx.subtract(ONE)+" " + xx.add(ONE) + " " + xx.multiply(FU) + " " + xx.multiply(FU)); return ; &#125; if(modd.equals(BigInteger.valueOf(3)))&#123; System.out.println(5); BigInteger xx = (x.add(BigInteger.valueOf(27))).divide(Erica); System.out.println("-3 "+xx.subtract(ONE)+" " + xx.add(ONE) + " " + xx.multiply(FU) + " " + xx.multiply(FU)); return ; &#125; if(modd.equals(BigInteger.valueOf(4)))&#123; System.out.println(5); BigInteger xx = (x.add(BigInteger.valueOf(8))).divide(Erica); System.out.println("-2 "+xx.subtract(ONE)+" " + xx.add(ONE) + " " + xx.multiply(FU) + " " + xx.multiply(FU)); return ; &#125; if(modd.equals(BigInteger.valueOf(5))) &#123; System.out.println(5); BigInteger xx = (x.add(ONE)).divide(Erica); System.out.println("-1 "+xx.subtract(ONE)+" " + xx.add(ONE) + " " + xx.multiply(FU) + " " + xx.multiply(FU)); return ; &#125; &#125;&#125; KDescription两两交换相邻的数字，使得数字前一段下降，后一段上升。数字两两不同。 Solution发现最大数字要么最左边要么最右边，然后次大数字，模拟这个过程，Fenwick tree维护一下。 Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758#pragma GCC optimize("O3")#pragma GCC optimize("Ofast")#include&lt;bits/stdc++.h&gt;using namespace std;#define IOS std::ios::sync_with_stdio(false),cin.tie(0),cout.tie(0)#define debug(...) " [" &lt;&lt; #__VA_ARGS__ ": " &lt;&lt; (__VA_ARGS__) &lt;&lt; "] "#define IN freopen("in.txt", "r", stdin);#define OUT freopen("out.txt","w",stdout);#define endl '\n'#define pb push_back#define fi first#define se second#define all(x) x.begin(),x.end()#define sz(x) (int)x.size()typedef long long ll;typedef vector&lt;int&gt; VI;typedef pair&lt;int, int&gt; pii;const int inf = 0x3f3f3f3f;const int N = 1e5+10;int al[N],len,a[N];int s[N];#define lowb(x) (x&amp;-x)void add(int x,int num)&#123; for(;x&lt;N;x+=lowb(x))s[x]+=num;&#125;int query(int x)&#123; int res=0; for(;x;x-=lowb(x))res+=s[x]; return res;&#125;int find(int x)&#123; return lower_bound(al+1,al+1+len,x)-al;&#125;int pos[N];int main()&#123;// IN; IOS; int n;cin&gt;&gt;n; for(int i=1;i&lt;=n;i++)cin&gt;&gt;a[i],al[++len]=a[i]; sort(al+1,al+1+len); for(int i=1;i&lt;=n;i++)&#123; a[i]=find(a[i]); pos[a[i]]=i; add(i,1); &#125; ll ans=0; for(int i=n;i;i--)&#123; int p=pos[i]; ans+=min(query(p-1),query(n)-query(p)); add(p,-1); &#125; cout&lt;&lt;ans&lt;&lt;endl; return 0;&#125;]]></content>
+      <categories>
+        <category>Team Round（2020）</category>
+      </categories>
+      <tags>
+        <tag>GYM Training</tag>
+        <tag>Team Round（2020）</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[CUST新生爽爽爽部分一血代码]]></title>
     <url>%2F2020%2F11%2F10%2Fcust_newbie%2F</url>
     <content type="text"><![CDATA[恭喜Winnersliangxinzhu &amp; techtbw 一血代码：A:DescriptionSolution简单模拟。 Codeby e792a8123456789101112131415#include &lt;iostream&gt;#include &lt;cstring&gt;using namespace std;int main()&#123; char str[53]; while(cin.getline(str,52))&#123; for(int i=0; i&lt;strlen(str); ++i)&#123; if(isupper(str[i])) str[i]=tolower(str[i]); &#125; cout &lt;&lt; str &lt;&lt; endl; &#125; return 0;&#125; B:DescriptionSolution模拟题意。 Codeby liangxinzhu123456789101112131415161718192021222324252627282930#include &lt;iostream&gt;#include &lt;cstring&gt;#include &lt;string&gt;#include &lt;algorithm&gt;#include &lt;vector&gt;#include &lt;queue&gt;using namespace std;typedef long long ll;ll a, b;int main() &#123; ios::sync_with_stdio(false); cin.tie(0); cout.tie(0); while(cin &gt;&gt; a &gt;&gt; b) &#123; if(a == b) &#123; cout &lt;&lt; 0 &lt;&lt; endl; continue; &#125; ll x = a - b; if(x &lt; 0) cout &lt;&lt; '-', x = -x; vector&lt;char&gt; v; int cnt = 0; while(x) &#123; v.push_back((x % 10) + '0'), x /= 10, cnt++; if(cnt % 3 == 0 &amp;&amp; x) v.push_back(','); &#125; reverse(v.begin(), v.end()); for(int i = 0; i &lt; (int)v.size(); i++) cout &lt;&lt; v[i]; cout &lt;&lt; endl; &#125; return 0;&#125; C:DescriptionSolution模拟 Codeby CUST_1903312031234567891011121314#include&lt;cstdio&gt;#define ll long longusing namespace std;int main()&#123; char c[100]; while(fgets(c,100,stdin)!=NULL)&#123; for(int i=0;c[i];++i)&#123; if(c[i]&gt;='D'&amp;&amp;c[i]&lt;='Z'||c[i]&gt;='d'&amp;&amp;c[i]&lt;='z')c[i]-=3; else if(c[i]&gt;='A'&amp;&amp;c[i]&lt;='C'||c[i]&gt;='a'&amp;&amp;c[i]&lt;='c')c[i]+=23; putchar(c[i]); &#125; &#125; return 0;&#125; D:DescriptionSolutionCodeby CUST_1903312031234567891011121314151617181920212223#include&lt;cstdio&gt;#include&lt;cstring&gt;#define ll long longusing namespace std;char r[100011];int main()&#123; int a,n,e; while(~scanf("%d",&amp;n))&#123; memset(r,0,100010); for(int i=0;i&lt;n-1;++i)&#123; scanf("%d",&amp;a); r[a]=1; &#125; for(int i=1;i&lt;=n;++i)&#123; if(!r[i])&#123; printf("%d",i); break; &#125; &#125; putchar('\n'); &#125; return 0;&#125; E:DescriptionSolutionmap的简单运用 Codeby myfnb12345678910111213141516int main()&#123; int n; while(~scanf("%d", &amp;n))&#123; map&lt;string, int&gt; mp; for(int i = 1; i &lt;= n; i++) &#123; string a; cin &gt;&gt; a; for(int j = 0; j &lt; a.length(); j++) &#123; if(a[j] &gt;= 'A' &amp;&amp; a[j] &lt;= 'Z') a[j] += 32; &#125; mp[a]++; &#125; printf("%d\n", mp.size()); &#125; return 0;&#125; F:DescriptionSolutionCodeby CUST_1903312031234567891011121314151617#include&lt;cstdio&gt;#include&lt;cstring&gt;#define ll long longusing namespace std;int main()&#123; char c[120],ps[100]; while(fgets(ps,100,stdin)!=NULL)&#123; fgets(c,120,stdin); for(int i=0;c[i];++i)&#123; if(c[i]&gt;='A'&amp;&amp;c[i]&lt;='Z')c[i]=ps[c[i]-'A']; else if(c[i]&gt;='a'&amp;&amp;c[i]&lt;='z')c[i]=('a'-'A')+ps[c[i]-'a']; putchar(c[i]); &#125; //putchar('\n'); &#125; return 0;&#125; G:DescriptionSolutionCodeby 200511535_ZBW 1234567891011121314#include&lt;iostream&gt;#include&lt;iomanip&gt;#include&lt;cmath&gt;using namespace std;int main()&#123; int x,y,k; while(cin&gt;&gt;x&gt;&gt;y&gt;&gt;k) &#123; if(x*y*k&gt;=100000) cout&lt;&lt;"1"&lt;&lt;'\n'; else cout&lt;&lt;"0"&lt;&lt;'\n'; &#125; return 0;&#125; H:DescriptionSolutionmap的简单运用 Codeby myfnb12345678910111213141516171819202122int main()&#123; int n; while(~scanf("%d", &amp;n))&#123; map&lt;int, int&gt; mp; for(int i = 1; i &lt;= n; i++) &#123; int x; scanf("%d", &amp;x); mp[x]++; &#125; int ans = 0; map&lt;int,int&gt; ::iterator it; for(it = mp.begin(); it != mp.end(); it++) &#123; ans = max(ans, it-&gt;second); &#125; for(it = mp.begin(); it != mp.end(); it++) &#123; if(it-&gt;second == ans) &#123; printf("%d %d\n", it-&gt;first, it-&gt;second); break; &#125; &#125; &#125; return 0;&#125; I:DescriptionSolutionCodeby techtbw12345678910111213141516171819202122232425262728293031323334353637383940414243#include &lt;iostream&gt;#include &lt;string&gt;#include &lt;vector&gt;using namespace std;#define rep(i,a,b) for (int i=a;i&lt;=b;i++)#define per(i,a,b) for (int i=a;i&gt;=b;i--)#define pb push_back#define mp make_pair#define all(x) (x).begin(), (x).end()#define fi first#define se second#define sz(x) ((int)(x).size())typedef vector&lt;int&gt; VI;typedef long long ll;typedef pair&lt;int,int&gt; PII;typedef double db;ll gcd(ll a,ll b) &#123;return b?gcd(b,a%b):a;&#125;const int N=1010;ll x,y,z;void solve()&#123; z=x+y; int res=0; while(z) &#123; int t=z%10; z/=10; if(t==5) res++; &#125; cout&lt;&lt;res&lt;&lt;endl;&#125;int main()&#123; int T;cin&gt;&gt;T; while(T--) &#123; cin&gt;&gt;x&gt;&gt;y; solve(); &#125; return 0;&#125; J:DescriptionSolutionCodeby liangxinzhu1234567891011121314151617181920212223242526272829303132333435#include &lt;iostream&gt;#include &lt;cstring&gt;#include &lt;string&gt;#include &lt;algorithm&gt;#include &lt;vector&gt;#include &lt;queue&gt;#include &lt;map&gt;using namespace std;typedef long long ll;string s;ll cal(string str) &#123; ll res = 0; for(int i = 0; i &lt; (int)str.size(); i++) &#123; res = res * 10 + str[i] - '0'; &#125; return res;&#125;void doit() &#123; vector&lt;ll&gt; v; string temp = ""; for(int i = 0; i &lt; (int)s.size(); i++) &#123; if(s[i] == '5') &#123; if(temp.size()) v.push_back(cal(temp)); temp = ""; &#125;else temp += s[i]; &#125; if(temp.size()) v.push_back(cal(temp)); sort(v.begin(), v.end()); for(int i = 0; i &lt; (int)v.size(); i++) cout &lt;&lt; v[i] &lt;&lt; (i != (int)v.size()-1 ? ' ' : '\n');&#125;int main() &#123; ios::sync_with_stdio(false); cin.tie(0); cout.tie(0); while(cin &gt;&gt; s) doit(); return 0;&#125; K:DescriptionSolutionCodeNobody L:DescriptionSolution正整数唯一分解 Codeby liangxinzhu 1234567891011121314151617181920212223242526#include &lt;iostream&gt;#include &lt;cstring&gt;#include &lt;string&gt;#include &lt;algorithm&gt;#include &lt;vector&gt;#include &lt;queue&gt;#include &lt;map&gt;#include &lt;cmath&gt;using namespace std;typedef long long ll;void doit() &#123; int x; cin &gt;&gt; x; int sq = sqrt(x); ll ans = 1; for(int i = 2; i &lt;= sq; i++) &#123; int p = i, q = x / i; if(x % i) continue; ans += p; if(p != q) ans += q; &#125; cout &lt;&lt; ans &lt;&lt; endl;&#125;int main() &#123; ios::sync_with_stdio(false); cin.tie(0); cout.tie(0); int _; cin &gt;&gt; _; while(_--) doit(); return 0;&#125; M:DescriptionSolution会读入就行了 Codeby CUST_1903312031234567891011121314151617181920#include&lt;cstdio&gt;#include&lt;cstring&gt;#define ll long longusing namespace std;char s[100000];int ap[27];int main()&#123; while(fgets(s,100000,stdin)!=NULL)&#123; memset(ap,0,27*sizeof(int)); for(int i=0;s[i];++i)&#123; if(s[i]&gt;='a'&amp;&amp;s[i]&lt;='z') ap[s[i]-'a']++; &#125; for(int i=0;i&lt;26;++i)&#123; printf("%c:%d\n",i+'a',ap[i]); &#125; putchar('\n'); &#125; return 0;&#125; N:DescriptionSolutionCodeNobody O:DescriptionSolutionCodeby CUST_1903312031234567891011121314151617181920212223242526#include&lt;cstdio&gt;#include&lt;cstring&gt;#define ll long longusing namespace std;int main()&#123; int a,b,c,d; char e[100],f[100]; while(~scanf("%d%d%d",&amp;a,&amp;b,&amp;c))&#123; if(a==b&amp;&amp;a==0)break; sprintf(e,"%d",a); sprintf(f,"%d",b); for(int i=strlen(e)-1,j=strlen(f)-1;strlen(e)-i&lt;=c;--i,--j)&#123; if((i&gt;=0?e[i]:'0')!=(j&gt;=0?f[j]:'0'))break; if(strlen(e)-i==c)&#123; printf("-1"); goto endloop; &#125; &#125; d=a+b; printf("%d",d); endloop: putchar('\n'); &#125; return 0;&#125; P:DescriptionSolutionCodeby CUST_1903312031234567891011121314151617181920212223#include&lt;cstdio&gt;#include&lt;cstring&gt;#define ll long longusing namespace std;int main()&#123; int n; int r[1000]; int v; int ans; while(~scanf("%d",&amp;n))&#123; ans=0; if(!n)break; for(int i=0;i&lt;n;++i)&#123; scanf("%d",r+i); &#125; scanf("%d",&amp;v); for(int i=0;i&lt;n;++i)&#123; if(r[i]==v)ans++; &#125; printf("%d\n",ans); &#125; return 0;&#125; Q:DescriptionSolutionCodeby myfnb1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556#include&lt;stdio.h&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;vector&gt;#include&lt;algorithm&gt;#include&lt;cmath&gt;#include&lt;set&gt;#include&lt;queue&gt;#define fr freopen("in.txt","r",stdin);#define fw freopen("out.txt","w",stdout);#define pb push_back#define fi first#define se second#define IOS ios::sync_with_stdio(false),cin.tie(0),cout.tie(0)using namespace std;typedef long long ll;inline void print_Case(int cnt,ll ans)&#123; printf("Case #%d: %lld\n",cnt,ans);&#125;int f[1000005],m,prime[50005];set&lt;int&gt;s;void primes(int n)&#123; m=0; for(int i=2;i&lt;=n;i++)&#123; if(f[i]==0)&#123; f[i]=i; prime[++m]=i; &#125; for(int j=1;j&lt;=m;j++)&#123; if(prime[j]&gt;f[i]||prime[j]&gt;n/i)break; f[prime[j]*i]=prime[j]; &#125; &#125;&#125;const int N=5e5,M=5e6+5;int a[5];int main()&#123; primes(10000); for(int i=1;i&lt;=m;i++)s.insert(prime[i]); int n; while(scanf("%d",&amp;n)!=EOF)&#123; int a=0,b=10000; for(int i=1;i&lt;=m;i++)&#123; if(prime[i]&gt;n/2)break; if(s.find(n-prime[i])!=s.end()&amp;&amp;n-prime[i]-prime[i]&lt;b-a&amp;&amp;n-prime[i]-prime[i]&gt;=0)&#123; a=prime[i]; b=n-prime[i]; &#125; &#125; printf("%d %d\n",a,b); &#125; return 0;&#125; R:DescriptionSolution简单数学 Codeby myfnb 123456789101112131415void solve(int kase)&#123; int n; scanf("%d", &amp;n); std::vector&lt;int&gt; v; while(1)&#123; if(n &amp; 1) v.push_back(n); if(n &amp; 1) n = n * 3 + 1; else n /= 2; if(n == 1) break; &#125; if(v.size()) &#123; for(int i = 0; i &lt; v.size(); i++) printf("%d%c", v[i], " \n"[i == int(v.size()) - 1]); &#125;else printf("No number can be output !\n");&#125; S:DescriptionSolution映射关系 Codeby myfnb 1234567891011121314151617int a[3000 + 10];int b[N];void solve(int kase)&#123; int n, m; while(~scanf("%d%d", &amp;n, &amp;m))&#123; for(int i = 1; i &lt;= n; i++) scanf("%d", &amp;a[i]); int tot = 0; for(int i = 1; i &lt;= n; i++) &#123; for(int j = i + 1; j &lt;= n; j++) &#123; b[++tot] = a[i] + a[j]; &#125; &#125; sort(b + 1, b + tot + 1, greater&lt;int&gt;()); for(int i = 1; i &lt;= m; i++) printf("%d%c", b[i], " \n"[i == m]); &#125;&#125; T:DescriptionSolution欧拉函数 Codeby myfnb 123456789101112131415161718192021222324bool vis[N];int pri[N], phi[N], tot;void euler_table(int N)&#123; phi[1] = 1; vis[1] = vis[0] = 1; for(int i = 2 ;i &lt;= N; i++)&#123; if(!vis[i])&#123; pri[++tot] = i; phi[i] = i - 1;//i是素数时＜i的所有大于0的数都与i互质 &#125; for(int k = 1; k &lt;= tot; k++)&#123; if(i * pri[k] &gt; N)break; vis[i * pri[k]] = 1;//筛选掉i的倍数 if(i % pri[k] == 0)&#123;//如果有一个质数是i的因子 phi[i * pri[k]] = phi[i] * pri[k]; break; &#125;else phi[i * pri[k]] = phi[i] * phi[pri[k]]; &#125; &#125;&#125;void solve(int kase)&#123; int n; scanf("%d", &amp;n); printf("%d\n", phi[n]);&#125; U:DescriptionSolution模拟？ Codeby myfnb1234567891011121314151617181920212223242526272829303132inline void print_Case(int cnt,ll ans)&#123; printf("Case #%d: %lld\n",cnt,ans);&#125;bool judge(int n)&#123; int temp=0; for(int i=1;i&lt;=n-1;i++) &#123; if(n%i==0)temp+=i; &#125; if(temp==n)return true; return false;&#125;const int N=5e5,M=5e6+5;int main()&#123; int T; cin&gt;&gt;T; while(T--)&#123; int n1,n2; scanf("%d%d",&amp;n1,&amp;n2); int ans=0; if(n1&gt;n2)swap(n1,n2); if(n1&lt;=6&amp;&amp;6&lt;=n2)ans++; if(n1&lt;=28&amp;&amp;28&lt;=n2)ans++; if(n1&lt;=496&amp;&amp;496&lt;=n2)ans++; if(n1&lt;=8128&amp;&amp;8128&lt;=n2)ans++; printf("%d\n",ans); &#125; return 0;&#125; V:DescriptionSolution枚举 Codeby myfnb123456789101112131415161718192021int main()&#123; int num; while(scanf("%d",&amp;num)!=EOF) &#123; int f=0; for (int i = 1; i &lt;= 100; i++) &#123; for (int j = i; j&lt;= 100; j++) &#123; for (int k = j; k &lt;= 100; k++) &#123; if (i * i + j * j + k * k == num) &#123; printf("%d %d %d\n", i, j, k); f = 1; break; &#125; &#125; if(f)break; &#125; if(f)break; &#125; &#125; return 0;&#125; W:DescriptionSolutionCodeNobody X:DescriptionSolution进制转换 Codeby cyh20021231123456789#include &lt;stdio.h&gt; int main() &#123; int a, b; while(scanf("%x%x", &amp;a, &amp;b) != EOF) &#123; printf("%d\n", a + b); &#125; return 0; &#125; Y:DescriptionSolution枚举？ Codeby myfnb 12345678910111213141516171819202122232425262728293031323334353637383940bool judge(int n)&#123; int temp=0; for(int i=1;i&lt;=n-1;i++) &#123; if(n%i==0)temp+=i; &#125; if(temp==n)return true; return false;&#125;const int N=5e5,M=5e6+5;int a[5];int main()&#123; int f=0; while(1)&#123; vector&lt;int&gt;vc; vector&lt;int&gt;vc2[10]; scanf("%d%d%d%d",&amp;a[1],&amp;a[2],&amp;a[3],&amp;a[4]); if(a[1]==0&amp;&amp;a[2]==0&amp;&amp;a[3]==0&amp;&amp;a[4]==0)break; if(f)printf("\n"); else f=1; do&#123; vc.push_back(a[1]*1000+a[2]*100+a[3]*10+a[4]); &#125;while(next_permutation(a+1,a+5)); sort(vc.begin(),vc.end()); for(int i=0;i&lt;vc.size();i++)&#123; if(vc[i]/1000==0)continue; vc2[vc[i]/1000].push_back(vc[i]); &#125; for(int i=1;i&lt;=9;i++)&#123; int len=vc2[i].size(); for(int j=0;j&lt;len;j++)&#123; if(j==len-1)printf("%d\n",vc2[i][j]); else printf("%d ",vc2[i][j]); &#125; &#125; &#125; return 0;&#125; Z:DescriptionSolutionCodeNobody]]></content>
@@ -108,8 +120,8 @@
         <category>Team Round（2020）</category>
       </categories>
       <tags>
-        <tag>Team Round（2020）</tag>
         <tag>GYM Training</tag>
+        <tag>Team Round（2020）</tag>
         <tag>Online</tag>
       </tags>
   </entry>
@@ -121,10 +133,10 @@
         <category>Team Round（2020）</category>
       </categories>
       <tags>
+        <tag>GYM Training</tag>
+        <tag>Team Round（2020）</tag>
         <tag>2019 Multi-University Training Contest</tag>
         <tag>hdu</tag>
-        <tag>Team Round（2020）</tag>
-        <tag>GYM Training</tag>
       </tags>
   </entry>
   <entry>
@@ -157,8 +169,8 @@
         <category>Team Round（2020）</category>
       </categories>
       <tags>
-        <tag>Team Round（2020）</tag>
         <tag>GYM Training</tag>
+        <tag>Team Round（2020）</tag>
         <tag>Official ICPC Contest</tag>
       </tags>
   </entry>
@@ -181,10 +193,10 @@
         <category>Team Round（2020）</category>
       </categories>
       <tags>
+        <tag>GYM Training</tag>
+        <tag>Team Round（2020）</tag>
         <tag>2019 Multi-University Training Contest</tag>
         <tag>hdu</tag>
-        <tag>Team Round（2020）</tag>
-        <tag>GYM Training</tag>
       </tags>
   </entry>
   <entry>
@@ -207,8 +219,8 @@
         <category>Team</category>
       </categories>
       <tags>
-        <tag>Team Round（2019）</tag>
         <tag>Team Round（2020）</tag>
+        <tag>Team Round（2019）</tag>
       </tags>
   </entry>
   <entry>
@@ -219,10 +231,10 @@
         <category>Team Round（2020）</category>
       </categories>
       <tags>
+        <tag>GYM Training</tag>
+        <tag>Team Round（2020）</tag>
         <tag>2019 Multi-University Training Contest</tag>
         <tag>hdu</tag>
-        <tag>Team Round（2020）</tag>
-        <tag>GYM Training</tag>
       </tags>
   </entry>
   <entry>
@@ -257,8 +269,8 @@
         <category>Team Round（2020）</category>
       </categories>
       <tags>
-        <tag>Team Round（2020）</tag>
         <tag>GYM Training</tag>
+        <tag>Team Round（2020）</tag>
         <tag>xxPCPC</tag>
       </tags>
   </entry>
@@ -270,8 +282,8 @@
         <category>学习笔记</category>
       </categories>
       <tags>
-        <tag>Fibonacci</tag>
         <tag>Template</tag>
+        <tag>Fibonacci</tag>
       </tags>
   </entry>
   <entry>
@@ -294,8 +306,8 @@
         <category>Team Round（2020）</category>
       </categories>
       <tags>
-        <tag>2019 Multi-University Training Contest</tag>
         <tag>Team Round（2020）</tag>
+        <tag>2019 Multi-University Training Contest</tag>
       </tags>
   </entry>
   <entry>
@@ -318,8 +330,8 @@
         <category>Team Round（2020）</category>
       </categories>
       <tags>
-        <tag>Team Round（2020）</tag>
         <tag>GYM Training</tag>
+        <tag>Team Round（2020）</tag>
         <tag>Official ICPC Contest</tag>
       </tags>
   </entry>
@@ -343,8 +355,8 @@
         <category>Team Round（2019）</category>
       </categories>
       <tags>
-        <tag>Team Round（2019）</tag>
         <tag>GYM Training</tag>
+        <tag>Team Round（2019）</tag>
         <tag>School Championship</tag>
       </tags>
   </entry>
@@ -356,10 +368,10 @@
         <category>Team Round（2019）</category>
       </categories>
       <tags>
-        <tag>2019 Multi-University Training Contest</tag>
-        <tag>hdu</tag>
-        <tag>Team Round（2019）</tag>
         <tag>GYM Training</tag>
+        <tag>2019 Multi-University Training Contest</tag>
+        <tag>Team Round（2019）</tag>
+        <tag>hdu</tag>
       </tags>
   </entry>
   <entry>
@@ -370,10 +382,10 @@
         <category>Team Round（2019）</category>
       </categories>
       <tags>
-        <tag>2019 Multi-University Training Contest</tag>
-        <tag>hdu</tag>
-        <tag>Team Round（2019）</tag>
         <tag>GYM Training</tag>
+        <tag>2019 Multi-University Training Contest</tag>
+        <tag>Team Round（2019）</tag>
+        <tag>hdu</tag>
       </tags>
   </entry>
   <entry>
@@ -396,8 +408,8 @@
         <category>Team Round（2019）</category>
       </categories>
       <tags>
-        <tag>Team Round（2019）</tag>
         <tag>GYM Training</tag>
+        <tag>Team Round（2019）</tag>
         <tag>ICPC Region</tag>
       </tags>
   </entry>
@@ -409,8 +421,8 @@
         <category>Team Round（2019）</category>
       </categories>
       <tags>
-        <tag>Team Round（2019）</tag>
         <tag>GYM Training</tag>
+        <tag>Team Round（2019）</tag>
         <tag>ICPC Region</tag>
       </tags>
   </entry>
@@ -435,8 +447,8 @@
         <category>Team Round（2019）</category>
       </categories>
       <tags>
-        <tag>Team Round（2019）</tag>
         <tag>GYM Training</tag>
+        <tag>Team Round（2019）</tag>
         <tag>ICPC/CCPC</tag>
       </tags>
   </entry>
@@ -448,8 +460,8 @@
         <category>Team Round（2019）</category>
       </categories>
       <tags>
-        <tag>Team Round（2019）</tag>
         <tag>GYM Training</tag>
+        <tag>Team Round（2019）</tag>
       </tags>
   </entry>
   <entry>
@@ -460,8 +472,8 @@
         <category>Team Round（2019）</category>
       </categories>
       <tags>
-        <tag>Team Round（2019）</tag>
         <tag>GYM Training</tag>
+        <tag>Team Round（2019）</tag>
       </tags>
   </entry>
   <entry>
@@ -472,8 +484,8 @@
         <category>Team Round（2019）</category>
       </categories>
       <tags>
-        <tag>Team Round（2019）</tag>
         <tag>GYM Training</tag>
+        <tag>Team Round（2019）</tag>
         <tag>ICPC/CCPC</tag>
       </tags>
   </entry>
@@ -485,9 +497,9 @@
         <category>Math</category>
       </categories>
       <tags>
+        <tag>Math</tag>
         <tag>hdu</tag>
         <tag>Number Theory</tag>
-        <tag>Math</tag>
         <tag>分解质因数</tag>
       </tags>
   </entry>
@@ -499,8 +511,8 @@
         <category>Team Round（2019）</category>
       </categories>
       <tags>
-        <tag>Team Round（2019）</tag>
         <tag>GYM Training</tag>
+        <tag>Team Round（2019）</tag>
         <tag>ICPC/CCPC</tag>
       </tags>
   </entry>
@@ -512,8 +524,8 @@
         <category>Team Round（2019）</category>
       </categories>
       <tags>
-        <tag>Team Round（2019）</tag>
         <tag>GYM Training</tag>
+        <tag>Team Round（2019）</tag>
       </tags>
   </entry>
   <entry>
@@ -535,8 +547,8 @@
         <category>学习笔记</category>
       </categories>
       <tags>
-        <tag>Template</tag>
         <tag>MST</tag>
+        <tag>Template</tag>
       </tags>
   </entry>
   <entry>
