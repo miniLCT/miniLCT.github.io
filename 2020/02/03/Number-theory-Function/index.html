@@ -83,7 +83,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2020/02/03/L1iMOWjCGSAe6U4.png">
 <meta property="og:image" content="https://i.loli.net/2020/02/03/4IpTtvueoShWFiX.png">
-<meta property="og:updated_time" content="2020-03-19T02:40:08.495Z">
+<meta property="og:updated_time" content="2020-12-08T12:14:25.572Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数论函数学习笔记">
 <meta name="twitter:description" content="本文记录了数论函数的一些理论及其应用">
@@ -205,7 +205,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签<span class="badge">42</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签<span class="badge">43</span></a>
 
   </li>
         
@@ -218,7 +218,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类<span class="badge">16</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类<span class="badge">17</span></a>
 
   </li>
         
@@ -231,7 +231,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档<span class="badge">51</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档<span class="badge">52</span></a>
 
   </li>
         <li class="menu-item menu-item-search">
@@ -334,7 +334,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-03-19 10:40:08" itemprop="dateModified" datetime="2020-03-19T10:40:08+08:00">2020-03-19</time>
+                <time title="修改时间：2020-12-08 20:14:25" itemprop="dateModified" datetime="2020-12-08T20:14:25+08:00">2020-12-08</time>
               </span>
             
           
@@ -390,7 +390,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">4.8k</span>
+              <span title="本文字数">5k</span>
             </span>
           
             <span class="post-meta-item">
@@ -400,7 +400,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">16 分钟</span>
+              <span title="阅读时长">17 分钟</span>
             </span>
           
             <div class="post-description"><center>本文记录了数论函数的一些理论及其应用</center></div>
@@ -431,31 +431,36 @@
 <script type="math/tex; mode=display">f(n) = \sum_k a_{n,k} \ g(k)</script><p>已知 $g$ 求 $f$ 还是很水的。已知 $f$ 求$g$ 的过程称为反演。<br>现在反演一波（乱写），此处可以跳到<a href="#jump">前置：整除分块</a>  &emsp;很杂乱而且不是很清晰。</p>
 <h4 id="二项式反演："><a href="#二项式反演：" class="headerlink" title="二项式反演："></a>二项式反演：</h4><script type="math/tex; mode=display">f(n)=\sum_{k=0}^n\binom nkg(k)</script><script type="math/tex; mode=display">g(n)=\sum_{k=0}^n(-1)^{n-k}\binom nkf(k)</script><h2 id="前置：整除分块"><a href="#前置：整除分块" class="headerlink" title="前置：整除分块"></a><span id="jump">前置：整除分块</span></h2><h3 id="引入："><a href="#引入：" class="headerlink" title="引入："></a>引入：</h3><p>整除分块是用来处理形如<script type="math/tex">\sum_{i=1}^n\lfloor \frac{n}{i}\rfloor</script><br>的式子的方法。<br>当数据加强到$10^{10}$以上时，我们需要低于$O(n)$的更优秀的解法。<br>通过打表或者<del>理性感知</del>，我们可以发现，对于某些$\lfloor \frac{n}{i}\rfloor$，他们的值是相同的，并且呈<strong>块状分布</strong>。<br>由前任的经验，或者自己打表，发现对于一个块，假设它的起始位置的下标为 <strong>$l$</strong> ，那么可以得到的是，它的结束位置的下标为  <strong>$\lfloor\frac{n}{\lfloor\frac{n}{l}\rfloor}\rfloor$</strong><br>再写程序时候，要注意<strong>除法除0</strong>的情况，一般是会判断一下n/l的。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//求\sum_&#123;i=1&#125;^n n/i </span></span><br><span class="line"><span class="comment">//枚举左端点和右端点，右端点n/(n/l)</span></span><br><span class="line"><span class="comment">//右端点要想清楚，注意除数除0的情况，一般是会判断一下n/l的。</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">1</span>,r;l&lt;=n;l=r+<span class="number">1</span>)&#123;</span><br><span class="line">    r=n/(n/l);</span><br><span class="line">    ans+=(n/l)*(r-l+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//如果求\sum_&#123;i=1&#125;^n n/i A[i]</span></span><br><span class="line"><span class="comment">//树状数组访问前缀和。</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> l = <span class="number">1</span>; l &lt;= n; l = r+<span class="number">1</span>)&#123;</span><br><span class="line">    r = n / (n/l);</span><br><span class="line">    ans += query(n/l)*(r-l+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="一些题目"><a href="#一些题目" class="headerlink" title="一些题目"></a>一些题目</h3><ol>
-<li><p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1257" target="_blank" rel="noopener">bzoj1257整除分块</a></p>
-<h4 id="题意："><a href="#题意：" class="headerlink" title="题意："></a>题意：</h4><p>给定n，k。求$\sum_{i=1}^{n} k \ mod\  i。$</p>
-<h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h4><p>首先有$k\ mod \ i = k - \lfloor \frac{k}{i}\rfloor<em>i$<br>原式等价于求$n</em>k-\sum_{i=1}^{n}(\lfloor \frac{k}{i}\rfloor<em>i)$<br>对于每个区间的$(l,r)$，等差数列搞一搞，得到公式为$(k/l)</em>(r-l+1)*(l+r)/2$ </p>
-</li>
-<li><p><a href="https://www.luogu.com.cn/problem/P2424" target="_blank" rel="noopener">P2424 约数和</a></p>
-<h4 id="题意：-1"><a href="#题意：-1" class="headerlink" title="题意："></a>题意：</h4><p>$f(x)=\sum_{d|x} d$ &emsp;求$\sum_{i=X}^Y f(i)$</p>
-</li>
+<li><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1257" target="_blank" rel="noopener">bzoj1257整除分块</a><h4 id="题意："><a href="#题意：" class="headerlink" title="题意："></a>题意：</h4>给定n，k。求$\sum_{i=1}^{n} k \ mod\  i。$<h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h4>首先有$k \bmod i = k - \lfloor \frac{k}{i}\rfloor*i$</li>
 </ol>
-<h4 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h4><p>首先想到前缀和。1-&gt;y 的 减去 1 -&gt; (x-1)的。<br>那么在1→n中会出现的约数显然有n个（即1→n每个数都可作为约数），则对于约数d,d∈[1,n]，其对约数和的贡献为d×⌊n/d⌋，即$ans=\sum_{i=1}^n(i\times\lfloor \frac{n}{i}\rfloor)$。</p>
-<p>然后对于$(i\times\lfloor \frac{n}{i}\rfloor)$直接数论分块套上等差数列求和就好了。<br>$s=(n/l)<em>(l+r)</em>(r-l+1)/2;$</p>
+<p>原式等价于求 $n*k-\sum_{i=1}^{n}( \lfloor \frac{k}{i}\rfloor \times i)$</p>
+<p>对于每个区间的 $(l,r)$ ，等差数列搞一搞，得到公式为 $(k/l)\times (r-l+1) \times (l+r)/2$ </p>
+<ol>
+<li><a href="https://www.luogu.com.cn/problem/P2424" target="_blank" rel="noopener">P2424 约数和</a><h4 id="题意：-1"><a href="#题意：-1" class="headerlink" title="题意："></a>题意：</h4>$f(x)=\sum_{d|x} d$ &emsp;求$\sum_{i=X}^Y f(i)$</li>
+</ol>
+<h4 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h4><p>首先想到前缀和。$1\rightarrow y$ 的 减去 $1 \rightarrow  (x-1)$ 的。<br>那么在$1 \rightarrow n$中会出现的约数显然有n个（即1→n每个数都可作为约数），则对于约数 $d,d\in [1,n]$ ，其对约数和的贡献为$ d\times \lfloor n/d \rfloor$，即$ans=\sum_{i=1}^n(i\times\lfloor \frac{n}{i}\rfloor)$。</p>
+<p>然后对于$(i\times\lfloor \frac{n}{i}\rfloor)$直接数论分块套上等差数列求和就好了。<br> $s=(n/l)\times (l+r)\times(r-l+1)/2;$</p>
 <ol>
 <li><a href="https://loj.ac/problem/124" target="_blank" rel="noopener">loj124除数函数求和1</a></li>
 </ol>
 <h4 id="题意：-2"><a href="#题意：-2" class="headerlink" title="题意："></a>题意：</h4><p>给定$1\le n,k\le 1e7$，求$\sum_{i=1}^n\sum_{d|n}d^k \ mod \ 1e9+7$的值</p>
-<h4 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a>思路：</h4><p> $\sum_{i=1}^n\sum_{d|n}d^k = \sum_{i=1}^n(i^k<em>\lfloor\frac{n}{i} \rfloor)$ &emsp; $i^k$不同 所以不能数论分块。观察到数据范围，叉掉$n \ logn$做法，考虑线性筛。<br> 令$f(i) = i ^ k$,不难发现这个是积性函数。于是有$f(a</em>b)=f(a)*f(b)$线性筛递推，$O(n)$复杂度。</p>
+<h4 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a>思路：</h4><p> $\sum_{i=1}^n\sum_{d|n}d^k = \sum_{i=1}^n(i^k\times \lfloor \frac{n}{i} \rfloor)$  &emsp; $\because i^k$不同 所以不能数论分块。观察到数据范围，叉掉$n \ logn$做法，考虑线性筛。<br> 令$f(i) = i ^ k$,不难发现这个是积性函数。于是有$f(a\cdot b)=f(a)\cdot f(b)$线性筛递推，$O(n)$复杂度。</p>
 <ol>
 <li><a href="https://www.luogu.com.cn/problem/P2260" target="_blank" rel="noopener">P2260 [清华集训2012]模积和</a></li>
 </ol>
 <h4 id="题意：-3"><a href="#题意：-3" class="headerlink" title="题意："></a>题意：</h4><p>$\sum_{i=1}^n\sum_{j=1}^m(n \ mod \ i) \times (m \ mod \ j), i\neq j \  mod\ 19940417$的值。</p>
 <h4 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a>思路：</h4><ul>
 <li>做这种题，看到不熟悉的模数，先看看他是不是质数，能不能因式分解。发现$19940417 = 7 \times 2848631$。不管有没有用 ，都先分解出来。</li>
-<li><p>开始推式子：先不管$i\neq j$的条件。原式 $= \sum_{i=1}^n(n-i<em>\lfloor n/i\rfloor) \sum_{j=1}^m(m-j</em>\lfloor m/j\rfloor)=(n^2-\sum_{i=1}^n(i<em>\lfloor n/i\rfloor))(m^2-\sum_{j=1}^m(j</em>\lfloor m/j\rfloor))$  老套路分块等差数列求和 ，这一步可以解决</p>
-</li>
-<li><p>下面考虑$i == j$的情况，$jianqu = \sum_{i=1}^{min(n,m)}(n-i<em>\lfloor n/i\rfloor)\times(m-i</em>\lfloor m/i\rfloor) = \sum_{i=1}^{min(n,m)}(n\times m+i^2\times\lfloor n/i\times m/i\rfloor-n\times i\times \lfloor m/ i \rfloor - m\times i\times \lfloor n/ i \rfloor )$<br>对于$n\times m $累加，对于$n\times i\times \lfloor m/i\rfloor $和$m\times i\times \lfloor n/i\rfloor $ 还是老套路，数论分块套等差数列。<br>对于比较难求的 $i^2\times \lfloor n/i \times m/i \rfloor$此时应用平方求和公式$1^2+2^2+……+n^2=\frac{n(n+1)(2n+1)}{6}$前缀搞一搞就行了</p>
-</li>
+<li>开始推式子：先不管$i\neq j$的条件。</li>
+</ul>
+<p>原式 $= \sum_{i=1}^n(n-i\cdot \lfloor n/i\rfloor) \sum_{j=1}^m(m-j\times\lfloor m/j\rfloor)=(n^2-\sum_{i=1}^n(i\times\lfloor n/i\rfloor))(m^2-\sum_{j=1}^m(j\times\lfloor m/j\rfloor))$ </p>
+<p>老套路分块等差数列求和 ，这一步可以解决</p>
+<ul>
+<li>下面考虑$i == j$的情况，</li>
+</ul>
+<p>$jianqu = \sum_{i=1}^{min(n,m)}(n-i\times\lfloor n/i\rfloor)\times(m-i\times\lfloor m/i\rfloor) = \sum_{i=1}^{min(n,m)}(n\times m+i^2\times\lfloor n/i\times m/i\rfloor-n\times i\times \lfloor m/ i \rfloor - m\times i\times \lfloor n/ i \rfloor )$</p>
+<p>对于$n\times m $ 累加，对于$n\times i\times \lfloor m/i\rfloor $和$m\times i\times \lfloor n/i\rfloor $ 还是老套路，数论分块套等差数列。<br>对于比较难求的 $i^2\times \lfloor n/i \times m/i \rfloor$此时应用平方求和公式$1^2+2^2+……+n^2=\frac{n(n+1)(2n+1)}{6}$前缀搞一搞就行了</p>
+<ul>
 <li>这道题取模，发现6与模数互质，ex_gcd 求一下逆元。<h3 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h3></li>
 </ul>
 <ol>
@@ -508,13 +513,10 @@
 <script type="math/tex; mode=display">d(n) = \sum_{d|n}1\Rightarrow  d = 1*1</script><script type="math/tex; mode=display">\sigma(n)=\sum_{d|n}d\Rightarrow \sigma=id*1</script><ul>
 <li>莫比乌斯函数与1的卷积：很重要!<br>其中 $k$ 为 $n$ 不同种类的质因数个数。<br>$\sum_{d|n}\mu(n)=\sum_{i=0}^{k}(-1)^i\times \binom{k}{i}=(1-1)^{k}=0^{k}$<br>其中，对于$0^0$没有定义，考虑到$k = 0$的只有$n = 1$,而$\mu (1)  = 1$，所以有</li>
 </ul>
-<script type="math/tex; mode=display">\sum_{d|n}\mu(n)=[n=1]=e(n)
-$$   [P]表示P成立时候为1，否则为0。
-所以就会有:$e = \mu * 1 $ &emsp;这里可以看出 $\mu$ 和 $1$在Dirichlet卷积的意义下互为逆元。记住这个式子！！这个对于莫比乌斯反演非常非常非常的重要！！！
-
-* 常用的卷积：
- $$\varphi*1=??</script><p>   考虑到，若d为n的因数，则$φ(d)$即与n的最大公约数为$\frac{n}{d}$的数的个数。所以：</p>
-<script type="math/tex; mode=display">\sum_{d|n}\varphi(d)=n \quad \Longrightarrow \varphi*1=id</script><ul>
+<p>$\sum_{d|n}\mu(n)=[n=1]=e(n)$  [P]表示P成立时候为1，否则为0。</p>
+<p>所以就会有:$e = \mu * 1 $ &emsp;这里可以看出 $\mu$ 和 $1$在Dirichlet卷积的意义下互为逆元。记住这个式子！！这个对于莫比乌斯反演非常非常非常的重要！！！</p>
+<ul>
+<li>常用的卷积：<script type="math/tex; mode=display">\varphi*1=??</script> 考虑到，若d为n的因数，则$φ(d)$即与n的最大公约数为$\frac{n}{d}$的数的个数。所以：<script type="math/tex; mode=display">\sum_{d|n}\varphi(d)=n \quad \Longrightarrow \varphi*1=id</script></li>
 <li>关于幂函数<script type="math/tex; mode=display">id_k\times(a*b)=(id_k\times a)*(id_k\times b)</script><script type="math/tex; mode=display">(\varphi\times id_k)*id_k=id_{k+1}</script></li>
 </ul>
 <h2 id="莫比乌斯反演"><a href="#莫比乌斯反演" class="headerlink" title="莫比乌斯反演"></a>莫比乌斯反演</h2><h3 id="一些题目-1"><a href="#一些题目-1" class="headerlink" title="一些题目"></a>一些题目</h3><ol>
@@ -651,7 +653,7 @@ $$   [P]表示P成立时候为1，否则为0。
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-count">52</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -698,7 +700,9 @@ $$   [P]表示P成立时候为1，否则为0。
         
           
         
-        <span class="site-state-item-count">16</span>
+          
+        
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -797,7 +801,9 @@ $$   [P]表示P成立时候为1，否则为0。
         
           
         
-        <span class="site-state-item-count">42</span>
+          
+        
+        <span class="site-state-item-count">43</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -883,14 +889,14 @@ $$   [P]表示P成立时候为1，否则为0。
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">53k</span>
+    <span title="站点总字数">55k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">2:56</span>
+    <span title="站点阅读时长">3:02</span>
   <a href="http://www.beian.miit.gov.cn">浙ICP备20021511号</a>
 </div>
 
