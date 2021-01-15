@@ -73,19 +73,19 @@
   };
 </script>
 
-  <meta name="description" content="本文记录了Daenerys Stormborn of the House Targaryen.的第13场训练">
-<meta name="keywords" content="2019 Multi-University Training Contest,Team Round（2020）">
+  <meta name="description" content="本文记录了CF1473E. Minimum Path题解">
+<meta name="keywords" content="cf,shortest paths and similar">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Team Round #13:2016 Multi-University Training Contest 6">
-<meta property="og:url" content="http://yoursite.com/2020/01/23/TeamRound13/index.html">
+<meta property="og:title" content="Codeforces 1473 E. Minimum Path">
+<meta property="og:url" content="http://yoursite.com/2021/01/15/CF-1473E-Minimum Path/index.html">
 <meta property="og:site_name" content="Mini   LCT">
-<meta property="og:description" content="本文记录了Daenerys Stormborn of the House Targaryen.的第13场训练">
+<meta property="og:description" content="本文记录了CF1473E. Minimum Path题解">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-19T03:05:43.036Z">
+<meta property="og:updated_time" content="2021-01-15T08:03:47.759Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Team Round #13:2016 Multi-University Training Contest 6">
-<meta name="twitter:description" content="本文记录了Daenerys Stormborn of the House Targaryen.的第13场训练">
-  <link rel="canonical" href="http://yoursite.com/2020/01/23/TeamRound13/">
+<meta name="twitter:title" content="Codeforces 1473 E. Minimum Path">
+<meta name="twitter:description" content="本文记录了CF1473E. Minimum Path题解">
+  <link rel="canonical" href="http://yoursite.com/2021/01/15/CF-1473E-Minimum Path/">
 
 
 <script id="page.configurations">
@@ -94,7 +94,7 @@
   };
 </script>
 
-  <title>Team Round #13:2016 Multi-University Training Contest 6 | Mini   LCT</title>
+  <title>Codeforces 1473 E. Minimum Path | Mini   LCT</title>
   
 
 
@@ -283,7 +283,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/23/TeamRound13/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/15/CF-1473E-Minimum Path/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="miniLCT">
@@ -297,7 +297,7 @@
       <header class="post-header">
 
         
-          <h2 class="post-title" itemprop="name headline">Team Round #13:2016 Multi-University Training Contest 6
+          <h2 class="post-title" itemprop="name headline">Codeforces 1473 E. Minimum Path
 
               
             
@@ -318,21 +318,11 @@
                 
               
 
-              <time title="创建时间：2020-01-23 22:43:24" itemprop="dateCreated datePublished" datetime="2020-01-23T22:43:24+08:00">2020-01-23</time>
+              <time title="创建时间：2021-01-15 18:20:15 / 修改时间：16:03:47" itemprop="dateCreated datePublished" datetime="2021-01-15T18:20:15+08:00">2021-01-15</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-03-19 11:05:43" itemprop="dateModified" datetime="2020-03-19T11:05:43+08:00">2020-03-19</time>
-              </span>
             
           
             <span class="post-meta-item">
@@ -343,7 +333,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Team-Round（2020）/" itemprop="url" rel="index"><span itemprop="name">Team Round（2020）</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CodeForces/" itemprop="url" rel="index"><span itemprop="name">CodeForces</span></a></span>
 
                 
                 
@@ -352,7 +342,7 @@
           
 
           
-            <span id="/2020/01/23/TeamRound13/" class="post-meta-item leancloud_visitors" data-flag-title="Team Round #13:2016 Multi-University Training Contest 6">
+            <span id="/2021/01/15/CF-1473E-Minimum Path/" class="post-meta-item leancloud_visitors" data-flag-title="Codeforces 1473 E. Minimum Path">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -373,8 +363,8 @@
       <span class="post-meta-item-text">评论数：</span>
     
   
-    <a href="/2020/01/23/TeamRound13/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/01/23/TeamRound13/" itemprop="commentCount"></span>
+    <a href="/2021/01/15/CF-1473E-Minimum Path/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/01/15/CF-1473E-Minimum Path/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -387,7 +377,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">30</span>
+              <span title="本文字数">525</span>
             </span>
           
             <span class="post-meta-item">
@@ -397,10 +387,10 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">1 分钟</span>
+              <span title="阅读时长">2 分钟</span>
             </span>
           
-            <div class="post-description"><center>本文记录了Daenerys Stormborn of the House Targaryen.的第13场训练</center></div>
+            <div class="post-description"><center>本文记录了CF1473E. Minimum Path题解</center></div>
           
 
         </div>
@@ -412,8 +402,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>这一场是在2020-01-23 12:30 CST开始的。</p>
-
+        <p><a href="https://codeforces.com/contest/1473/problem/E" target="_blank" rel="noopener"> Educational Codeforces Round 102 (Rated for Div. 2) E. Minimum Path</a></p>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>给一个带权无向图，求从1点出发到每个点的最小$\sum_{i=1}^{k}w_{e_i}-max_{i=1}^{k}w_{e_i}+min_{i=1}^{k}w_{e_i}$，$e_i$是 $1$ 到 $x$ 上的路径。</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>观察到$\sum_{i=1}^{k}w_{e_i}$是求最短路。加上后面两项相当于变形为分层图：多的两项相当于对边进行了两次操作。</p>
+<p>将这个问题转化为:跑最短路，你可以且必须进行如下两种操作:<br>1.选择路径上的一条边，减去它的边权<br>2.选择路径上的一条边，再加一次它的边权。</p>
+<p>那么$dis[i][0/1][0/1]$代表从 $1$ 到 $i$ 点，是否已经使用了操作$1$，是否已经使用了操作$2$的最小值。那么答案就是 $dis[i][1][1]$.</p>
+<p>正确性：很显然，对于任意一条路径，我们肯定是减去最大边权，加上最小边权。但问题是我们在跑最短路的过程中不知道哪条边会是最终的最小边权/最大边权(有后效性)。对状态升维表达出所有状态来消除后效性。</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;pii&gt; e[maxn];</span><br><span class="line"><span class="keyword">int</span> dis[maxn][<span class="number">2</span>][<span class="number">2</span>], vis[maxn][<span class="number">2</span>][<span class="number">2</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> u , dis , a1 , a2;</span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">int</span> <span class="keyword">operator</span> &lt; (node <span class="keyword">const</span> &amp;a , node <span class="keyword">const</span>&amp; b)&#123;</span><br><span class="line">        <span class="keyword">return</span> a.dis &gt; b.dis;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dijstra</span><span class="params">()</span></span>&#123;</span><br><span class="line">    dis[<span class="number">1</span>][<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    priority_queue&lt;node&gt;q;</span><br><span class="line">    q.push(&#123;<span class="number">1</span>, <span class="number">0</span> ,<span class="number">0</span>, <span class="number">0</span>&#125;);</span><br><span class="line">    <span class="keyword">while</span>(<span class="keyword">not</span> q.empty())&#123;</span><br><span class="line">        node fr = q.top();</span><br><span class="line">        q.pop();</span><br><span class="line">        <span class="keyword">int</span> u = fr.u, a1 = fr.a1, a2 = fr.a2;</span><br><span class="line">        <span class="keyword">if</span>(vis[u][a1][a2]) <span class="keyword">continue</span>;</span><br><span class="line">        vis[u][a1][a2] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> x : e[u])&#123;</span><br><span class="line">            <span class="keyword">int</span> v = x.fi, w = x.se;</span><br><span class="line">            <span class="keyword">if</span>(dis[v][a1][a2] &gt; dis[u][a1][a2] + w)&#123;</span><br><span class="line">                dis[v][a1][a2] = dis[u][a1][a2] + w;</span><br><span class="line">                q.push(&#123;v, dis[v][a1][a2], a1 , a2&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(!a1)&#123;</span><br><span class="line">                <span class="keyword">if</span>(dis[v][<span class="number">1</span>][a2] &gt; dis[u][<span class="number">0</span>][a2])&#123;</span><br><span class="line">                    dis[v][<span class="number">1</span>][a2] = dis[u][<span class="number">0</span>][a2];</span><br><span class="line">                    q.push(&#123;v, dis[v][<span class="number">1</span>][a2], <span class="number">1</span> , a2&#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(!a2)&#123;</span><br><span class="line">                <span class="keyword">if</span>(dis[v][a1][<span class="number">1</span>] &gt; dis[u][a1][<span class="number">0</span>] +  w + w )&#123;</span><br><span class="line">                    dis[v][a1][<span class="number">1</span>] = dis[u][a1][<span class="number">0</span>] +  w + w;</span><br><span class="line">                    q.push(&#123;v,dis[v][a1][<span class="number">1</span>],a1,<span class="number">1</span>&#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int32_t</span> main()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> n , m;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="built_in">memset</span>(dis , INF, <span class="keyword">sizeof</span> dis);</span><br><span class="line">    <span class="keyword">while</span>(m -- )&#123;</span><br><span class="line">        <span class="keyword">int</span> u ,v , w;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt;u &gt;&gt; v &gt;&gt; w;</span><br><span class="line">        <span class="keyword">if</span>(u &gt; v)swap(u , v);</span><br><span class="line">        <span class="keyword">if</span>(u == <span class="number">1</span>) dis[v][<span class="number">1</span>][<span class="number">1</span>] = w;</span><br><span class="line">        e[u].eb(v , w);</span><br><span class="line">        e[v].eb(u , w);</span><br><span class="line">    &#125;</span><br><span class="line">    dijstra();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; dis[i][<span class="number">1</span>][<span class="number">1</span>] &lt;&lt; <span class="string">" \n"</span>[i == n];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
      
     
@@ -433,9 +428,9 @@
           
         
         <div class="post-tags">
-            <a href="/tags/2019-Multi-University-Training-Contest/" rel="tag"><i class="fa fa-tag"></i> 2019 Multi-University Training Contest</a>
+            <a href="/tags/cf/" rel="tag"><i class="fa fa-tag"></i> cf</a>
           
-            <a href="/tags/Team-Round（2020）/" rel="tag"><i class="fa fa-tag"></i> Team Round（2020）</a>
+            <a href="/tags/shortest-paths-and-similar/" rel="tag"><i class="fa fa-tag"></i> shortest paths and similar</a>
           
         </div>
         <div class="post-widgets">
@@ -459,8 +454,8 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-              <a href="/2020/01/09/多项式/" rel="next" title="多项式学习笔记">
-                <i class="fa fa-chevron-left"></i> 多项式学习笔记
+              <a href="/2021/01/07/Games/" rel="next" title="Games">
+                <i class="fa fa-chevron-left"></i> Games
               </a>
             
           </div>
@@ -468,10 +463,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-              <a href="/2020/01/27/Matrix-Tree/" rel="prev" title="Matrix-Tree 基尔霍夫矩阵树定理及一些题目">
-                Matrix-Tree 基尔霍夫矩阵树定理及一些题目 <i class="fa fa-chevron-right"></i>
-              </a>
-            
           </div>
         </div>
     </footer>
@@ -504,8 +495,17 @@
 
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -714,6 +714,23 @@
 
         </div>
       </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
         <div class="back-to-top motion-element">
           <i class="fa fa-arrow-up"></i>
           
@@ -824,51 +841,6 @@
 
 
 
-  
-    
-      <script type="text/x-mathjax-config">
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
-        }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
-      }
-    });
-  });
-
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
-    }
-  });
-</script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-    
   
 
 

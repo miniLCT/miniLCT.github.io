@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Codeforces 1473 E. Minimum Path]]></title>
+    <url>%2F2021%2F01%2F15%2FCF-1473E-Minimum%20Path%2F</url>
+    <content type="text"><![CDATA[Educational Codeforces Round 102 (Rated for Div. 2) E. Minimum Path Description给一个带权无向图，求从1点出发到每个点的最小$\sum_{i=1}^{k}w_{e_i}-max_{i=1}^{k}w_{e_i}+min_{i=1}^{k}w_{e_i}$，$e_i$是 $1$ 到 $x$ 上的路径。 Solution观察到$\sum_{i=1}^{k}w_{e_i}$是求最短路。加上后面两项相当于变形为分层图：多的两项相当于对边进行了两次操作。 将这个问题转化为:跑最短路，你可以且必须进行如下两种操作:1.选择路径上的一条边，减去它的边权2.选择路径上的一条边，再加一次它的边权。 那么$dis[i][0/1][0/1]$代表从 $1$ 到 $i$ 点，是否已经使用了操作$1$，是否已经使用了操作$2$的最小值。那么答案就是 $dis[i][1][1]$. 正确性：很显然，对于任意一条路径，我们肯定是减去最大边权，加上最小边权。但问题是我们在跑最短路的过程中不知道哪条边会是最终的最小边权/最大边权(有后效性)。对状态升维表达出所有状态来消除后效性。 Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758vector&lt;pii&gt; e[maxn];int dis[maxn][2][2], vis[maxn][2][2];struct node &#123; int u , dis , a1 , a2; friend int operator &lt; (node const &amp;a , node const&amp; b)&#123; return a.dis &gt; b.dis; &#125;&#125;;void dijstra()&#123; dis[1][0][0] = 0; priority_queue&lt;node&gt;q; q.push(&#123;1, 0 ,0, 0&#125;); while(not q.empty())&#123; node fr = q.top(); q.pop(); int u = fr.u, a1 = fr.a1, a2 = fr.a2; if(vis[u][a1][a2]) continue; vis[u][a1][a2] = 1; for(auto x : e[u])&#123; int v = x.fi, w = x.se; if(dis[v][a1][a2] &gt; dis[u][a1][a2] + w)&#123; dis[v][a1][a2] = dis[u][a1][a2] + w; q.push(&#123;v, dis[v][a1][a2], a1 , a2&#125;); &#125; if(!a1)&#123; if(dis[v][1][a2] &gt; dis[u][0][a2])&#123; dis[v][1][a2] = dis[u][0][a2]; q.push(&#123;v, dis[v][1][a2], 1 , a2&#125;); &#125; &#125; if(!a2)&#123; if(dis[v][a1][1] &gt; dis[u][a1][0] + w + w )&#123; dis[v][a1][1] = dis[u][a1][0] + w + w; q.push(&#123;v,dis[v][a1][1],a1,1&#125;); &#125; &#125; &#125; &#125;&#125;int32_t main()&#123; int n , m; cin &gt;&gt; n &gt;&gt; m; memset(dis , INF, sizeof dis); while(m -- )&#123; int u ,v , w; cin &gt;&gt;u &gt;&gt; v &gt;&gt; w; if(u &gt; v)swap(u , v); if(u == 1) dis[v][1][1] = w; e[u].eb(v , w); e[v].eb(u , w); &#125; dijstra(); for(int i = 2; i &lt;= n; i++)&#123; cout &lt;&lt; dis[i][1][1] &lt;&lt; " \n"[i == n]; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>CodeForces</category>
+      </categories>
+      <tags>
+        <tag>cf</tag>
+        <tag>shortest paths and similar</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Games]]></title>
     <url>%2F2021%2F01%2F07%2FGames%2F</url>
     <content type="text"><![CDATA[CF#260 B. A Lot of Games传送门 Description 有两个人在玩游戏，一共玩 $k(1\le k \le 10^9)$轮，每一轮的一开始有一个空串，双方每一回合需要在空串后面加一个字符，但必须要满足加完这个字符之后的字符串是给定大小为 $n(1\le n\le 10^5)$ 的母串集合中任意一个串的前缀，不能操作者输，规定第一轮的先手为第一个人，接下来每一轮的先手为上一轮的输家，规定最终的赢家是第 $k$ 轮的赢家，在双方都采取最优策略的情况下，求最终的赢家是第一轮的先手还是后手. Solution先单独考虑每一轮的游戏，发现本质上就是对母串建 Trie 树并在 Trie 树上每次向下移动，不能移动的输 所以可以先 dp 出对于 Trie 树上每一个节点，能获得的最终状态是怎样的. 观察发现，如果一个位置往下走既可以到必胜态又可以必败态，那么就可以通过这个位置控制下一局的先后手 进一步发现，如果某一方既可以必胜又可以必败，那么其必然能获得最终的胜利. 考虑如果子游戏中不存在这样的状态，那么如果先手必败则后手赢，如果先手必胜则胜负由 k 的奇偶性决定. 所以只需要 dp 记录维护 4 种值，分别表示 (能必胜，能必败，既能必胜又能必败，什么都不能)，枚举后继的状态转移 Code1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556char s[maxn];int ch[maxn][30], f[maxn], k , n, tot;void insert(char *s)&#123; int p = 1, len = strlen(s); for(int i = 0; i &lt; len; i++)&#123; int c = s[i] - 'a'; if(!ch[p][c]) ch[p][c] = ++tot; p = ch[p][c]; &#125;&#125;constexpr int win = 1, lose = 2, allcan = 3, neither = 4;int main()&#123; close; tot = 1; cin &gt;&gt; n &gt;&gt; k; for(int i = 1; i &lt;= n; i++)&#123; cin &gt;&gt; s; insert(s); &#125; // cout &lt;&lt; "fuck " &lt;&lt; endl; function&lt;void (int)&gt; dfs = [&amp;](int u)&#123; f[u] = lose; int Win = 0, Lose = 0, All = 0; for(int c = 0; c &lt; 26; c++)&#123; if(ch[u][c])&#123; int v = ch[u][c] ; dfs(v); All++; if(f[v] == lose) Win = 1; if(f[v] == win) Lose = 1; if(f[v] == neither) &#123; return f[u] = allcan, void(); &#125; &#125; &#125; if(Win &amp;&amp; Lose) &#123; return f[u] = allcan, void(); &#125; if(!Win &amp;&amp; !Lose &amp;&amp; All) &#123; return f[u] = neither, void(); &#125; if(Win)f[u] = win; if(Lose) f[u] = lose; &#125;; dfs(1); if(f[1] == 3) &#123; cout &lt;&lt; "First" &lt;&lt; endl;return 0; &#125; if(f[1] == 2 || f[1] == 4) &#123; cout &lt;&lt; "Second" &lt;&lt; endl; return 0; &#125; cout &lt;&lt; ((k &amp; 1)?"First":"Second") &lt;&lt; endl; return 0;&#125;]]></content>
@@ -177,9 +189,9 @@
         <category>Team Round（2020）</category>
       </categories>
       <tags>
+        <tag>2019 Multi-University Training Contest</tag>
         <tag>GYM Training</tag>
         <tag>Team Round（2020）</tag>
-        <tag>2019 Multi-University Training Contest</tag>
         <tag>hdu</tag>
       </tags>
   </entry>
@@ -237,9 +249,9 @@
         <category>Team Round（2020）</category>
       </categories>
       <tags>
+        <tag>2019 Multi-University Training Contest</tag>
         <tag>GYM Training</tag>
         <tag>Team Round（2020）</tag>
-        <tag>2019 Multi-University Training Contest</tag>
         <tag>hdu</tag>
       </tags>
   </entry>
@@ -275,9 +287,9 @@
         <category>Team Round（2020）</category>
       </categories>
       <tags>
+        <tag>2019 Multi-University Training Contest</tag>
         <tag>GYM Training</tag>
         <tag>Team Round（2020）</tag>
-        <tag>2019 Multi-University Training Contest</tag>
         <tag>hdu</tag>
       </tags>
   </entry>
@@ -326,8 +338,8 @@
         <category>学习笔记</category>
       </categories>
       <tags>
-        <tag>Template</tag>
         <tag>Fibonacci</tag>
+        <tag>Template</tag>
       </tags>
   </entry>
   <entry>
@@ -350,20 +362,8 @@
         <category>Team Round（2020）</category>
       </categories>
       <tags>
-        <tag>Team Round（2020）</tag>
         <tag>2019 Multi-University Training Contest</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Codeforces 1473 E. Minimum Path]]></title>
-    <url>%2F2020%2F01%2F15%2FCF-1473E-Minimum%20Path%2F</url>
-    <content type="text"><![CDATA[Educational Codeforces Round 102 (Rated for Div. 2) E. Minimum Path Description给一个带权无向图，求从1点出发到每个点的最小$\sum_{i=1}^{k}w_{e_i}-max_{i=1}^{k}w_{e_i}+min_{i=1}^{k}w_{e_i}$，$e_i$是 $1$ 到 $x$ 上的路径。 Solution观察到$\sum_{i=1}^{k}w_{e_i}$是求最短路。加上后面两项相当于变形为分层图：多的两项相当于对边进行了两次操作。 将这个问题转化为:跑最短路，你可以且必须进行如下两种操作:1.选择路径上的一条边，减去它的边权2.选择路径上的一条边，再加一次它的边权。 那么$dis[i][0/1][0/1]$代表从 $1$ 到 $i$ 点，是否已经使用了操作$1$，是否已经使用了操作$2$的最小值。那么答案就是 $dis[i][1][1]$. 正确性：很显然，对于任意一条路径，我们肯定是减去最大边权，加上最小边权。但问题是我们在跑最短路的过程中不知道哪条边会是最终的最小边权/最大边权(有后效性)。对状态升维表达出所有状态来消除后效性。 Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758vector&lt;pii&gt; e[maxn];int dis[maxn][2][2], vis[maxn][2][2];struct node &#123; int u , dis , a1 , a2; friend int operator &lt; (node const &amp;a , node const&amp; b)&#123; return a.dis &gt; b.dis; &#125;&#125;;void dijstra()&#123; dis[1][0][0] = 0; priority_queue&lt;node&gt;q; q.push(&#123;1, 0 ,0, 0&#125;); while(not q.empty())&#123; node fr = q.top(); q.pop(); int u = fr.u, a1 = fr.a1, a2 = fr.a2; if(vis[u][a1][a2]) continue; vis[u][a1][a2] = 1; for(auto x : e[u])&#123; int v = x.fi, w = x.se; if(dis[v][a1][a2] &gt; dis[u][a1][a2] + w)&#123; dis[v][a1][a2] = dis[u][a1][a2] + w; q.push(&#123;v, dis[v][a1][a2], a1 , a2&#125;); &#125; if(!a1)&#123; if(dis[v][1][a2] &gt; dis[u][0][a2])&#123; dis[v][1][a2] = dis[u][0][a2]; q.push(&#123;v, dis[v][1][a2], 1 , a2&#125;); &#125; &#125; if(!a2)&#123; if(dis[v][a1][1] &gt; dis[u][a1][0] + w + w )&#123; dis[v][a1][1] = dis[u][a1][0] + w + w; q.push(&#123;v,dis[v][a1][1],a1,1&#125;); &#125; &#125; &#125; &#125;&#125;int32_t main()&#123; int n , m; cin &gt;&gt; n &gt;&gt; m; memset(dis , INF, sizeof dis); while(m -- )&#123; int u ,v , w; cin &gt;&gt;u &gt;&gt; v &gt;&gt; w; if(u &gt; v)swap(u , v); if(u == 1) dis[v][1][1] = w; e[u].eb(v , w); e[v].eb(u , w); &#125; dijstra(); for(int i = 2; i &lt;= n; i++)&#123; cout &lt;&lt; dis[i][1][1] &lt;&lt; " \n"[i == n]; &#125; return 0;&#125;]]></content>
-      <categories>
-        <category>CodeForces</category>
-      </categories>
-      <tags>
-        <tag>cf</tag>
-        <tag>shortest paths and similar</tag>
+        <tag>Team Round（2020）</tag>
       </tags>
   </entry>
   <entry>
@@ -424,8 +424,8 @@
         <category>Team Round（2019）</category>
       </categories>
       <tags>
-        <tag>GYM Training</tag>
         <tag>2019 Multi-University Training Contest</tag>
+        <tag>GYM Training</tag>
         <tag>hdu</tag>
         <tag>Team Round（2019）</tag>
       </tags>
@@ -438,8 +438,8 @@
         <category>Team Round（2019）</category>
       </categories>
       <tags>
-        <tag>GYM Training</tag>
         <tag>2019 Multi-University Training Contest</tag>
+        <tag>GYM Training</tag>
         <tag>hdu</tag>
         <tag>Team Round（2019）</tag>
       </tags>
@@ -603,8 +603,8 @@
         <category>学习笔记</category>
       </categories>
       <tags>
-        <tag>MST</tag>
         <tag>Template</tag>
+        <tag>MST</tag>
       </tags>
   </entry>
   <entry>
