@@ -1,6 +1,6 @@
 /* global instantsearch, CONFIG */
-
 $(document).ready(function() {
+  
   var algoliaSettings = CONFIG.algolia;
   var isAlgoliaSettingsValid = algoliaSettings.applicationID
                             && algoliaSettings.apiKey
@@ -111,3 +111,4 @@ $(document).ready(function() {
     }
   });
 });
+

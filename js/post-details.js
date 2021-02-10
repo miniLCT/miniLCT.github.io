@@ -5,7 +5,7 @@ $(document).ready(function(){
       $('>.fold', this.parentNode).slideToggle();
       $('>:first', this).toggleClass('open');
   });
-  //默认情况下展开
+  //默认情况下折叠
   $("div.fold").css("display","none");
 });
 
