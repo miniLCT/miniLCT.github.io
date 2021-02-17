@@ -2,23 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/about/index.html</loc>
+    <loc>http://yoursite.com/2021/02/03/DynamicProgrammingOptimization/</loc>
     
-    <lastmod>2021-02-10T07:06:22.011Z</lastmod>
+    <lastmod>2021-02-17T14:05:31.108Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2021/02/03/DynamicProgrammingOptimization/</loc>
+    <loc>http://yoursite.com/2021/01/17/campushoy-auto-clock-in/</loc>
     
-    <lastmod>2021-02-09T09:03:53.485Z</lastmod>
+    <lastmod>2021-02-17T13:58:38.289Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2020/03/30/dp1/</loc>
     
-    <lastmod>2021-02-03T13:58:54.293Z</lastmod>
+    <lastmod>2021-02-17T13:57:46.380Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/about/index.html</loc>
+    
+    <lastmod>2021-02-10T07:06:22.011Z</lastmod>
     
   </url>
   
@@ -33,13 +40,6 @@
     <loc>http://yoursite.com/2021/01/01/atcoder/</loc>
     
     <lastmod>2021-01-31T08:36:38.111Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2021/01/17/campushoy-auto-clock-in/</loc>
-    
-    <lastmod>2021-01-31T07:30:05.532Z</lastmod>
     
   </url>
   
