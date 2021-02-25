@@ -79,3 +79,4 @@ $(document).ready(function() {
     .add(NexT.motion.middleWares.sidebar)
     .bootstrap();
 });
+
