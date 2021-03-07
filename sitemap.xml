@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/08/18/CF-982C/</loc>
+    
+    <lastmod>2021-03-07T13:14:53.527Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/03/18/atcoder_DP_contest/</loc>
+    
+    <lastmod>2021-03-07T13:14:46.451Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2021/03/07/josephus/</loc>
     
-    <lastmod>2021-03-07T13:09:14.854Z</lastmod>
+    <lastmod>2021-03-07T13:14:25.734Z</lastmod>
     
   </url>
   
@@ -159,13 +173,6 @@
     <loc>http://yoursite.com/2020/01/28/fibonacci/</loc>
     
     <lastmod>2020-04-15T02:22:22.626Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/03/18/atcoder_DP_contest/</loc>
-    
-    <lastmod>2020-04-06T07:01:08.839Z</lastmod>
     
   </url>
   
@@ -383,13 +390,6 @@
     <loc>http://yoursite.com/2019/08/27/chickensoup827/</loc>
     
     <lastmod>2020-03-19T02:15:30.752Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/08/18/CF-982C/</loc>
-    
-    <lastmod>2020-03-19T02:12:17.417Z</lastmod>
     
   </url>
   

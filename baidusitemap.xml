@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite.com/2019/08/18/CF-982C/</loc>
+    <lastmod>2021-03-07</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/2020/03/18/atcoder_DP_contest/</loc>
+    <lastmod>2021-03-07</lastmod>
+  </url>  <url>
     <loc>http://yoursite.com/2021/03/07/josephus/</loc>
     <lastmod>2021-03-07</lastmod>
   </url>  <url>
@@ -66,9 +72,6 @@
   </url>  <url>
     <loc>http://yoursite.com/2020/01/28/fibonacci/</loc>
     <lastmod>2020-04-15</lastmod>
-  </url>  <url>
-    <loc>http://yoursite.com/2020/03/18/atcoder_DP_contest/</loc>
-    <lastmod>2020-04-06</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2019/08/03/sublime/</loc>
     <lastmod>2020-03-30</lastmod>
@@ -161,9 +164,6 @@
     <lastmod>2020-03-19</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2019/08/27/chickensoup827/</loc>
-    <lastmod>2020-03-19</lastmod>
-  </url>  <url>
-    <loc>http://yoursite.com/2019/08/18/CF-982C/</loc>
     <lastmod>2020-03-19</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2019/08/05/CF-577-div-2-%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/</loc>
