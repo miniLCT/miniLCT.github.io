@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[约瑟夫问题简单探讨]]></title>
+    <url>%2F2021%2F03%2F07%2Fjosephus%2F</url>
+    <content type="text"><![CDATA[问题引入约瑟夫问题有很多经典例题，例如猴子选王、丢手绢。在算法学习过程中，这是大部分人都会遇到的一类问题。一般地，可以简单的做到$O(n\times m)$模拟解法。 解法介绍具体数学上有讲 此类问题中，影响到一个人在出圈顺序中的位置 $id$ 的有三个关键参量：他的编号 $i$ 、人数 $n$ 以及出圈间歇 $m$。 在某些情况下，部分参量并不起作用。如 $m|i$ 时， $i$ 对 $id$ 无影响；$m=1$ 时， $n$ 对 $id$ 无影响。在部分题目中这可能成为解题的关键。 该类问题有两种问法，分别是： 询问约瑟夫排列（即出圈顺序） 询问第 $k$ 出圈（第 $k$ 出圈为获胜者）询问约瑟夫排列 时间复杂度$O(nlog \ n)$ 这样考虑问题：假定当前出圈的人编号为当前第 $k$ 小，此人出圈后圈内还有 $n$ 人，那么下一个出圈的人为圈内编号第 $(k-1+m-1)\bmod n + 1$ 小。 那么只需要一个数据结构，满足能够单点修改，并查询区间第 $k$ 小的：权值树状数组。123456789101112131415161718192021222324252627282930313233343536373839#include &lt;bits/stdc++.h&gt;using namespace std;#define N 1000001struct ValueBIT &#123; int c[N], maxn; int lowbit(int x) &#123; return x &amp; (-x); &#125; void reset(int n) &#123; maxn = n; for (int i = 1; i &lt;= maxn; i++) c[i] = lowbit(i); &#125; void add(int m, int x) &#123; for (int i = m; i &lt;= maxn; i += lowbit(i)) c[i] += x; &#125; int find_kth(int k) &#123; int s = 0, sum = 0; for (int i = 20; i &gt;= 0; i--) &#123; s += (1 &lt;&lt; i); if (s &gt; maxn || c[s] + sum &gt;= k) s -= (1 &lt;&lt; i); else sum += c[s]; &#125; return s + 1; &#125;&#125; vbit;int n, m;int main() &#123; scanf("%d %d", &amp;n, &amp;m); vbit.reset(n); int now = 1; while (n) &#123; now = (now - 1 + m - 1) % n + 1; int k = vbit.find_kth(now); vbit.add(k, -1); printf("%d ", k); n--; &#125; return 0;&#125; 询问第$k$出圈时间复杂度$O(k)$令 $f(n,m,k)$ 表示第$k$ 出圈人。 那么有公式： f(n,m,k)= \begin{cases} (m - 1) \bmod n + 1 & , k = 1 \\ (f(n - 1, m, k - 1) -1 + m) \bmod n + 1 & , k > 0 \end{cases}代码实现：123int f(int n, int m, int k) &#123; return ((k == 1 ? 0 : f(n - 1, m, k - 1)) - 1 + m) % n + 1;&#125; 非递归写法： 12345int f(int n, int m, int k) &#123; int s = (m - 1) % (n - k + 1); for (int i = n - k + 2; i &lt;= n; i++) s = (s + m) % i; return s + 1;&#125; 时间复杂度$O(log{\frac{m}{m-1}} n)$当 $n&gt;&gt;m$ 时，每次从 1 到 n 的一个循环中，有 $\lfloor \frac{n}{m} \rfloor \times m$人报数，其中 $\lfloor \frac{n}{m} \rfloor$ 人出圈。 参考前面时间复杂度 $O(k)$ 的式子，可以发现在此过程中有许多取模操作是无作用的。 于是我们可以合并一些操作，使得部分加法合并为乘法。 有公式 f(n, m, k) = (f(n - c, m, k - c) - 1 + m \times c) \bmod n + 1式中 c 表示从当前的 n 一直变化到到 c 的期间内取模都无作用的最大的 c 。 代码实现：123456789int f(int n, int m, int k) &#123; if (m == 1) return k; int i = n - k + 1, s = (m - 1) % i; while (i &lt; n) &#123; int c = min(n - i, (i - s + m - 2) / (m - 1)); s = (s + m * c) % (i += c); &#125; return s + 1;&#125; 时间复杂度$O(\frac{mk}{n})$易知第 $k$ 出圈人为第 $k\times m$ 报数人，以此为基础进行推导。 首先明确几个概念： 位置编号：从 $1$ 开始编号到 $n$，表示在圈内的初始编号为$k$ 。 报数编号：从 $1$ 开始编号到 $n\times m$，表示第 $k$ 次报数。 报数：从 $1$ 开始编号到 $m$，表示某人所报的某个数。 首先取一个报数编号$p$ ，对应位置编号 $id$。可以用该式来表示： $p = a \times m + b(0\le a &lt;n,1\le b\le m)$。实际含义是：在第 $a$ 轮报数结束后，报数为 $b$。 那么容易推出以下信息： 此时圈内所剩人员数量为 $n-a$ 若此人报数 $b=m$，则此人出局。否则圈内剩余的人将会恰好各报一次数，然后此人会再一次报数。 假设此人未出局，那么 $b&lt;m$。 设此人下一次报数编号为 $q$ ，易知 $q = p + n - a = a \times (m - 1) + b + n$。 那么可以推导: $a = \dfrac{q - n - b}{m-1} = \lfloor \dfrac{q - n - 1}{m - 1} \rfloor$。 所以有：$p = q - n + a = q - n - \lfloor \dfrac{q - n - 1}{m - 1} \rfloor = \lfloor \dfrac{(q - n - 1) \times m}{m - 1} \rfloor + 1$ 这样就完成了后继公式到前驱公式的变化，如此不断迭代，直到得到他是第 $k$ 报数人为止。 有公式如下： f(n, m, k) = g(n, m, k \times m)g(n, m, x) = \begin{cases} x & , x \leq n \\ g(n, m, \lfloor \dfrac{(x - 1 - n) \times m}{m - 1} \rfloor + 1) &, x > n \end{cases}代码实现如下：1234int g(int n, int m, int x) &#123; return x &lt;= n ? x : g(n, m, (x - 1 - n) * m / (m - 1) + 1);&#125;int f(int n, int m, int k) &#123; return g(n, m, k * m); &#125; 注意到该函数可以非递归实现，给出优化后的代码:12345int f(int n, int m, int k) &#123; int s = k * m - 1; while (s &gt;= n) s = (s - n) * m / (m - 1); return s + 1;&#125; 例题：2018-2019 ACM-ICPC, Asia Shenyang Regional Contest K - Let the Flames Begin 感谢牛逼网友！ 更详细的介绍可以看具体数学。]]></content>
+      <categories>
+        <category>Math</category>
+      </categories>
+      <tags>
+        <tag>Template</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Codeforces Round &#35; 703 (Div. 2)题解]]></title>
     <url>%2F2021%2F02%2F19%2FCF-703div2%2F</url>
     <content type="text"><![CDATA[Roast:看到公告里说 I tried my best to create some good problems and clear statements, so I hope you&#39;ll enjoy the round:) 和 story 然后在做题时候感觉自己的C假了。感慨weak data。然而还好没有$FST$。 很可惜的就是F题用了time这个变量 $\textsf{CE}$ 了，不然绝杀了QwQ。。 我太菜了。 A - Shifting StacksDescription给定 $n$ 堆石头堆，第 $i$ 堆上面有 $h_i$ 块石头。现在可以进行多次操作，每次可以将第 $i$ 堆上面拿走一块石头放到第 $i+1$ 堆上面（别问能不能拿走最后一堆上面的），可以重复在某一堆上面拿，直到拿空。问能否在多次操作之后使得 $h_i$ 呈严格单调递增。$1\le n\le100,0\le h_i\le10^9$ Solution观察发现：最小的且满足要求的数列，是 $0, 1, 2, \cdots, n-1 $。前缀和维护一下。 Code123456789101112131415161718192021222324int n , a[maxn];void up()&#123; cin &gt;&gt; n; // int sum = 0; for(int i = 1; i &lt;= n; i++)&#123; cin &gt;&gt; a[i]; // sum += a[i]; &#125; vi sum(n+10); for(int i = 1; i &lt;= n; i++)&#123; sum[i] = sum[i-1] + a[i]; &#125; int tt = 0; for(int i = 1; i &lt;= n; i++)&#123; if(sum[i] &gt;= tt)&#123; tt = tt+i; continue; &#125;else&#123; cout &lt;&lt; "NO" &lt;&lt; endl; return ; &#125; &#125; cout &lt;&lt; "YES\n";&#125; B - Eastern ExhibitionDescription给定 $n$ 个房子的坐标，第 $i$ 个房子的坐标为 $(x_i,y_i)$ 。（所有横纵坐标的值均为整数） 现在想要建一个剧院，该剧院到第 $i$ 个房子的曼哈顿距离为 $dist(x)$ ，请求出有多少个坐标，使得剧院建在这个坐标上面时，使得 $\sum_{i=1}^{n}dist(i)$ 最小？ $1\le n\le 1000,0\le x_i,y_i\le10^9$ Solution每个维度不相关，中位数问题，甚至可以多维度。 Code12345678910111213141516int x[maxn], y[maxn];void up()&#123; int n; cin &gt;&gt; n; for(int i = 1; i &lt;= n;i++)&#123; cin &gt;&gt; x[i] &gt;&gt; y[i]; &#125; sort(x+1, x+1+n), sort(y+1,y+1+n); int ans = 0; if(n&amp;1)ans=1; else&#123; ans=ans+abs(x[n/2+1]-x[n/2]+1)*abs(y[n/2+1]+1-y[n/2]); &#125; cout &lt;&lt; ans &lt;&lt; endl;&#125; C2 - Guessing the Greatest (hard version)Description交互题。 已知一个长度为 $n$ 的数列 $\{a_n\}$ ，我们在一开始只知道数列的长度。 我们每次可以向系统询问一段区间 $[l,r]$ 内第二大元素的下标，现在我们需要经过多次询问，找出该数列中最大元素的下标。 询问次数不得超过 $20$ 次。 $2^{20}\ge 10^5$ Solution观察到与值域没啥关系。 就考虑最大值区间在左边还是在右边。 trick ： 第一次先询问一次中间，看最大值再左边还是右边。 接着 二分区间。 $2^{20} &gt; 10^5$ 可以通过。 Code12345678910111213141516171819202122232425262728293031323334353637int32_t main()&#123; cin &gt;&gt; n; int l = 1, r = n; auto query = [&amp;](int l , int r)&#123; cout &lt;&lt; "? " &lt;&lt; l &lt;&lt; " " &lt;&lt; r &lt;&lt; endl; int x; cin &gt;&gt; x; return x; &#125;; int fii = query(1, n); #define mid ((l+r)&gt;&gt;1) if(fii != 1 and query(1,fii) == fii)&#123; l = 1, r = fii - 1; int ans = 0; while(l &lt;= r)&#123; if(query(mid, fii) == fii) &#123; ans = mid, l = mid+1; &#125;else &#123; r = mid - 1; &#125; &#125; cout &lt;&lt; "! " &lt;&lt; ans &lt;&lt; endl; &#125;else &#123; l = fii + 1, r = n; int ans = 0; while(l &lt;= r)&#123; if(query(fii, mid) == fii) &#123; ans = mid , r = mid - 1; &#125;else &#123; l = mid + 1; &#125; &#125; cout &lt;&lt; "! " &lt;&lt; ans &lt;&lt; endl; &#125; return 0;&#125; D - Max MedianDescription给定一个长度为 $n$ 的数列 $\{a_n\}$ ，尝试找出一组长度不短于 $k$ 的连续子数列，使得其中位数最大。 中位数的定义（和标准可能有所出入）：长度为 N 的数列，其升序排列后的第 $\lfloor\frac{N+1}{2}\rfloor$ 个元素，为该数列的中位数。 $1\le k\le n\le 2\times10^5,1\le a_i\le n$ Solution官方做法很好： 如果 $\{a_n\}$ 中只有 $0$ 和 $1$ ，咋选？显然，应该选择一个长度不小于 $k$ 的区间段，使得其中 $0$ 的数量少于 $1$ ，这样才能使得中位数是 $1$ 而非 $0$ 。我们也可以将 0 改为 −1 ，问题就变成了如何使区间和为正数了。直接求区间和的最大值，那么我们直接枚举 $r$ ，然后找 $suml$ 最小值，然后相减一下，看看能不能使得区间值大于 0 的 。朴素复杂度 $O(n^2)$ ，数据结构优化 $O(n\ log_n)$ ，线性递推复杂度 $O(n)$。 然而，现在这数列里面的数也不只 0 和 1 ？我们可以抽象一下，0 和 1 是典型的布尔值，那么对于数列里面的每个数，我们可以对其进行一个布尔表达式的运算，使得结果为 0 或者 1 即可（也就是将数分成两类）。题目要求中位数最大，那我们的表达式应该也和大小有关系。不妨设定一个数 $x$ ，如果 $ai\ge x$ 就将其标记为 1，反之标记为 0 。显然 $min_{1\le i\le n}a_i\le x\le max_{1\le i\le n}a_i$ 对于 $x$ 构造出来的新数列，如果我们可以找出一个中位数为 1 的子数列，说明这个子数列在原数列中的对应数列，他的中位数是不小于 $x$ 的。对于这个 $x$，我们可以二分: 对中位数 $x$ 在值域上进行二分，每次线性判定，总复杂度 $O(nlogn)$ Code12345678910111213141516171819202122232425int n , k , a[maxn], sum[maxn];int32_t main()&#123; close; cin &gt;&gt; n &gt;&gt; k; for(int i = 1; i &lt;= n; i++) cin &gt;&gt; a[i]; auto chk = [&amp;](int x)&#123; for(int i = 1; i &lt;= n; i++)&#123; sum[i] = sum[i-1] + (a[i] &gt;= x ? 1 : -1); &#125; int mn = INF, mx = -INF; for(int i = k; i &lt;= n; i++)&#123; umin(mn, sum[i-k]), umax(mx, sum[i] - mn); &#125; return mx &gt; 0; &#125;; int l = 0, r = INF; while(l &lt; r)&#123; int mid = (l+r+1) &gt;&gt; 1; if(chk(mid)) l = mid; else r = mid-1; &#125; cout &lt;&lt; l &lt;&lt; endl; return 0;&#125; E - Paired PaymentDescriptionSolutionCode12 F - Pairs of PathsDescriptionSolution有交的点对，按lca排序，先处理lca不同的（lca相同的直接C(size,2)就行了），不同的如果有交一定是lca深度大的再lca深度小的链上 时间复杂度$O(nlog^2)$ Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181182183184185186187188189190191192193194195196197198199200201202203204205206207208209210211212213214215216217218219220221222223224225226227228229230231232233int n, m;struct Node &#123; int v, w; Node(int v_, int w_) &#123; v = v_, w = w_; &#125;&#125;;vector&lt;Node&gt; g[maxn]; int father[maxn], sz[maxn];int dis[maxn];int dep[maxn];vi anss;int fa[maxn], dfn[maxn], pos[maxn], decr, timee, top[maxn], son[maxn];void dfs(int u, int fa, int deep) &#123; father[u] = fa; dep[u] = deep; sz[u] = 1; for (int i = 0; i &lt; g[u].size(); ++i) &#123; int v = g[u][i].v; if (v == fa) continue; // dis[v] = dis[u] + g[u][i].w; dfs(v, u, deep + 1); sz[u] += sz[v]; if (sz[v] &gt; sz[son[u]]) &#123; son[u] = v; &#125; &#125;&#125; int p[maxn][30];void Init_LCA() &#123; for (int j = 0; (1 &lt;&lt; j) &lt;= n; ++j) for (int i = 1; i &lt;= n; ++i) p[i][j] = -1; for (int i = 1; i &lt;= n; ++i) p[i][0] = father[i]; for (int j = 1; (1 &lt;&lt; j) &lt;= n; ++j) for (int i = 1; i &lt;= n; ++i) if (p[i][j - 1] != -1) p[i][j] = p[p[i][j - 1]][j - 1];&#125;map&lt;pii, int&gt; mp;int LCA(int x, int y) &#123; if (dep[x] &lt; dep[y]) swap(x, y); int i, lg; for (lg = 0; (1 &lt;&lt; lg) &lt;= dep[x]; ++lg) ; --lg; /// 使x往上走直到和y在同一水平线上； for (i = lg; i &gt;= 0; --i) if (dep[x] - (1 &lt;&lt; i) &gt;= dep[y]) x = p[x][i]; if (x == y) return x; /// 此时x，y在同一水平线上，使x，y同时以相同的速度(2^j)往上走； for (i = lg; i &gt;= 0; --i) if (p[x][i] != -1 &amp;&amp; p[x][i] != p[y][i]) x = p[x][i], y = p[y][i]; return father[x];&#125; namespace Seg &#123;int sum[maxn * 4];#define ls (o &lt;&lt; 1)#define rs (o &lt;&lt; 1 | 1)#define mid ((l + r) &gt;&gt; 1)void build(int o, int l, int r) &#123; sum[o] = 0; if (l == r) return; build(ls, l, mid), build(rs, mid + 1, r);&#125; int query(int o, int l, int r, int L, int R) &#123; if (L &lt;= l &amp;&amp; R &gt;= r) return sum[o]; int ret = 0; if (L &lt;= mid) ret += query(ls, l, mid, L, R); if (R &gt; mid) ret += query(rs, mid + 1, r, L, R); return ret;&#125;void modify(LL o, LL l, LL r, int x) &#123; sum[o]++; if (l == r) return; if (x &lt;= mid) modify(ls, l, mid, x); else modify(rs, mid + 1, r, x);&#125;&#125; // namespace Segusing namespace Seg; vector&lt;pii&gt; SS[maxn];vi Q[maxn]; void dfs2(LL u, LL f, LL tp) &#123; fa[u] = f; dfn[u] = ++timee; pos[timee] = u; top[u] = tp; if (son[u]) &#123; dfs2(son[u], u, tp); &#125; for (LL i = 0; i &lt; g[u].size(); ++i) &#123; LL v = g[u][i].v; if (v == f || v == son[u]) continue; dfs2(v, u, v); &#125;&#125;void dfs3(LL u, LL f) &#123; static int id[maxn], cnt[maxn]; LL tmp(0); for (LL i = 0; i &lt; g[u].size(); ++i) &#123; LL v = g[u][i].v; if (v == f) continue; dfs3(v, u); id[v] = ++tmp; &#125; for (LL i = 0; i &lt; SS[u].size(); ++i) &#123; int x(SS[u][i].first), y(SS[u][i].second); if (x != u) &#123; decr += cnt[x]; cnt[x]++; &#125; if (y != u) &#123; decr += cnt[y]; cnt[y]++; &#125; if (x != u &amp;&amp; y != u) &#123; if (id[x] &gt; id[y]) swap(x, y); decr -= mp[pii(x, y)]; mp[pii(x, y)]++; &#125; &#125;&#125; LL upp(int x, LL len) &#123; for (LL i = 20; i &gt;= 0; --i) if ((len &gt;&gt; i) &amp; 1) x = p[x][i]; return x;&#125;int qry(int x, int y) &#123; LL ret(0); while (top[x] != top[y]) &#123; if (dep[top[x]] &lt; dep[top[y]]) swap(x, y); ret += Seg::query(1, 1, n, dfn[top[x]], dfn[x]); x = fa[top[x]]; &#125; if (dep[x] &gt; dep[y]) swap(x, y); ret += Seg::query(1, 1, n, dfn[x], dfn[y]); return ret;&#125;void change(int x) &#123; Seg::modify(1, 1, n, dfn[x]); &#125; tuple&lt;int , int , int &gt; qy[300010];int32_t main() &#123; close; cin &gt;&gt; n; for (int i = 1; i &lt; n; ++i) &#123; int x, y, w; cin &gt;&gt; x &gt;&gt; y; w = 1; g[x].push_back(Node(y, w)); g[y].push_back(Node(x, w)); &#125; dis[1] = 1; dfs(1, -1, 1); Init_LCA(); dfs2(1,0,1); cin &gt;&gt; m; int kp = 1; for(int i = 1; i &lt;= m;i++) &#123; int x, y; cin &gt;&gt; x &gt;&gt; y; LL z(LCA(x, y)); Q[dep[z]].eb(i); // std::cout &lt;&lt; "z === " &lt;&lt; z &lt;&lt; " " &lt;&lt; dep[z] &lt;&lt; "\n"; qy[i] = make_tuple(x,y,z); kp++; &#125; cerr &lt;&lt; "fuck" &lt;&lt; endl; Seg::build(1, 1, n); cerr &lt;&lt; "yy" &lt;&lt; endl; ll Ans = 0; for (LL i = n; i &gt;= 1; --i) &#123; int sz = Q[i].size(); if (!sz) continue; static int cnt[maxn]; // cout &lt;&lt; "sjad" &lt;&lt; endl; for (LL j = 0; j &lt; Q[i].size(); ++j) &#123; LL now = (Q[i][j]); auto [x, y , z] = qy[now]; Ans += cnt[z]; cnt[z]++; Ans += qry(x, z) + qry(y, z); &#125; for (LL j = 0; j &lt; Q[i].size(); ++j) &#123; LL now(Q[i][j]); auto [x, y , z] = qy[now]; change(z); &#125; &#125; // cerr &lt;&lt; "now " &lt;&lt; endl; Seg::build(1, 1, n); decr = 0; // cout &lt;&lt; "fuckk" &lt;&lt; endl; for (LL i = n; i &gt;= 1; --i) &#123; for (LL j = 0; j &lt; Q[i].size(); ++j) &#123; int now = Q[i][j]; auto [x, y , z] = qy[now]; int ttt = (qry(x, z) + qry(y, z)); decr += ttt; &#125; for (LL j = 0; j &lt; Q[i].size(); ++j) &#123; LL now = Q[i][j]; auto [x, y , z] = qy[now]; if (x != z) &#123; LL len = dep[x] - dep[z]; len --; x = upp(x, len); change(x); anss.eb(x); &#125; if (y != z) &#123; int len = dep[y] - dep[z]; len--; y = upp(y, len); change(y); &#125; SS[z].eb(x, y); &#125; &#125; dfs3(1, 0); int fk = Ans - decr; cout &lt;&lt;fk &lt;&lt; endl; // while (m--) &#123; // int x, y; // scanf("%d%d", &amp;x, &amp;y); // printf("%d\n", dis[x] + dis[y] - 2 * dis[LCA(x, y)]); // &#125;&#125;]]></content>
@@ -235,21 +246,10 @@
         <category>Team Round（2020）</category>
       </categories>
       <tags>
+        <tag>2019 Multi-University Training Contest</tag>
         <tag>GYM Training</tag>
         <tag>Team Round（2020）</tag>
-        <tag>2019 Multi-University Training Contest</tag>
         <tag>hdu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[2019牛客暑期多校训练营]]></title>
-    <url>%2F2020%2F02%2F19%2F2019%E7%89%9B%E5%AE%A2%E6%9A%91%E6%9C%9F%E5%A4%9A%E6%A0%A1%E8%AE%AD%E7%BB%83%E8%90%A5%2F</url>
-    <content type="text"><![CDATA[就把八场的全部写在一起吧。 暑假时候是没有打的，都是随缘补题 鉴于水平有限，如果有错误欢迎联系$miniLCT$的邮箱 iamnotmyself@vip.qq.com 万分感谢。 2019牛客暑期多校训练营（第一场）Tutorial 出题人:郭晓絮 ftiasch 2019牛客暑期多校训练营（第二场）Tutorial 出题人:许晋嘉 eddy1021 2019牛客暑期多校训练营（第三场）Tutorial 出题人:Reconquista 浙江大学 2019牛客暑期多校训练营（第四场）Tutorial 出题人：zzq TLE &amp; kzc孔朝哲 2019牛客暑期多校训练营（第五场）Tutorial 出题人:dreamoon 2019牛客暑期多校训练营（第六场）Tutorial 出题人: 赵轩昂 sd0061 2019牛客暑期多校训练营（第七场）Tutorial 出题人:kuangbin 判断一个acmer可以看他是不是带kuangbin的板子!minilct虚假acmer 2019牛客暑期多校训练营（第八场）Tutorial 出题人:高铭鸿、李泽仁 2019牛客暑期多校训练营（第九场）Tutorial 出题人:wwwwodddd + zscoder 2019牛客暑期多校训练营（第十场）Tutorial 出题人:Coffee Chicken(gisp_zjz，AceSrc，zyb)]]></content>
-      <categories>
-        <category>Nowcoder</category>
-      </categories>
-      <tags>
-        <tag>2019 Multi-University Training Contest</tag>
       </tags>
   </entry>
   <entry>
@@ -258,6 +258,17 @@
     <content type="text"><![CDATA[陈力就列，然心向往之。 2019 Multi-University Training Contest 12019 Multi-University Training Contest 2tutorial出题人: $FZU$ 2019 Multi-University Training Contest 32019 Multi-University Training Contest 42019 Multi-University Training Contest 52019 Multi-University Training Contest 62019 Multi-University Training Contest 72019 Multi-University Training Contest 82019 Multi-University Training Contest 92019 Multi-University Training Contest 10]]></content>
       <categories>
         <category>hdu</category>
+      </categories>
+      <tags>
+        <tag>2019 Multi-University Training Contest</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[2019牛客暑期多校训练营]]></title>
+    <url>%2F2020%2F02%2F19%2F2019%E7%89%9B%E5%AE%A2%E6%9A%91%E6%9C%9F%E5%A4%9A%E6%A0%A1%E8%AE%AD%E7%BB%83%E8%90%A5%2F</url>
+    <content type="text"><![CDATA[就把八场的全部写在一起吧。 暑假时候是没有打的，都是随缘补题 鉴于水平有限，如果有错误欢迎联系$miniLCT$的邮箱 iamnotmyself@vip.qq.com 万分感谢。 2019牛客暑期多校训练营（第一场）Tutorial 出题人:郭晓絮 ftiasch 2019牛客暑期多校训练营（第二场）Tutorial 出题人:许晋嘉 eddy1021 2019牛客暑期多校训练营（第三场）Tutorial 出题人:Reconquista 浙江大学 2019牛客暑期多校训练营（第四场）Tutorial 出题人：zzq TLE &amp; kzc孔朝哲 2019牛客暑期多校训练营（第五场）Tutorial 出题人:dreamoon 2019牛客暑期多校训练营（第六场）Tutorial 出题人: 赵轩昂 sd0061 2019牛客暑期多校训练营（第七场）Tutorial 出题人:kuangbin 判断一个acmer可以看他是不是带kuangbin的板子!minilct虚假acmer 2019牛客暑期多校训练营（第八场）Tutorial 出题人:高铭鸿、李泽仁 2019牛客暑期多校训练营（第九场）Tutorial 出题人:wwwwodddd + zscoder 2019牛客暑期多校训练营（第十场）Tutorial 出题人:Coffee Chicken(gisp_zjz，AceSrc，zyb)]]></content>
+      <categories>
+        <category>Nowcoder</category>
       </categories>
       <tags>
         <tag>2019 Multi-University Training Contest</tag>
@@ -295,9 +306,9 @@
         <category>Team Round（2020）</category>
       </categories>
       <tags>
+        <tag>2019 Multi-University Training Contest</tag>
         <tag>GYM Training</tag>
         <tag>Team Round（2020）</tag>
-        <tag>2019 Multi-University Training Contest</tag>
         <tag>hdu</tag>
       </tags>
   </entry>
@@ -333,9 +344,9 @@
         <category>Team Round（2020）</category>
       </categories>
       <tags>
+        <tag>2019 Multi-University Training Contest</tag>
         <tag>GYM Training</tag>
         <tag>Team Round（2020）</tag>
-        <tag>2019 Multi-University Training Contest</tag>
         <tag>hdu</tag>
       </tags>
   </entry>
@@ -408,8 +419,8 @@
         <category>Team Round（2020）</category>
       </categories>
       <tags>
-        <tag>Team Round（2020）</tag>
         <tag>2019 Multi-University Training Contest</tag>
+        <tag>Team Round（2020）</tag>
       </tags>
   </entry>
   <entry>
@@ -470,8 +481,8 @@
         <category>Team Round（2019）</category>
       </categories>
       <tags>
-        <tag>GYM Training</tag>
         <tag>2019 Multi-University Training Contest</tag>
+        <tag>GYM Training</tag>
         <tag>Team Round（2019）</tag>
         <tag>hdu</tag>
       </tags>
@@ -484,8 +495,8 @@
         <category>Team Round（2019）</category>
       </categories>
       <tags>
-        <tag>GYM Training</tag>
         <tag>2019 Multi-University Training Contest</tag>
+        <tag>GYM Training</tag>
         <tag>Team Round（2019）</tag>
         <tag>hdu</tag>
       </tags>
@@ -649,8 +660,8 @@
         <category>学习笔记</category>
       </categories>
       <tags>
-        <tag>MST</tag>
         <tag>Template</tag>
+        <tag>MST</tag>
       </tags>
   </entry>
   <entry>
@@ -696,8 +707,8 @@
         <category>Math</category>
       </categories>
       <tags>
-        <tag>Math</tag>
         <tag>博弈</tag>
+        <tag>Math</tag>
       </tags>
   </entry>
   <entry>
