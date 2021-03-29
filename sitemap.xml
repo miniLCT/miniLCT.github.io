@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2021/03/29/GYM102091E/</loc>
+    
+    <lastmod>2021-03-29T08:16:36.999Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2021/02/03/DynamicProgrammingOptimization/</loc>
+    
+    <lastmod>2021-03-29T06:57:48.534Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2021/03/07/josephus/</loc>
     
     <lastmod>2021-03-07T13:26:14.067Z</lastmod>
@@ -33,13 +47,6 @@
     <loc>http://yoursite.com/2020/03/30/dp1/</loc>
     
     <lastmod>2021-02-18T04:35:13.522Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2021/02/03/DynamicProgrammingOptimization/</loc>
-    
-    <lastmod>2021-02-17T14:05:31.108Z</lastmod>
     
   </url>
   
