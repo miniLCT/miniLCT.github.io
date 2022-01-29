@@ -614,13 +614,6 @@
 
   
   <url>
-    <loc>http://yoursite.com/tags/roast/</loc>
-    <lastmod>2022-01-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/tags/2019-Multi-University-Training-Contest/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -628,7 +621,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/tags/Editorial/</loc>
+    <loc>http://yoursite.com/tags/roast/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -670,6 +663,13 @@
   </url>
   
   <url>
+    <loc>http://yoursite.com/tags/Editorial/</loc>
+    <lastmod>2022-01-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/tags/GYM-Training/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -705,6 +705,13 @@
   </url>
   
   <url>
+    <loc>http://yoursite.com/tags/%E5%8D%9A%E5%BC%88/</loc>
+    <lastmod>2022-01-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/tags/hdu/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -726,27 +733,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/tags/%E5%8D%9A%E5%BC%88/</loc>
-    <lastmod>2022-01-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/tags/Combinatorics/</loc>
-    <lastmod>2022-01-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/tags/Monthly/</loc>
-    <lastmod>2022-01-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/tags/Matrix-Tree/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -761,7 +747,21 @@
   </url>
   
   <url>
+    <loc>http://yoursite.com/tags/Combinatorics/</loc>
+    <lastmod>2022-01-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/tags/Online/</loc>
+    <lastmod>2022-01-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/tags/Monthly/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -810,14 +810,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/tags/School-Championship/</loc>
+    <loc>http://yoursite.com/tags/xxPCPC/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://yoursite.com/tags/xxPCPC/</loc>
+    <loc>http://yoursite.com/tags/School-Championship/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -866,6 +866,13 @@
   </url>
   
   <url>
+    <loc>http://yoursite.com/tags/hash/</loc>
+    <lastmod>2022-01-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/tags/Fibonacci/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -874,13 +881,6 @@
   
   <url>
     <loc>http://yoursite.com/tags/Template/</loc>
-    <lastmod>2022-01-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/tags/hash/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -901,13 +901,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/tags/%E7%B1%BB%E6%AC%A7/</loc>
-    <lastmod>2022-01-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/tags/IDE/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -916,6 +909,13 @@
   
   <url>
     <loc>http://yoursite.com/tags/MST/</loc>
+    <lastmod>2022-01-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/tags/%E7%B1%BB%E6%AC%A7/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -931,7 +931,7 @@
 
   
   <url>
-    <loc>http://yoursite.com/categories/Roast/</loc>
+    <loc>http://yoursite.com/categories/hdu/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -945,14 +945,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/categories/hdu/</loc>
-    <lastmod>2022-01-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/categories/Editorial/</loc>
+    <loc>http://yoursite.com/categories/Roast/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -967,6 +960,13 @@
   
   <url>
     <loc>http://yoursite.com/categories/CodeForces/</loc>
+    <lastmod>2022-01-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/categories/Editorial/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -994,14 +994,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/categories/Math/</loc>
+    <loc>http://yoursite.com/categories/Miscellaneous/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://yoursite.com/categories/Miscellaneous/</loc>
+    <loc>http://yoursite.com/categories/Math/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1022,14 +1022,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/categories/STL/</loc>
+    <loc>http://yoursite.com/categories/Team-Round%EF%BC%882019%EF%BC%89/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://yoursite.com/categories/Team-Round%EF%BC%882019%EF%BC%89/</loc>
+    <loc>http://yoursite.com/categories/STL/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
