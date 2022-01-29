@@ -705,13 +705,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/tags/%E5%8D%9A%E5%BC%88/</loc>
-    <lastmod>2022-01-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/tags/hdu/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -733,7 +726,21 @@
   </url>
   
   <url>
+    <loc>http://yoursite.com/tags/%E5%8D%9A%E5%BC%88/</loc>
+    <lastmod>2022-01-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/tags/Combinatorics/</loc>
+    <lastmod>2022-01-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/tags/Monthly/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -754,7 +761,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/tags/Monthly/</loc>
+    <loc>http://yoursite.com/tags/Online/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -782,13 +789,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/tags/Online/</loc>
-    <lastmod>2022-01-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/tags/Team-Round%EF%BC%882019%EF%BC%89/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -803,14 +803,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/tags/School-Championship/</loc>
+    <loc>http://yoursite.com/tags/Official-ICPC-Contest/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://yoursite.com/tags/Official-ICPC-Contest/</loc>
+    <loc>http://yoursite.com/tags/School-Championship/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -938,14 +938,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/categories/hdu/</loc>
+    <loc>http://yoursite.com/categories/Nowcoder/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://yoursite.com/categories/Nowcoder/</loc>
+    <loc>http://yoursite.com/categories/hdu/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -994,14 +994,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/categories/Miscellaneous/</loc>
+    <loc>http://yoursite.com/categories/Math/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://yoursite.com/categories/Math/</loc>
+    <loc>http://yoursite.com/categories/Miscellaneous/</loc>
     <lastmod>2022-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
