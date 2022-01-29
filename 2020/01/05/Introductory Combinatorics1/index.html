@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<script language="javascript" type="text/javascript" src="https://cdn.staticfile.org/jquery/1.7.2/jquery.min.js"></script>
+
+
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon200.png?v=7.2.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png?v=7.2.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png?v=7.2.0">
+  <link rel="mask-icon" href="/images/favicon200.png?v=7.2.0" color="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|SimHei, Verdana, sans-serif:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false},
+    search: {
+      root: '/',
+      path: 'search.xml'
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="本文记录了学习组合数学中一些问题和思考">
+<meta name="keywords" content="Math,Combinatorics">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Introductory Combinatorics">
+<meta property="og:url" content="http://yoursite.com/2020/01/05/Introductory Combinatorics1/index.html">
+<meta property="og:site_name" content="Mini   LCT">
+<meta property="og:description" content="本文记录了学习组合数学中一些问题和思考">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2020/01/25/CH6Y3Eqo7QvhtTe.png">
+<meta property="og:image" content="https://i.loli.net/2020/01/25/OQuR5mIw7kSVZa9.png">
+<meta property="og:image" content="https://i.loli.net/2020/01/25/PAd31fgzteohOwF.png">
+<meta property="og:image" content="https://i.loli.net/2020/01/25/ILo6Y53bJg917uR.png">
+<meta property="og:image" content="https://i.loli.net/2020/01/25/eqD7v4PmuSZwI8y.png">
+<meta property="og:image" content="https://i.loli.net/2020/01/25/G7B9ZwuN5tQmdaD.png">
+<meta property="og:image" content="https://i.loli.net/2020/01/25/eypmIJaTiX4htDf.png">
+<meta property="og:updated_time" content="2020-03-19T02:31:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Introductory Combinatorics">
+<meta name="twitter:description" content="本文记录了学习组合数学中一些问题和思考">
+<meta name="twitter:image" content="https://i.loli.net/2020/01/25/CH6Y3Eqo7QvhtTe.png">
+  <link rel="alternate" href="/atom.xml" title="Mini   LCT" type="application/atom+xml">
+  <link rel="canonical" href="http://yoursite.com/2020/01/05/Introductory Combinatorics1/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Introductory Combinatorics | Mini   LCT</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/miniLCT" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#FD6C6C; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mini   LCT</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">及时当勉励</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+      
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签<span class="badge">45</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+      
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类<span class="badge">19</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档<span class="badge">61</span></a>
+
+  </li>
+        <li class="menu-item menu-item-search">
+          <a href="javascript:;" class="popup-trigger">
+          
+            <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
+        </li>
+      
+    </ul>
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+    </div>
+</nav>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/05/Introductory Combinatorics1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="miniLCT">
+      <meta itemprop="description" content="博觀而約取，厚積而薄發">
+      <meta itemprop="image" content="/images/-4fdf7b2d53898e7a.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mini   LCT">
+    </span>
+      <header class="post-header">
+
+        
+          <h2 class="post-title" itemprop="name headline">Introductory Combinatorics
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+         
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-01-05 15:16:17" itemprop="dateCreated datePublished" datetime="2020-01-05T15:16:17+08:00">2020-01-05</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-03-19 10:31:48" itemprop="dateModified" datetime="2020-03-19T10:31:48+08:00">2020-03-19</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span id="/2020/01/05/Introductory Combinatorics1/" class="post-meta-item leancloud_visitors" data-flag-title="Introductory Combinatorics">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+            
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="fa fa-comment-o"></i>
+    </span>
+    
+      <span class="post-meta-item-text">评论数：</span>
+    
+  
+    <a href="/2020/01/05/Introductory Combinatorics1/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/01/05/Introductory Combinatorics1/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+          <br/>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">4.5k</span>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">15 分钟</span>
+            </span>
+          
+            <div class="post-description"><center>本文记录了学习组合数学中一些问题和思考</center></div>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><kbd>一日总有七八千的杂念 </kbd></p>
+<p><kbd>每一秒都很可耻 </kbd></p>
+<p><kbd>下一秒亦然</kbd></p>
+<h3 id="第一章：什么是组合数学"><a href="#第一章：什么是组合数学" class="headerlink" title="第一章：什么是组合数学"></a>第一章：什么是组合数学</h3><h4 id="碎碎念："><a href="#碎碎念：" class="headerlink" title="碎碎念："></a>碎碎念：</h4><p>组合数学关心的问题就是把某个集合中的对象排列成某种模式，使其满足一些指定的规则。<br>以下是两种反复出现的通用问题:</p>
+<ul>
+<li>排列的存在性</li>
+<li>排列的分类或枚举<br>以下是另外两种常常出现的组合问题:</li>
+<li>研究已知的排列</li>
+<li>构造最优排列<h4 id="棋盘的完美覆盖"><a href="#棋盘的完美覆盖" class="headerlink" title="棋盘的完美覆盖"></a>棋盘的完美覆盖</h4></li>
+</ul>
+<ol>
+<li>对于8 $\times$ 8的标准棋盘，通常把方格交替着染上黑色和白色。<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;31<kbd>B</kbd><kbd>W</kbd>$ \neq$32 <kbd> B</kbd>+30<kbd>W</kbd><br><a href="https://codeforces.com/contest/1269/problem/D" target="_blank" rel="noopener">color diagram into two colors as a chessboard</a></li>
+<li>m $\times$ n 的标准棋盘完美覆盖b格牌(连续b个1$\times1的方格并排连接而成$)的条件是：<br><strong>当且仅当b是m或者n的一个因子。</strong></li>
+<li>轮廓线dp：<br>用2格牌覆盖n$\times$m的棋盘，有多少种方案。<br><a href="https://vjudge.net/problem/UVA-11270" target="_blank" rel="noopener">UVA11270经典轮廓线dp,可配合刘汝佳蓝书</a> </li>
+<li>断层线：<br>4$\times$4的棋盘的多米诺骨牌的完美覆盖不可能不产生断层线。</li>
+</ol>
+<h4 id="幻方"><a href="#幻方" class="headerlink" title="幻方"></a>幻方</h4><p>1.定义:<br>一个n阶幻方就是由整数$1, 2, 3, ……,n^2$按照某种方式构成的$n\times n$的矩阵:他的每一行每一列以及对角线上的数字总和总是相等。都等于某个整数S。S称为这个幻方的<kbd>幻和</kbd>。</p>
+<script type="math/tex; mode=display">
+  \begin{bmatrix}
+  8 & 1 & 6 \\
+  3 & 5 & 7 \\
+  4 & 9 & 2 \\
+  \end{bmatrix}</script><script type="math/tex; mode=display">
+  \begin{bmatrix}
+  16 & 3 & 2  & 13 \\
+  5 & 10 & 11 & 8 \\
+  9 & 6 & 7 & 14 \\
+  4 & 15 & 14 & 1\\
+  \end{bmatrix}</script><p>以上是幻和为15的三阶幻方和幻和为34的四阶幻方。<br>2.幻和:<br>由定义，我们可以得到关系式$nS=\frac{n^2(n^2+1)}{2}\rightarrow S =\frac{n(n^2+1)}{2}$<br>3.构造幻方的一般方法：<br>①不存在2阶幻方。<br>②对于其他n阶的幻方，我们总能构造出n阶幻方。<a href="https://www.ixueshu.com/document/a5954ad38f6e7f0f.html" target="_blank" rel="noopener">构造方法</a><br>4.对于幻方体（三维）：<br>$S = \frac{n^4+n}{2}$<br>不存在2阶幻方体，3阶幻方体。</p>
+<h4 id="四色问题"><a href="#四色问题" class="headerlink" title="四色问题"></a>四色问题</h4><blockquote>
+<p>四色问题的内容是“任何一张地图只用四种颜色就能使具有共同边界的国家着上不同的颜色”。</p>
+<p>用数学语言表示即“将平面任意地细分为不相重叠的区域，每一个区域总可以用1234这四个数字之一来标记而不会使相邻的两个区域得到相同的数字。”这里所指的相邻区域是指有一整段边界是公共的。如果两个区域只相遇于一点或有限多点就不叫相邻的。因为用相同的颜色给它们着色不会引起混淆。</p>
+<h4 id="36军官问题"><a href="#36军官问题" class="headerlink" title="36军官问题"></a>36军官问题</h4><p>欧拉曾提出一个问题：即从不同的6个军团各选6种不同军阶的6名军官共36人，排成一个6行6列的方队，使得各行各列的6名军官恰好来自不同的军团而且军阶各不相同，应如何排这个方队？如果用(1，1)表示来自第一个军团具有第一种军阶的军官，用(1，2)表示来自第一个军团具有第二种军阶的军官，用(6，6)表示来自第六个军团具有第六种军阶的军官，则欧拉的问题就是如何将这36个数对排成方阵，使得每行每列的数无论从第一个数看还是从第二个数看，都恰好是由1、2、3、4、5、6组成。历史上称这个问题为三十六军官问题。</p>
+</blockquote>
+<p>以下以九名军官分别来自3个不同的军衔和三个不同的军团为例。<br>$<br>  \begin{bmatrix}<br>  1 &amp; 2 &amp; 3 \<br>  3 &amp; 1 &amp; 2 \<br>  2 &amp; 3 &amp; 1 \<br>  \end{bmatrix}<br>$  $<br>  \begin{bmatrix}<br>  1 &amp; 2 &amp; 3 \<br>  2 &amp; 3 &amp; 1 \<br>  3 &amp; 1 &amp; 2 \<br>  \end{bmatrix}<br>$ $\rightarrow$$<br>  \begin{bmatrix}<br>  (1,1) &amp; (2,2) &amp; (3,3) \<br>  (3,2) &amp; (1,3) &amp; (2,1) \<br>  (2,3) &amp; (3,1) &amp; (1,2) \<br>  \end{bmatrix}<br>$<br> <strong>军衔矩阵</strong> &emsp;&emsp;&emsp;<strong>军团矩阵</strong>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>并置矩阵</strong></p>
+<p>1.不存在二阶正交拉丁方。不存在六阶正交拉丁方。<br>2.欧拉猜想4k+2不存在（k=2，3，…，n）正交拉丁方是错误的。对于$n\gt6 $ 存在正交拉丁方。<br>3.数独是特殊的九阶拉丁方。</p>
+<h4 id="最短路径问题"><a href="#最短路径问题" class="headerlink" title="最短路径问题"></a>最短路径问题</h4><p>From ZJU JingBang Chen 2020Wannafly Winter Camp Div1 Graph Theory ppt </p>
+<p>由于参加的是Div2所以未能听到他的讲课内容，先挂上图，以后有时间要研究的。<br><img src="https://i.loli.net/2020/01/25/CH6Y3Eqo7QvhtTe.png" alt="Author"></p>
+<p><img src="https://i.loli.net/2020/01/25/OQuR5mIw7kSVZa9.png" alt="Basics"></p>
+<p><img src="https://i.loli.net/2020/01/25/PAd31fgzteohOwF.png" alt="Difference Constraints System"></p>
+<p><img src="https://i.loli.net/2020/01/25/ILo6Y53bJg917uR.png" alt="Dijkstra"></p>
+<p><img src="https://i.loli.net/2020/01/25/eqD7v4PmuSZwI8y.png" alt="Shortest Path Graph/Tree"></p>
+<p><img src="https://i.loli.net/2020/01/25/G7B9ZwuN5tQmdaD.png" alt="K-Shortest Path"></p>
+<h4 id="相互重叠的圆"><a href="#相互重叠的圆" class="headerlink" title="相互重叠的圆"></a>相互重叠的圆</h4><p>考虑平面上以普通位置相互重叠的$n$个圆，他们相互重叠(这里指的是每一对圆之间交于两个不同的点，也就是不允许相交和相切的圆)这$n$个圆在平面内构成的数量是$h(n)$ ，以下求$h(n)$的值。</p>
+<blockquote>
+<p>解决这一类计数问题的一个方法就是尝试着确定当从$n-1$个圆$\gamma<em>1,\gamma_2,…,\gamma</em>{n-1}$变到n个圆$\gamma<em>1,\gamma_2,…,\gamma</em>{n}$时出现的区域变化。用更一般的语言表述如下：我们尝试着确定$h(n)$的一个递推关系，即用前面的值表示$h(n)$。</p>
+<p>我们假设$n \ge 2$而且在平面上已经画出普通位置下相互重叠的圆$\gamma<em>1,\gamma_2,…,\gamma</em>{n-1}$，它们构建了$h<em>{n-1}$个区域。然后加入第$n$个圆$\gamma_n$使得在普通位置下有n个相互重叠的圆。前$n-1$个圆中的每一个圆都与第n个圆相交出两个点，因为这些圆都处于普通位置上，所以我们得到$2(n-1)$个不同点$P_1，P_2,…，P</em>{2(n-1)}$。这$2(n-1)$个点把圆$\gamma<em>n$分割成$2(n-1)$条弧：$P_1和P_2$之间的弧，$P_2$和$P_3$之间的弧,…，$P</em>{2(n-1)-1}和P<em>{2(n-1)}$之间的弧，以及$P</em>{2(n-1)}与P<em>1$之间的弧。这2(n-1)条弧中的每一条弧都把由前面$n-1$个圆$\gamma_1,\gamma_2,…,\gamma</em>{n-1}$构成的区域分成两个区域，创建出额外$2(n-1)$个区域。因此，$h(n)$满足下面的关系：<br>$h(n) = h(n-1) + 2(n-1)\quad\quad   (n\ge2)$<br>利用递推关系和$\sum i$的求和公式可以得到 $h(n) = n^2-n+2 \quad (n\ge2)$</p>
+</blockquote>
+<h4 id="Nim游戏"><a href="#Nim游戏" class="headerlink" title="Nim游戏"></a>Nim游戏</h4><p>if &emsp;SG = 0 先手必败<br>else &emsp; 先手必胜<br>Attention：是公平组合游戏，有些游戏是不公平的。</p>
+<h3 id="第二章-排列与组合"><a href="#第二章-排列与组合" class="headerlink" title="第二章 排列与组合"></a>第二章 排列与组合</h3><h4 id="四个基本的计数定理"><a href="#四个基本的计数定理" class="headerlink" title="四个基本的计数定理"></a>四个基本的计数定理</h4><ol>
+<li>加法原理：<br>运用加法原理的技巧是把集合S划分成少量容易处理的部分。</li>
+<li>乘法原理：<br>乘法原理是加法原理的一个推论。<br>eg.正因素个数的确定：<br><img src="https://i.loli.net/2020/01/25/eypmIJaTiX4htDf.png" alt="正整数因子的个数计算"></li>
+<li><p>减法原理：</p>
+</li>
+<li><p>除法原理：</p>
+</li>
+</ol>
+<h4 id="集合的排列"><a href="#集合的排列" class="headerlink" title="集合的排列"></a>集合的排列</h4><h4 id="集合的组合（子集）"><a href="#集合的组合（子集）" class="headerlink" title="集合的组合（子集）"></a>集合的组合（子集）</h4><h4 id="多重集合的排列"><a href="#多重集合的排列" class="headerlink" title="多重集合的排列"></a>多重集合的排列</h4><h4 id="多重集合的组合"><a href="#多重集合的组合" class="headerlink" title="多重集合的组合"></a>多重集合的组合</h4><h4 id="有限概率"><a href="#有限概率" class="headerlink" title="有限概率"></a>有限概率</h4><h3 id="第三章-鸽巢原理"><a href="#第三章-鸽巢原理" class="headerlink" title="第三章 鸽巢原理"></a>第三章 鸽巢原理</h3><h4 id="鸽巢原理：简单形式"><a href="#鸽巢原理：简单形式" class="headerlink" title="鸽巢原理：简单形式"></a>鸽巢原理：简单形式</h4><h4 id="鸽巢原理：加强版"><a href="#鸽巢原理：加强版" class="headerlink" title="鸽巢原理：加强版"></a>鸽巢原理：加强版</h4><h4 id="Ramsey定理"><a href="#Ramsey定理" class="headerlink" title="Ramsey定理"></a>Ramsey定理</h4><ol>
+<li>Ramsey定理的最流行且容易理解的例子是:<br>在6个（甚至更多的）人中，或者有三个人，他们每两个人都相互认识，或者有三个人，他们每两个人都相互不认识。</li>
+<li>定理内容：<br>如果$m \ge 2 \quad\&amp;\&amp;\quad n \ge 2$是两个整数，则存在正整数p，使得<script type="math/tex; mode=display">K_p \rightarrow K_m,K_n</script>语言描述：Ramsey定理说的是给定 m 和 n，存在正整数p，使得当把$K_p$的边着成红色或者蓝色时，或者存在一个红色$K_m$，或者存在一个蓝色$K_n$。无论$K_p$如何染色，都保证红色$K_m$或者蓝色$K_n$的存在性。如果$K_p\rightarrow K_m,K_n$，那么对于任何满足$q\ge p$的整数q，$K_q\rightarrow K_m,K_n$都成立。用$r(m,n)$表示使得$K_p\rightarrow K_m,K_n$，成立的最小整数p。<br>证明略。</li>
+<li>Ramsey(拉姆塞)定理只给出了Ramsey数的存在性问题，并没有给出求解Ramsey数的有效方法。确定Ramsey数是一个NP难题。</li>
+<li>$r(m,n) = r(n,m)  \quad r(2,n) = n$</li>
+<li>以下是目前已知的二色经典的非平凡的Ramsey数$r(m,n)$<br>ps:表中两个取等$40\le r(3,10) \le 43$表示$K<em>{43} \rightarrow K_3,K</em>{10} $ 而 $K<em>{39} \nrightarrow K_3,K</em>{10} $<script type="math/tex; mode=display">
+\begin{array}{|l|l|l|l|l|l|l|l|l|l}
+\hline
+\quad m & \text{3}  & \text{4} & \text{5} & \text{6}& \text{7}& \text{8}& \text{9}& \text{10} \\
+n\\
+\hline
+3 & 6 & 9 & 14 & 18 & 23 & 28 & 36 & 40\\
+&&&&&&&&43 \\
+\hline
+4&&18&25&35&49&56&73&92\\
+&&&&41&61&84&115&149\\
+\hline
+5&&&43&58&80&101&125&143\\
+&&&49&87&143&216&316&442\\
+\hline
+6&&&&102&113&127&169&179\\
+&&&&165&198&495&780&1171\\
+\hline
+\end{array}</script></li>
+<li>Ramsey定理可以扩展到任意多种颜色的情况，已知$r(3,3,3) = 17$。</li>
+<li>Ramsey还有更一般的形式。。。此处等待填坑。<br>$r_1(q_1,q_2 ……q_k) = q_1+q_2+……+q_k-k+1$ &emsp;此处说明Ramsey是鸽巢原理的加强版的扩展。<br>求一般的$r_t(q_1,q_2 ……q_k) $就很难求，目前已知很少。<h3 id="第四章：生成组合和排列"><a href="#第四章：生成组合和排列" class="headerlink" title="第四章：生成组合和排列"></a>第四章：生成组合和排列</h3></li>
+</ol>
+<blockquote>
+<p>我们的宇宙，在某种意义上是上帝所创造的最好的一个。<br>      &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;——戈特弗里德·威廉·莱布尼茨</p>
+</blockquote>
+<h4 id="生成排列"><a href="#生成排列" class="headerlink" title="生成排列"></a>生成排列</h4><h4 id="排列中的逆序"><a href="#排列中的逆序" class="headerlink" title="排列中的逆序"></a>排列中的逆序</h4><h4 id="生成组合"><a href="#生成组合" class="headerlink" title="生成组合"></a>生成组合</h4><h4 id="生成r子集"><a href="#生成r子集" class="headerlink" title="生成r子集"></a>生成r子集</h4><h4 id="偏序和等价关系"><a href="#偏序和等价关系" class="headerlink" title="偏序和等价关系"></a>偏序和等价关系</h4><h3 id="第五章：二项式系数"><a href="#第五章：二项式系数" class="headerlink" title="第五章：二项式系数"></a>第五章：二项式系数</h3><h4 id="帕斯卡三角形"><a href="#帕斯卡三角形" class="headerlink" title="帕斯卡三角形"></a>帕斯卡三角形</h4><h4 id="二项式定理"><a href="#二项式定理" class="headerlink" title="二项式定理"></a>二项式定理</h4><h4 id="二项式系数的单峰性"><a href="#二项式系数的单峰性" class="headerlink" title="二项式系数的单峰性"></a>二项式系数的单峰性</h4><h4 id="多项式定理"><a href="#多项式定理" class="headerlink" title="多项式定理"></a>多项式定理</h4><h4 id="牛顿二项式定理"><a href="#牛顿二项式定理" class="headerlink" title="牛顿二项式定理"></a>牛顿二项式定理</h4><h4 id="再论偏序集"><a href="#再论偏序集" class="headerlink" title="再论偏序集"></a>再论偏序集</h4><h3 id="容斥原理及应用"><a href="#容斥原理及应用" class="headerlink" title="容斥原理及应用"></a>容斥原理及应用</h3><h4 id="容斥原理"><a href="#容斥原理" class="headerlink" title="容斥原理"></a>容斥原理</h4><h4 id="带重复的组合"><a href="#带重复的组合" class="headerlink" title="带重复的组合"></a>带重复的组合</h4><h4 id="错位排列"><a href="#错位排列" class="headerlink" title="错位排列"></a>错位排列</h4><h4 id="带有禁止位置的排列"><a href="#带有禁止位置的排列" class="headerlink" title="带有禁止位置的排列"></a>带有禁止位置的排列</h4><h4 id="另一个带有禁止位置的问题"><a href="#另一个带有禁止位置的问题" class="headerlink" title="另一个带有禁止位置的问题"></a>另一个带有禁止位置的问题</h4><h4 id="莫比乌斯反演"><a href="#莫比乌斯反演" class="headerlink" title="莫比乌斯反演"></a>莫比乌斯反演</h4><h3 id="第七章-递推关系和生成函数"><a href="#第七章-递推关系和生成函数" class="headerlink" title="第七章 递推关系和生成函数"></a>第七章 递推关系和生成函数</h3><h4 id="若干数列"><a href="#若干数列" class="headerlink" title="若干数列"></a>若干数列</h4><h4 id="生成函数"><a href="#生成函数" class="headerlink" title="生成函数"></a>生成函数</h4><h4 id="指数生成函数"><a href="#指数生成函数" class="headerlink" title="指数生成函数"></a>指数生成函数</h4><h4 id="求解线性齐次递推关系"><a href="#求解线性齐次递推关系" class="headerlink" title="求解线性齐次递推关系"></a>求解线性齐次递推关系</h4><h4 id="非齐次递推关系"><a href="#非齐次递推关系" class="headerlink" title="非齐次递推关系"></a>非齐次递推关系</h4><h4 id="一个几何例子"><a href="#一个几何例子" class="headerlink" title="一个几何例子"></a>一个几何例子</h4><h3 id="第八章-特殊计数序列"><a href="#第八章-特殊计数序列" class="headerlink" title="第八章 特殊计数序列"></a>第八章 特殊计数序列</h3><h4 id="Catalan数"><a href="#Catalan数" class="headerlink" title="Catalan数"></a>Catalan数</h4><h4 id="差分序列和Stirling数"><a href="#差分序列和Stirling数" class="headerlink" title="差分序列和Stirling数"></a>差分序列和Stirling数</h4><h4 id="分拆数"><a href="#分拆数" class="headerlink" title="分拆数"></a>分拆数</h4><h4 id="一个几何问题"><a href="#一个几何问题" class="headerlink" title="一个几何问题"></a>一个几何问题</h4><h4 id="格路径和Schroder数"><a href="#格路径和Schroder数" class="headerlink" title="格路径和Schroder数"></a>格路径和Schroder数</h4><h3 id="第九章-相异代表系"><a href="#第九章-相异代表系" class="headerlink" title="第九章 相异代表系"></a>第九章 相异代表系</h3><h4 id="问题表述"><a href="#问题表述" class="headerlink" title="问题表述"></a>问题表述</h4><h4 id="SDR的存在性"><a href="#SDR的存在性" class="headerlink" title="SDR的存在性"></a>SDR的存在性</h4><h4 id="区组设计"><a href="#区组设计" class="headerlink" title="区组设计"></a>区组设计</h4><h4 id="Steiner三元系"><a href="#Steiner三元系" class="headerlink" title="Steiner三元系"></a>Steiner三元系</h4><h4 id="拉丁方"><a href="#拉丁方" class="headerlink" title="拉丁方"></a>拉丁方</h4><h3 id="第十一章-图论导引"><a href="#第十一章-图论导引" class="headerlink" title="第十一章 图论导引"></a>第十一章 图论导引</h3><h4 id="基本性质"><a href="#基本性质" class="headerlink" title="基本性质"></a>基本性质</h4><h4 id="欧拉迹"><a href="#欧拉迹" class="headerlink" title="欧拉迹"></a>欧拉迹</h4><h4 id="哈密顿路径和哈密顿圈"><a href="#哈密顿路径和哈密顿圈" class="headerlink" title="哈密顿路径和哈密顿圈"></a>哈密顿路径和哈密顿圈</h4><h4 id="二分多重图"><a href="#二分多重图" class="headerlink" title="二分多重图"></a>二分多重图</h4><h4 id="树"><a href="#树" class="headerlink" title="树"></a>树</h4><h4 id="Shannon开关游戏"><a href="#Shannon开关游戏" class="headerlink" title="Shannon开关游戏"></a>Shannon开关游戏</h4><h4 id="再论树"><a href="#再论树" class="headerlink" title="再论树"></a>再论树</h4><h3 id="第十二章-再论图论"><a href="#第十二章-再论图论" class="headerlink" title="第十二章 再论图论"></a>第十二章 再论图论</h3><h4 id="色数"><a href="#色数" class="headerlink" title="色数"></a>色数</h4><h4 id="平面和平面图"><a href="#平面和平面图" class="headerlink" title="平面和平面图"></a>平面和平面图</h4><h4 id="无色定理"><a href="#无色定理" class="headerlink" title="无色定理"></a>无色定理</h4><h4 id="独立数和团数"><a href="#独立数和团数" class="headerlink" title="独立数和团数"></a>独立数和团数</h4><h4 id="匹配数"><a href="#匹配数" class="headerlink" title="匹配数"></a>匹配数</h4><h4 id="连通性"><a href="#连通性" class="headerlink" title="连通性"></a>连通性</h4><h3 id="有向图和网络"><a href="#有向图和网络" class="headerlink" title="有向图和网络"></a>有向图和网络</h3><h4 id="有向图"><a href="#有向图" class="headerlink" title="有向图"></a>有向图</h4><h4 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h4><h4 id="回顾二分图匹配"><a href="#回顾二分图匹配" class="headerlink" title="回顾二分图匹配"></a>回顾二分图匹配</h4><h3 id="Polya计数"><a href="#Polya计数" class="headerlink" title="Polya计数"></a>Polya计数</h3><h4 id="置换群和对称群"><a href="#置换群和对称群" class="headerlink" title="置换群和对称群"></a>置换群和对称群</h4><h4 id="Burnside定理"><a href="#Burnside定理" class="headerlink" title="Burnside定理"></a>Burnside定理</h4><h4 id="Polya计数公式"><a href="#Polya计数公式" class="headerlink" title="Polya计数公式"></a>Polya计数公式</h4>
+    </div>
+     
+    
+    
+    
+    <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #FFC0CB;font-size:16px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/Math/" rel="tag"><i class="fa fa-tag"></i> Math</a>
+          
+            <a href="/tags/Combinatorics/" rel="tag"><i class="fa fa-tag"></i> Combinatorics</a>
+          
+        </div>
+        <div class="post-widgets">
+        
+
+        
+
+        
+          <div class="social-share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2019/12/07/TeamRound11/" rel="next" title="Team Round #11: 第十六届浙江大学宁波理工学院程序设计大赛重现赛">
+                <i class="fa fa-chevron-left"></i> Team Round #11: 第十六届浙江大学宁波理工学院程序设计大赛重现赛
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+              <a href="/2020/01/06/TeamRound12/" rel="prev" title="Team Round #12:2016-2017 ACM-ICPC Asia-Bangkok Regional Contest">
+                Team Round #12:2016-2017 ACM-ICPC Asia-Bangkok Regional Contest <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/-4fdf7b2d53898e7a.jpg"
+      alt="miniLCT">
+  <p class="site-author-name" itemprop="name">miniLCT</p>
+  <div class="site-description motion-element" itemprop="description">博觀而約取，厚積而薄發</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+      
+        
+      
+        <a href="https://github.com/miniLCT" title="GitHub &rarr; https://github.com/miniLCT" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+      
+        
+      
+        <a href="mailto:iamnotmyself@vip.qq.com" title="E-Mail &rarr; mailto:iamnotmyself@vip.qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+      
+        
+      
+        <a href="https://blog.csdn.net/qq_43696359" title="CSDN &rarr; https://blog.csdn.net/qq_43696359" rel="noopener" target="_blank"><i class="fa fa-fw fa-heartbeat"></i></a>
+      </span>
+    
+  </div>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一章：什么是组合数学"><span class="nav-number">1.</span> <span class="nav-text">第一章：什么是组合数学</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#碎碎念："><span class="nav-number">1.1.</span> <span class="nav-text">碎碎念：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#棋盘的完美覆盖"><span class="nav-number">1.2.</span> <span class="nav-text">棋盘的完美覆盖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#幻方"><span class="nav-number">1.3.</span> <span class="nav-text">幻方</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四色问题"><span class="nav-number">1.4.</span> <span class="nav-text">四色问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#36军官问题"><span class="nav-number">1.5.</span> <span class="nav-text">36军官问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最短路径问题"><span class="nav-number">1.6.</span> <span class="nav-text">最短路径问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相互重叠的圆"><span class="nav-number">1.7.</span> <span class="nav-text">相互重叠的圆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Nim游戏"><span class="nav-number">1.8.</span> <span class="nav-text">Nim游戏</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二章-排列与组合"><span class="nav-number">2.</span> <span class="nav-text">第二章 排列与组合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#四个基本的计数定理"><span class="nav-number">2.1.</span> <span class="nav-text">四个基本的计数定理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集合的排列"><span class="nav-number">2.2.</span> <span class="nav-text">集合的排列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集合的组合（子集）"><span class="nav-number">2.3.</span> <span class="nav-text">集合的组合（子集）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多重集合的排列"><span class="nav-number">2.4.</span> <span class="nav-text">多重集合的排列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多重集合的组合"><span class="nav-number">2.5.</span> <span class="nav-text">多重集合的组合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#有限概率"><span class="nav-number">2.6.</span> <span class="nav-text">有限概率</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三章-鸽巢原理"><span class="nav-number">3.</span> <span class="nav-text">第三章 鸽巢原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#鸽巢原理：简单形式"><span class="nav-number">3.1.</span> <span class="nav-text">鸽巢原理：简单形式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#鸽巢原理：加强版"><span class="nav-number">3.2.</span> <span class="nav-text">鸽巢原理：加强版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ramsey定理"><span class="nav-number">3.3.</span> <span class="nav-text">Ramsey定理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四章：生成组合和排列"><span class="nav-number">4.</span> <span class="nav-text">第四章：生成组合和排列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生成排列"><span class="nav-number">4.1.</span> <span class="nav-text">生成排列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#排列中的逆序"><span class="nav-number">4.2.</span> <span class="nav-text">排列中的逆序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成组合"><span class="nav-number">4.3.</span> <span class="nav-text">生成组合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成r子集"><span class="nav-number">4.4.</span> <span class="nav-text">生成r子集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#偏序和等价关系"><span class="nav-number">4.5.</span> <span class="nav-text">偏序和等价关系</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五章：二项式系数"><span class="nav-number">5.</span> <span class="nav-text">第五章：二项式系数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#帕斯卡三角形"><span class="nav-number">5.1.</span> <span class="nav-text">帕斯卡三角形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二项式定理"><span class="nav-number">5.2.</span> <span class="nav-text">二项式定理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二项式系数的单峰性"><span class="nav-number">5.3.</span> <span class="nav-text">二项式系数的单峰性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多项式定理"><span class="nav-number">5.4.</span> <span class="nav-text">多项式定理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#牛顿二项式定理"><span class="nav-number">5.5.</span> <span class="nav-text">牛顿二项式定理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#再论偏序集"><span class="nav-number">5.6.</span> <span class="nav-text">再论偏序集</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#容斥原理及应用"><span class="nav-number">6.</span> <span class="nav-text">容斥原理及应用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#容斥原理"><span class="nav-number">6.1.</span> <span class="nav-text">容斥原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#带重复的组合"><span class="nav-number">6.2.</span> <span class="nav-text">带重复的组合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#错位排列"><span class="nav-number">6.3.</span> <span class="nav-text">错位排列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#带有禁止位置的排列"><span class="nav-number">6.4.</span> <span class="nav-text">带有禁止位置的排列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#另一个带有禁止位置的问题"><span class="nav-number">6.5.</span> <span class="nav-text">另一个带有禁止位置的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#莫比乌斯反演"><span class="nav-number">6.6.</span> <span class="nav-text">莫比乌斯反演</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第七章-递推关系和生成函数"><span class="nav-number">7.</span> <span class="nav-text">第七章 递推关系和生成函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#若干数列"><span class="nav-number">7.1.</span> <span class="nav-text">若干数列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成函数"><span class="nav-number">7.2.</span> <span class="nav-text">生成函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指数生成函数"><span class="nav-number">7.3.</span> <span class="nav-text">指数生成函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#求解线性齐次递推关系"><span class="nav-number">7.4.</span> <span class="nav-text">求解线性齐次递推关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非齐次递推关系"><span class="nav-number">7.5.</span> <span class="nav-text">非齐次递推关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一个几何例子"><span class="nav-number">7.6.</span> <span class="nav-text">一个几何例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第八章-特殊计数序列"><span class="nav-number">8.</span> <span class="nav-text">第八章 特殊计数序列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Catalan数"><span class="nav-number">8.1.</span> <span class="nav-text">Catalan数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#差分序列和Stirling数"><span class="nav-number">8.2.</span> <span class="nav-text">差分序列和Stirling数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分拆数"><span class="nav-number">8.3.</span> <span class="nav-text">分拆数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一个几何问题"><span class="nav-number">8.4.</span> <span class="nav-text">一个几何问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#格路径和Schroder数"><span class="nav-number">8.5.</span> <span class="nav-text">格路径和Schroder数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第九章-相异代表系"><span class="nav-number">9.</span> <span class="nav-text">第九章 相异代表系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题表述"><span class="nav-number">9.1.</span> <span class="nav-text">问题表述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SDR的存在性"><span class="nav-number">9.2.</span> <span class="nav-text">SDR的存在性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#区组设计"><span class="nav-number">9.3.</span> <span class="nav-text">区组设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Steiner三元系"><span class="nav-number">9.4.</span> <span class="nav-text">Steiner三元系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拉丁方"><span class="nav-number">9.5.</span> <span class="nav-text">拉丁方</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十一章-图论导引"><span class="nav-number">10.</span> <span class="nav-text">第十一章 图论导引</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本性质"><span class="nav-number">10.1.</span> <span class="nav-text">基本性质</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#欧拉迹"><span class="nav-number">10.2.</span> <span class="nav-text">欧拉迹</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#哈密顿路径和哈密顿圈"><span class="nav-number">10.3.</span> <span class="nav-text">哈密顿路径和哈密顿圈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二分多重图"><span class="nav-number">10.4.</span> <span class="nav-text">二分多重图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#树"><span class="nav-number">10.5.</span> <span class="nav-text">树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Shannon开关游戏"><span class="nav-number">10.6.</span> <span class="nav-text">Shannon开关游戏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#再论树"><span class="nav-number">10.7.</span> <span class="nav-text">再论树</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十二章-再论图论"><span class="nav-number">11.</span> <span class="nav-text">第十二章 再论图论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#色数"><span class="nav-number">11.1.</span> <span class="nav-text">色数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#平面和平面图"><span class="nav-number">11.2.</span> <span class="nav-text">平面和平面图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#无色定理"><span class="nav-number">11.3.</span> <span class="nav-text">无色定理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#独立数和团数"><span class="nav-number">11.4.</span> <span class="nav-text">独立数和团数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#匹配数"><span class="nav-number">11.5.</span> <span class="nav-text">匹配数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连通性"><span class="nav-number">11.6.</span> <span class="nav-text">连通性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有向图和网络"><span class="nav-number">12.</span> <span class="nav-text">有向图和网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#有向图"><span class="nav-number">12.1.</span> <span class="nav-text">有向图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络"><span class="nav-number">12.2.</span> <span class="nav-text">网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回顾二分图匹配"><span class="nav-number">12.3.</span> <span class="nav-text">回顾二分图匹配</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Polya计数"><span class="nav-number">13.</span> <span class="nav-text">Polya计数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#置换群和对称群"><span class="nav-number">13.1.</span> <span class="nav-text">置换群和对称群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Burnside定理"><span class="nav-number">13.2.</span> <span class="nav-text">Burnside定理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Polya计数公式"><span class="nav-number">13.3.</span> <span class="nav-text">Polya计数公式</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">miniLCT</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">58k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">3:14</span>
+  <a href="http://www.beian.miit.gov.cn">浙ICP备20021511号</a>
+</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+  
+<script src="/lib/needsharebutton/needsharebutton.js"></script>
+<script>
+    pbOptions = {};
+      pbOptions.iconStyle = "box";
+    
+      pbOptions.boxForm = "horizontal";
+    
+      pbOptions.position = "bottomCenter";
+    
+      pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+    
+    new needShareButton('#needsharebutton-postbottom', pbOptions);
+</script>
+
+
+  </div>
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+  
+  <script src="/js/affix.js?v=7.2.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+
+  
+    
+      <script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.2.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: true,
+    appId: '3zME3GE14GrJRaivOYsmPfUv-gzGzoHsz',
+    appKey: 'HSiozlc5dAoUa5UvYWC2Jzvy',
+    placeholder: '快來評論叭',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true,
+    lang: '' || 'zh-cn'
+  });
+</script>
+
+
+<script type="text/javascript" src="/js/clicklove.js"></script>
+</body>
+</html>

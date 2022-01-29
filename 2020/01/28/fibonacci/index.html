@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<script language="javascript" type="text/javascript" src="https://cdn.staticfile.org/jquery/1.7.2/jquery.min.js"></script>
+
+
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon200.png?v=7.2.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png?v=7.2.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png?v=7.2.0">
+  <link rel="mask-icon" href="/images/favicon200.png?v=7.2.0" color="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|SimHei, Verdana, sans-serif:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false},
+    search: {
+      root: '/',
+      path: 'search.xml'
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="本文旨在介绍Fibonacci的一些性质">
+<meta name="keywords" content="Fibonacci,Template">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fibonacci的一些性质">
+<meta property="og:url" content="http://yoursite.com/2020/01/28/fibonacci/index.html">
+<meta property="og:site_name" content="Mini   LCT">
+<meta property="og:description" content="本文旨在介绍Fibonacci的一些性质">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2020/01/28/qsY5QliUhoJtNH3.png">
+<meta property="og:image" content="https://i.loli.net/2020/01/28/jnzeJh7xZKvaIA9.png">
+<meta property="og:image" content="https://i.loli.net/2020/01/28/x1En5yRdfFuDcap.png">
+<meta property="og:image" content="https://i.loli.net/2020/01/29/pb8TJwXWzqMs6vh.png">
+<meta property="og:image" content="https://i.loli.net/2020/01/29/xKrhqONWysjVBQR.png">
+<meta property="og:updated_time" content="2020-04-15T02:22:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fibonacci的一些性质">
+<meta name="twitter:description" content="本文旨在介绍Fibonacci的一些性质">
+<meta name="twitter:image" content="https://i.loli.net/2020/01/28/qsY5QliUhoJtNH3.png">
+  <link rel="alternate" href="/atom.xml" title="Mini   LCT" type="application/atom+xml">
+  <link rel="canonical" href="http://yoursite.com/2020/01/28/fibonacci/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Fibonacci的一些性质 | Mini   LCT</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/miniLCT" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#FD6C6C; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mini   LCT</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">及时当勉励</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+      
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签<span class="badge">45</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+      
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类<span class="badge">19</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档<span class="badge">61</span></a>
+
+  </li>
+        <li class="menu-item menu-item-search">
+          <a href="javascript:;" class="popup-trigger">
+          
+            <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
+        </li>
+      
+    </ul>
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+    </div>
+</nav>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/28/fibonacci/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="miniLCT">
+      <meta itemprop="description" content="博觀而約取，厚積而薄發">
+      <meta itemprop="image" content="/images/-4fdf7b2d53898e7a.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mini   LCT">
+    </span>
+      <header class="post-header">
+
+        
+          <h2 class="post-title" itemprop="name headline">Fibonacci的一些性质
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+         
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-01-28 19:08:05" itemprop="dateCreated datePublished" datetime="2020-01-28T19:08:05+08:00">2020-01-28</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-04-15 10:22:24" itemprop="dateModified" datetime="2020-04-15T10:22:24+08:00">2020-04-15</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span id="/2020/01/28/fibonacci/" class="post-meta-item leancloud_visitors" data-flag-title="Fibonacci的一些性质">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+            
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="fa fa-comment-o"></i>
+    </span>
+    
+      <span class="post-meta-item-text">评论数：</span>
+    
+  
+    <a href="/2020/01/28/fibonacci/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/01/28/fibonacci/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+          <br/>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">2.2k</span>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">7 分钟</span>
+            </span>
+          
+            <div class="post-description"><center>本文旨在介绍Fibonacci的一些性质</center></div>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="序论-杂论"><a href="#序论-杂论" class="headerlink" title="序论(杂论)"></a>序论(杂论)</h3><p>心血来潮想整理一下。</p>
+<p>Fibonacci 还是很著名的  <a href="https://oeis.org/A000045" target="_blank" rel="noopener">oeis A000045</a></p>
+<blockquote>
+<p>斐波那契数与三角形关系<br><img src="https://i.loli.net/2020/01/28/qsY5QliUhoJtNH3.png" alt="from wikipedia"><br><img src="https://i.loli.net/2020/01/28/jnzeJh7xZKvaIA9.png" alt="带有色彩的，此处说与杨辉三角"></p>
+</blockquote>
+<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><ol>
+<li>初等代数解法&emsp; 略</li>
+<li>线性代数解法&emsp; 暂时略</li>
+<li>数论解法&emsp; &emsp;&emsp;暂时略</li>
+<li>组合数解法&emsp;&emsp; 暂时略</li>
+<li>近似值解法&emsp;&emsp; 暂时略 </li>
+<li>计算机 ：矩阵快速幂优化<br>这个由于写mathjax本地可以之后部署可能还会有锅就很懒就不想写一大堆式子。之前也遇到过一部分用过这个的题目，贴一下<a href="https://paste.ubuntu.com/p/3wg9tnPfkY/" target="_blank" rel="noopener">矩阵快速幂板子</a>吧。用矩阵快速幂一定一定一定要想清楚，开数组啊，清零啊什么的。<h3 id="一些性质"><a href="#一些性质" class="headerlink" title="一些性质"></a><a href="https://www.shs.edu.tw/works/essay/2014/03/2014032310331517.pdf" target="_blank" rel="noopener">一些性质</a></h3><blockquote>
+<ul>
+<li>这里的前提是$f<em>1 = f_2 = 1，f</em>{n+2} = f<em>{n+1}+f</em>{n} \quad(n\ge 1)$</li>
+<li>$F<em>{m+n}=F</em>{m-1} \cdot F<em>n+F_m \cdot F</em>{n+1}$</li>
+<li>上式令$m=n$，得到$F<em>{2n} = F_n(F</em>{n+1}+F_{n-1})$</li>
+<li>由上 归纳证明可得，$\mathsf{\forall} k \in \mathbb{N}, \quad F<em>n | F</em>{nk}$ </li>
+<li>$F<em>1+F_3+\dots +F</em>{2n-1} = F<em>{2n},F_2 + F_4 + \dots + F</em>{2n} = F_{2n + 1} - 1$</li>
+<li>$\sum<em>{i=1}^n F_i = F</em>{n+2} - 1$</li>
+<li>$\sum<em>{i=1}^n F_i^2 = F_n \cdot F</em>{n+1}$</li>
+<li>$\sum<em>{i=1}^n k\cdot F_k = n\cdot f</em>{n+2}-f_{n+3}+2， n\ge 1$</li>
+<li><a href="http://www.mathsgreat.com/fibon/fibon_109.pdf" target="_blank" rel="noopener">卡西尼性质(Cassini’s identity)</a> : $F<em>n^2=(-1)^{n-1} + F</em>{n-1} \cdot F_{n+1}$</li>
+<li>$F<em>n^2+F</em>{n-1}^2 = F_{2n-1}$ </li>
+<li>$gcd(F<em>a, F_b)=F</em>{gcd(a, b)}$</li>
+<li>齐肯多夫定理:<strong>任何</strong>正整数都可以表示成若干个不连续的斐波那契数之和。利用贪心的算法可以每回都找到最大可能的斐波那契数。</li>
+<li>以斐波那契数列相邻两项作为输入会使欧几里德算法达到最坏复杂度</li>
+<li>任意取连续的k项，其$\sum$不会出现在数列中</li>
+<li>在Fibonacci数列中，每一项模K后（K为正整数）所形成的数列一定会循环，下面会讨论一下这个性质。<br><img src="https://i.loli.net/2020/01/28/x1En5yRdfFuDcap.png" alt="from 知乎"></li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<p>相关数列：lucas数列，卢卡斯数列和斐波那契数列的一些关系，组合数学上的一些恒等式 &emsp;&emsp;    反费波那西数列，巴都万数列，佩尔数列 等等 &emsp; 在此就不一一赘述。</p>
+<h3 id="模意义下的周期性"><a href="#模意义下的周期性" class="headerlink" title="模意义下的周期性"></a>模意义下的周期性</h3><h4 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h4><p>对于任意整数$n$,数列{$f_i (mod\quad n)$}为周期数列，皮萨诺周期$\pi(n)$记作该数列的周期，例如模3的斐波那契数列前若干项是$0, 1, 1, 2, 0, 2, 2, 1, 0, 1, 1, 2, 0, 2, 2, 1, 0, 1, 1, 2, 0, 2, 2, 1, 0…………$<br><a href="https://oeis.org/A082115" target="_blank" rel="noopener">oeisA082115</a>&emsp;这一数列的周期是8，即$\pi(3)=8$</p>
+<h4 id="性质："><a href="#性质：" class="headerlink" title="性质："></a>性质：</h4><ol>
+<li>有趣的一个点是除了$\pi(2) = 3$ 以外，皮萨诺周期都是偶数。</li>
+<li>模$n$意义下的Pisano numbers总是不超过$6n$，并且只有在$n=2 \times 5^k$时猜取得等号。 <blockquote>
+<p>模 $n$ 周期（皮萨诺周期）<br>$\pi(p^k) = p^{k-1} \pi(p)$<br>$\pi(nm) = lcm(\pi(n), \pi(m)), \forall n \perp m$<br>$\pi(2)=3, \pi(3)=8, \pi(5)=20$<br>$\forall p \equiv \pm 1\pmod {10}, \pi(p)|p-1$<br>$\forall p \equiv \pm 2\pmod {5}, \pi(p)|2p+2$</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="求法"><a href="#求法" class="headerlink" title="求法"></a>求法</h4><p>problem 计算$F(n) mod \ P \quad(n\le10^{30000000},P\le10^{12})$<br><a href="https://gradprogram.math.arizona.edu/~ura-reports/071/Campbell.Charles/Final.pdf" target="_blank" rel="noopener">论文 &emsp;The Period of the Fibonacci Sequence Modulo j</a></p>
+<p><a href="https://www.cnblogs.com/cjoierShiina-Mashiro/p/11385287.html" target="_blank" rel="noopener">中文证明的博客</a> &emsp;好像前置技能是会二次剩余。<br><img src="https://i.loli.net/2020/01/29/pb8TJwXWzqMs6vh.png" alt="from Shiina_Mashiro博客"><br>以下是我的理解：求F mod n的循环节长度<br>step1： 把n进行素因子分解，$n = p_1^{a_1}\cdot p_2^{a_2}…p_k^{a_k}$<br>step2： 分别计算 F 数模每个$P_m$的循环节长度，假设长度分别为$x_1,x_2,…x_k$。<br>step3： 那么 F 模n的循环节长度为$L = lcm(x_1,x_2…x_k)$</p>
+<p>如此，便可求出循环节长度。那么第二步是关键，如何求 F 模 $p_m$的循环节长度。</p>
+<p>这里用了个定理， F 模数字$p_m$的最小循环节长度等于$\pi(p)\times p^{m-1}$，其中$\pi(p)$表示 F 模素数 p 的最小循环节长度。如此只要求出$\pi(p)$.</p>
+<p>用以下定理便可以求出$\pi(p)$:<br>如果5是模p的二次剩余（$p\equiv\pm 1(mod \ 5)$），那么循环节长度是$p-1$的因子，否则($p\equiv\pm 2 (mod \ 5)$)是$2(p+1)$的因子。对于小于等于5的素数。$\pi(2)=3, \pi(3)=8, \pi(5)=20$<br><img src="https://i.loli.net/2020/01/29/xKrhqONWysjVBQR.png" alt="欧拉判定准则，此处写一个check函数"></p>
+<h3 id="一些代码："><a href="#一些代码：" class="headerlink" title="一些代码："></a>一些代码：</h3><ol>
+<li><p>java求小于1000项的f（from claris）连注释都打上了qwq</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.math.BigInteger;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        BigInteger f[] = <span class="keyword">new</span> BigInteger[<span class="number">1005</span>];<span class="comment">//数组用法和c++类似</span></span><br><span class="line">        <span class="comment">//二维数组BigInteger[][] f = new BigInteger[1005][1005]</span></span><br><span class="line">        f[<span class="number">1</span>] = BigInteger.valueOf(<span class="number">1</span>);f[<span class="number">2</span>] = BigInteger.valueOf(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">3</span>;i&lt;=<span class="number">1000</span>;i++)f[i]=f[i-<span class="number">2</span>].add(f[i-<span class="number">1</span>]);</span><br><span class="line">        Scanner input = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">int</span> n , t;</span><br><span class="line">        <span class="comment">//用for(...;t−−;)替代会报错，因为要求第二个表达式必须返回bool</span></span><br><span class="line">        <span class="keyword">for</span>(t=input.nextInt();t&gt;<span class="number">0</span>;t--)&#123;</span><br><span class="line">            n=input.nextInt();</span><br><span class="line">            System.out.println(f[n]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>快速倍增法<br>由等式 </p>
+</li>
+</ol>
+<script type="math/tex; mode=display">F_{2k} = F_k(2F_{k+1}-F{k})</script><script type="math/tex; mode=display">F_{2k+1}=F_{k+1}^2+F_k^2</script><p>于是可以通过这样的方法快速计算两个相邻的斐波那契数（常数比矩乘小）。代码如下，返回值是一个二元组$（F<em>n，F</em>{n+1}）$。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//from oi-wiki</span></span><br><span class="line">pair&lt;int, int&gt; fib(int n) &#123;</span><br><span class="line">  <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> &#123;<span class="number">0</span>, <span class="number">1</span>&#125;;</span><br><span class="line">  <span class="keyword">auto</span> p = fib(n &gt;&gt; <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">int</span> c = p.first * (<span class="number">2</span> * p.second - p.first);</span><br><span class="line">  <span class="keyword">int</span> d = p.first * p.first + p.second * p.second;</span><br><span class="line">  <span class="keyword">if</span> (n &amp; <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> &#123;d, c + d&#125;;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> &#123;c, d&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>求循环节长度 51nod1195<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//others</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;tr1/unordered_map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MP make_pair</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PB push_back</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SD second</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FT first </span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> T,n;</span><br><span class="line"><span class="keyword">const</span> ll INF=<span class="number">0x3f3f3f3f3f3f3f3f</span>;</span><br><span class="line">tr1::<span class="built_in">unordered_map</span>&lt;ll,ll&gt;S;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">power</span><span class="params">(ll a,ll b,ll mod)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> rs=<span class="number">1</span>;a=a%mod;</span><br><span class="line">    <span class="keyword">for</span>(;b;b&gt;&gt;=<span class="number">1</span>,a=<span class="number">1l</span>l*a*a%mod)<span class="keyword">if</span>(b&amp;<span class="number">1</span>)rs=<span class="number">1l</span>l*rs*a%mod;</span><br><span class="line">    <span class="keyword">return</span> rs;  </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">gcd</span><span class="params">(ll x,ll y)</span></span>&#123;<span class="keyword">return</span> y?(gcd(y,x%y)):x;&#125;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">namespace</span> SP1&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;pii&gt;fac;</span><br><span class="line">    ll nowlen,M;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">mul</span><span class="params">(ll *a,ll *b,ll mod)</span></span>&#123;</span><br><span class="line">        <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> bd=a[<span class="number">0</span>]*b[<span class="number">0</span>],bc=a[<span class="number">0</span>]*b[<span class="number">1</span>],ad=a[<span class="number">1</span>]*b[<span class="number">0</span>],ac=a[<span class="number">1</span>]*b[<span class="number">1</span>];</span><br><span class="line">        a[<span class="number">1</span>]=(bc+ad+ac)%mod,a[<span class="number">0</span>]=(bd+ac)%mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">power_p</span><span class="params">(ll *a,ll b,ll mod)</span></span>&#123;</span><br><span class="line">        ll c[<span class="number">2</span>]=&#123;<span class="number">1</span>,<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">for</span>(;b;b&gt;&gt;=<span class="number">1</span>,mul(a,a,mod))</span><br><span class="line">            <span class="keyword">if</span>(b&amp;<span class="number">1</span>)mul(c,a,mod);</span><br><span class="line">        a[<span class="number">0</span>]=c[<span class="number">0</span>];a[<span class="number">1</span>]=c[<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">check</span><span class="params">(ll sum)</span></span>&#123;</span><br><span class="line">        ll b[<span class="number">2</span>]=&#123;<span class="number">0</span>,<span class="number">1</span>&#125;;</span><br><span class="line">        power_p(b,sum,M);</span><br><span class="line">        <span class="keyword">return</span> b[<span class="number">1</span>]==<span class="number">0</span>&amp;&amp;b[<span class="number">0</span>]==<span class="number">1</span>;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> pos,ll sum)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(pos==fac.size())&#123;</span><br><span class="line">            (sum!=<span class="number">1</span>&amp;&amp;check(sum))?(nowlen=min(nowlen,sum)):<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        ll rs=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=fac[pos].SD;++i)&#123;</span><br><span class="line">            dfs(pos+<span class="number">1</span>,sum*rs);</span><br><span class="line">            rs*=fac[pos].FT;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> ll <span class="title">getlen</span><span class="params">(ll x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x==<span class="number">2</span>)<span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">        <span class="keyword">if</span>(x==<span class="number">3</span>)<span class="keyword">return</span> <span class="number">8</span>;</span><br><span class="line">        <span class="keyword">if</span>(x==<span class="number">5</span>)<span class="keyword">return</span> <span class="number">20</span>;</span><br><span class="line">        <span class="keyword">if</span>(S.find(x)!=S.end())<span class="keyword">return</span> S[x];</span><br><span class="line">        ll base=(power(<span class="number">5</span>,(x<span class="number">-1</span>)/<span class="number">2</span>,x)==<span class="number">1</span>)?(x<span class="number">-1</span>):(<span class="number">2</span>*x+<span class="number">2</span>);</span><br><span class="line">        fac.clear();nowlen=INF;M=x;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i*i&lt;=base;++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!(base%i))&#123;</span><br><span class="line">                pii t=MP(i,<span class="number">0</span>);</span><br><span class="line">                <span class="keyword">while</span>(!(base%i))base/=i,++t.SD;</span><br><span class="line">                fac.PB(t);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(base!=<span class="number">1</span>)fac.PB(MP(base,<span class="number">1</span>));</span><br><span class="line">        dfs(<span class="number">0</span>,<span class="number">1</span>);<span class="keyword">return</span> S[x]=nowlen;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">vector</span>&lt;pii&gt;fac;</span><br><span class="line">ll ans;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">1</span>)&#123;<span class="built_in">puts</span>(<span class="string">"1"</span>);<span class="keyword">return</span>;&#125;</span><br><span class="line">    fac.clear();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i*i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!(n%i))&#123;</span><br><span class="line">            pii t=MP(i,<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">while</span>(!(n%i))n/=i,++t.SD;</span><br><span class="line">            fac.PB(t);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(n!=<span class="number">1</span>)fac.PB(MP(n,<span class="number">1</span>)); </span><br><span class="line">    ans=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;fac.size();++i)&#123;</span><br><span class="line">        ll l=SP1::getlen(fac[i].FT);</span><br><span class="line">        l=l*power(fac[i].first,fac[i].second<span class="number">-1</span>,INF);</span><br><span class="line">        ans=(ans*l)/gcd(ans,l);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%llu\n"</span>,ans);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">        solve(n);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="一些题目："><a href="#一些题目：" class="headerlink" title="一些题目："></a>一些题目：</h3><p><a href="https://www.51nod.com/Challenge/Problem.html#problemId=1195" target="_blank" rel="noopener">51nod1195斐波那契数列的循环节</a><br><a href="https://www.51nod.com/Challenge/Problem.html#problemId=1263" target="_blank" rel="noopener">51nod1263</a><br><a href="https://www.luogu.com.cn/problem/P4000" target="_blank" rel="noopener">洛谷P4000</a></p>
+
+    </div>
+     
+    
+    
+    
+    <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #FFC0CB;font-size:16px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/Fibonacci/" rel="tag"><i class="fa fa-tag"></i> Fibonacci</a>
+          
+            <a href="/tags/Template/" rel="tag"><i class="fa fa-tag"></i> Template</a>
+          
+        </div>
+        <div class="post-widgets">
+        
+
+        
+
+        
+          <div class="social-share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2020/01/27/Matrix-Tree/" rel="next" title="Matrix-Tree 基尔霍夫矩阵树定理及一些题目">
+                <i class="fa fa-chevron-left"></i> Matrix-Tree 基尔霍夫矩阵树定理及一些题目
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+              <a href="/2020/01/30/TeamRound14/" rel="prev" title="Team Round #14: The 16th Zhejiang Provincial Collegiate Programming Contest">
+                Team Round #14: The 16th Zhejiang Provincial Collegiate Programming Contest <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/-4fdf7b2d53898e7a.jpg"
+      alt="miniLCT">
+  <p class="site-author-name" itemprop="name">miniLCT</p>
+  <div class="site-description motion-element" itemprop="description">博觀而約取，厚積而薄發</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+      
+        
+      
+        <a href="https://github.com/miniLCT" title="GitHub &rarr; https://github.com/miniLCT" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+      
+        
+      
+        <a href="mailto:iamnotmyself@vip.qq.com" title="E-Mail &rarr; mailto:iamnotmyself@vip.qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+      
+        
+      
+        <a href="https://blog.csdn.net/qq_43696359" title="CSDN &rarr; https://blog.csdn.net/qq_43696359" rel="noopener" target="_blank"><i class="fa fa-fw fa-heartbeat"></i></a>
+      </span>
+    
+  </div>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#序论-杂论"><span class="nav-number">1.</span> <span class="nav-text">序论(杂论)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表达式"><span class="nav-number">2.</span> <span class="nav-text">表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些性质"><span class="nav-number">3.</span> <span class="nav-text">一些性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模意义下的周期性"><span class="nav-number">4.</span> <span class="nav-text">模意义下的周期性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义："><span class="nav-number">4.1.</span> <span class="nav-text">定义：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性质："><span class="nav-number">4.2.</span> <span class="nav-text">性质：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#求法"><span class="nav-number">4.3.</span> <span class="nav-text">求法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些代码："><span class="nav-number">5.</span> <span class="nav-text">一些代码：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些题目："><span class="nav-number">6.</span> <span class="nav-text">一些题目：</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">miniLCT</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">58k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">3:14</span>
+  <a href="http://www.beian.miit.gov.cn">浙ICP备20021511号</a>
+</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+  
+<script src="/lib/needsharebutton/needsharebutton.js"></script>
+<script>
+    pbOptions = {};
+      pbOptions.iconStyle = "box";
+    
+      pbOptions.boxForm = "horizontal";
+    
+      pbOptions.position = "bottomCenter";
+    
+      pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+    
+    new needShareButton('#needsharebutton-postbottom', pbOptions);
+</script>
+
+
+  </div>
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+  
+  <script src="/js/affix.js?v=7.2.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+
+  
+    
+      <script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.2.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: true,
+    appId: '3zME3GE14GrJRaivOYsmPfUv-gzGzoHsz',
+    appKey: 'HSiozlc5dAoUa5UvYWC2Jzvy',
+    placeholder: '快來評論叭',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true,
+    lang: '' || 'zh-cn'
+  });
+</script>
+
+
+<script type="text/javascript" src="/js/clicklove.js"></script>
+</body>
+</html>

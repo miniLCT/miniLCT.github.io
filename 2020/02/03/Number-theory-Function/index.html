@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<script language="javascript" type="text/javascript" src="https://cdn.staticfile.org/jquery/1.7.2/jquery.min.js"></script>
+
+
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon200.png?v=7.2.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png?v=7.2.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png?v=7.2.0">
+  <link rel="mask-icon" href="/images/favicon200.png?v=7.2.0" color="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|SimHei, Verdana, sans-serif:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false},
+    search: {
+      root: '/',
+      path: 'search.xml'
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="本文记录了数论函数的一些理论及其应用">
+<meta name="keywords" content="莫比乌斯函数与莫比乌斯反演,杜教筛,Number Theory Function">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数论函数学习笔记">
+<meta property="og:url" content="http://yoursite.com/2020/02/03/Number-theory-Function/index.html">
+<meta property="og:site_name" content="Mini   LCT">
+<meta property="og:description" content="本文记录了数论函数的一些理论及其应用">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2020/02/03/L1iMOWjCGSAe6U4.png">
+<meta property="og:image" content="https://i.loli.net/2020/02/03/4IpTtvueoShWFiX.png">
+<meta property="og:updated_time" content="2020-12-08T12:14:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数论函数学习笔记">
+<meta name="twitter:description" content="本文记录了数论函数的一些理论及其应用">
+<meta name="twitter:image" content="https://i.loli.net/2020/02/03/L1iMOWjCGSAe6U4.png">
+  <link rel="alternate" href="/atom.xml" title="Mini   LCT" type="application/atom+xml">
+  <link rel="canonical" href="http://yoursite.com/2020/02/03/Number-theory-Function/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>数论函数学习笔记 | Mini   LCT</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/miniLCT" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#FD6C6C; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mini   LCT</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">及时当勉励</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+      
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签<span class="badge">45</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+      
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类<span class="badge">19</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档<span class="badge">61</span></a>
+
+  </li>
+        <li class="menu-item menu-item-search">
+          <a href="javascript:;" class="popup-trigger">
+          
+            <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
+        </li>
+      
+    </ul>
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+    </div>
+</nav>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/03/Number-theory-Function/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="miniLCT">
+      <meta itemprop="description" content="博觀而約取，厚積而薄發">
+      <meta itemprop="image" content="/images/-4fdf7b2d53898e7a.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mini   LCT">
+    </span>
+      <header class="post-header">
+
+        
+          <h2 class="post-title" itemprop="name headline">数论函数学习笔记
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+         
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-02-03 18:39:03" itemprop="dateCreated datePublished" datetime="2020-02-03T18:39:03+08:00">2020-02-03</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-12-08 20:14:26" itemprop="dateModified" datetime="2020-12-08T20:14:26+08:00">2020-12-08</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span id="/2020/02/03/Number-theory-Function/" class="post-meta-item leancloud_visitors" data-flag-title="数论函数学习笔记">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+            
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="fa fa-comment-o"></i>
+    </span>
+    
+      <span class="post-meta-item-text">评论数：</span>
+    
+  
+    <a href="/2020/02/03/Number-theory-Function/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/03/Number-theory-Function/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+          <br/>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">4.6k</span>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">15 分钟</span>
+            </span>
+          
+            <div class="post-description"><center>本文记录了数论函数的一些理论及其应用</center></div>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>我真的好想你<br><br>在每一个雨季<br><br>你选择遗忘的<br><br>是我最不舍的 </p>
+</blockquote>
+<p>如果发现本文有任何错误，欢迎留言指正或者联系 920861971@qq.com</p>
+<p><a href="https://blog.csdn.net/skywalkert/article/details/50500009" target="_blank" rel="noopener">tls的博客!</a></p>
+<p><a href="http://jiruyi910387714.is-programmer.com/posts/195270.html" target="_blank" rel="noopener">jls的博客!</a></p>
+<p><a href="https://www.cnblogs.com/Robert-JYH/articles/11181750.html" target="_blank" rel="noopener">莫比乌斯函数学习笔记</a></p>
+<p><a href="https://www.cnblogs.com/zhouzhendong/p/Number-theory-Function.html" target="_blank" rel="noopener">学军巨佬的博客</a></p>
+<p><a href="https://oi-wiki.org/math/mobius/" target="_blank" rel="noopener">OI-WIKI-Mobius</a></p>
+<p><a href="http://nanoape.is-programmer.com/posts/192516.html" target="_blank" rel="noopener">nanoape的博客！</a></p>
+<h2 id="前前置："><a href="#前前置：" class="headerlink" title="前前置："></a>前前置：</h2><p>引入两个概念：</p>
+<h3 id="卷积：Convolution"><a href="#卷积：Convolution" class="headerlink" title="卷积：Convolution"></a>卷积：Convolution</h3><p>是通过两个函数 $f$ 和 $g$ 生成第三个函数的一种数学算子。<a href="https://zh.wikipedia.org/zh-hk/%E5%8D%B7%E7%A7%AF" target="_blank" rel="noopener">wiki</a></p>
+<h3 id="反演：Inversion"><a href="#反演：Inversion" class="headerlink" title="反演：Inversion"></a>反演：Inversion</h3><p>假设有两个函数$f$ 和 $g$ 满足:</p>
+<script type="math/tex; mode=display">f(n) = \sum_k a_{n,k} \ g(k)</script><p>已知 $g$ 求 $f$ 还是很水的。已知 $f$ 求$g$ 的过程称为反演。<br>现在反演一波（乱写），此处可以跳到<a href="#jump">前置：整除分块</a>  &emsp;很杂乱而且不是很清晰。</p>
+<h4 id="二项式反演："><a href="#二项式反演：" class="headerlink" title="二项式反演："></a>二项式反演：</h4><script type="math/tex; mode=display">f(n)=\sum_{k=0}^n\binom nkg(k)</script><script type="math/tex; mode=display">g(n)=\sum_{k=0}^n(-1)^{n-k}\binom nkf(k)</script><h2 id="前置：整除分块"><a href="#前置：整除分块" class="headerlink" title="前置：整除分块"></a><span id="jump">前置：整除分块</span></h2><h3 id="引入："><a href="#引入：" class="headerlink" title="引入："></a>引入：</h3><p>整除分块是用来处理形如<script type="math/tex">\sum_{i=1}^n\lfloor \frac{n}{i}\rfloor</script><br>的式子的方法。<br>当数据加强到$10^{10}$以上时，我们需要低于$O(n)$的更优秀的解法。<br>通过打表或者<del>理性感知</del>，我们可以发现，对于某些$\lfloor \frac{n}{i}\rfloor$，他们的值是相同的，并且呈<strong>块状分布</strong>。<br>由前任的经验，或者自己打表，发现对于一个块，假设它的起始位置的下标为 <strong>$l$</strong> ，那么可以得到的是，它的结束位置的下标为  <strong>$\lfloor\frac{n}{\lfloor\frac{n}{l}\rfloor}\rfloor$</strong><br>再写程序时候，要注意<strong>除法除0</strong>的情况，一般是会判断一下n/l的。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//求\sum_&#123;i=1&#125;^n n/i </span></span><br><span class="line"><span class="comment">//枚举左端点和右端点，右端点n/(n/l)</span></span><br><span class="line"><span class="comment">//右端点要想清楚，注意除数除0的情况，一般是会判断一下n/l的。</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">1</span>,r;l&lt;=n;l=r+<span class="number">1</span>)&#123;</span><br><span class="line">    r=n/(n/l);</span><br><span class="line">    ans+=(n/l)*(r-l+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//如果求\sum_&#123;i=1&#125;^n n/i A[i]</span></span><br><span class="line"><span class="comment">//树状数组访问前缀和。</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> l = <span class="number">1</span>; l &lt;= n; l = r+<span class="number">1</span>)&#123;</span><br><span class="line">    r = n / (n/l);</span><br><span class="line">    ans += query(n/l)*(r-l+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="一些题目"><a href="#一些题目" class="headerlink" title="一些题目"></a>一些题目</h3><ol>
+<li><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1257" target="_blank" rel="noopener">bzoj1257整除分块</a><h4 id="题意："><a href="#题意：" class="headerlink" title="题意："></a>题意：</h4>给定n，k。求$\sum_{i=1}^{n} k \ mod\  i。$<h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h4>首先有$k \bmod i = k - \lfloor \frac{k}{i}\rfloor*i$</li>
+</ol>
+<p>原式等价于求 $n*k-\sum_{i=1}^{n}( \lfloor \frac{k}{i}\rfloor \times i)$</p>
+<p>对于每个区间的 $(l,r)$ ，等差数列搞一搞，得到公式为 $(k/l)\times (r-l+1) \times (l+r)/2$ </p>
+<ol>
+<li><a href="https://www.luogu.com.cn/problem/P2424" target="_blank" rel="noopener">P2424 约数和</a><h4 id="题意：-1"><a href="#题意：-1" class="headerlink" title="题意："></a>题意：</h4>$f(x)=\sum<em>{d|x} d$ &emsp;求$\sum</em>{i=X}^Y f(i)$</li>
+</ol>
+<h4 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h4><p>首先想到前缀和。$1\rightarrow y$ 的 减去 $1 \rightarrow  (x-1)$ 的。<br>那么在$1 \rightarrow n$中会出现的约数显然有n个（即1→n每个数都可作为约数），则对于约数 $d,d\in [1,n]$ ，其对约数和的贡献为$ d\times \lfloor n/d \rfloor$，即$ans=\sum_{i=1}^n(i\times\lfloor \frac{n}{i}\rfloor)$。</p>
+<p>然后对于$(i\times\lfloor \frac{n}{i}\rfloor)$直接数论分块套上等差数列求和就好了。<br> $s=(n/l)\times (l+r)\times(r-l+1)/2;$</p>
+<ol>
+<li><a href="https://loj.ac/problem/124" target="_blank" rel="noopener">loj124除数函数求和1</a></li>
+</ol>
+<h4 id="题意：-2"><a href="#题意：-2" class="headerlink" title="题意："></a>题意：</h4><p>给定$1\le n,k\le 1e7$，求$\sum<em>{i=1}^n\sum</em>{d|n}d^k \ mod \ 1e9+7$的值</p>
+<h4 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a>思路：</h4><p> $\sum<em>{i=1}^n\sum</em>{d|n}d^k = \sum_{i=1}^n(i^k\times \lfloor \frac{n}{i} \rfloor)$  &emsp; $\because i^k$不同 所以不能数论分块。观察到数据范围，叉掉$n \ logn$做法，考虑线性筛。<br> 令$f(i) = i ^ k$,不难发现这个是积性函数。于是有$f(a\cdot b)=f(a)\cdot f(b)$线性筛递推，$O(n)$复杂度。</p>
+<ol>
+<li><a href="https://www.luogu.com.cn/problem/P2260" target="_blank" rel="noopener">P2260 [清华集训2012]模积和</a></li>
+</ol>
+<h4 id="题意：-3"><a href="#题意：-3" class="headerlink" title="题意："></a>题意：</h4><p>$\sum<em>{i=1}^n\sum</em>{j=1}^m(n \ mod \ i) \times (m \ mod \ j), i\neq j \  mod\ 19940417$的值。</p>
+<h4 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a>思路：</h4><ul>
+<li>做这种题，看到不熟悉的模数，先看看他是不是质数，能不能因式分解。发现$19940417 = 7 \times 2848631$。不管有没有用 ，都先分解出来。</li>
+<li>开始推式子：先不管$i\neq j$的条件。</li>
+</ul>
+<p>原式 $= \sum<em>{i=1}^n(n-i\cdot \lfloor n/i\rfloor) \sum</em>{j=1}^m(m-j\times\lfloor m/j\rfloor)=(n^2-\sum<em>{i=1}^n(i\times\lfloor n/i\rfloor))(m^2-\sum</em>{j=1}^m(j\times\lfloor m/j\rfloor))$ </p>
+<p>老套路分块等差数列求和 ，这一步可以解决</p>
+<ul>
+<li>下面考虑$i == j$的情况，</li>
+</ul>
+<p>$jianqu = \sum<em>{i=1}^{min(n,m)}(n-i\times\lfloor n/i\rfloor)\times(m-i\times\lfloor m/i\rfloor) = \sum</em>{i=1}^{min(n,m)}(n\times m+i^2\times\lfloor n/i\times m/i\rfloor-n\times i\times \lfloor m/ i \rfloor - m\times i\times \lfloor n/ i \rfloor )$</p>
+<p>对于$n\times m $ 累加，对于$n\times i\times \lfloor m/i\rfloor $和$m\times i\times \lfloor n/i\rfloor $ 还是老套路，数论分块套等差数列。<br>对于比较难求的 $i^2\times \lfloor n/i \times m/i \rfloor$此时应用平方求和公式$1^2+2^2+……+n^2=\frac{n(n+1)(2n+1)}{6}$前缀搞一搞就行了</p>
+<ul>
+<li>这道题取模，发现6与模数互质，ex_gcd 求一下逆元。<h3 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h3></li>
+</ul>
+<ol>
+<li><p><a href="https://paste.ubuntu.com/p/STDx6frf4d/" target="_blank" rel="noopener">bzoj1257参考代码</a></p>
+</li>
+<li><p><a href="https://paste.ubuntu.com/p/VdfDsWMByg/" target="_blank" rel="noopener">洛谷P2424参考代码</a></p>
+</li>
+<li><p><a href="https://loj.ac/submission/737850" target="_blank" rel="noopener">loj124除数函数求和1</a></p>
+</li>
+<li><a href="https://paste.ubuntu.com/p/jCYgRyzm9T/" target="_blank" rel="noopener">P2260 [清华集训2012]模积和</a><h2 id="数论函数基础知识"><a href="#数论函数基础知识" class="headerlink" title="数论函数基础知识"></a>数论函数基础知识</h2><h3 id="几个定义"><a href="#几个定义" class="headerlink" title="几个定义"></a>几个定义</h3></li>
+</ol>
+<ul>
+<li>数论函数:定义域为正整数的函数。（没特殊提及情况下以下函数均为数论函数）</li>
+<li>积性函数:如果a,b满足$gcd(a,b) = 1$;则有$f(ab) = f(a)(b)$</li>
+<li>完全积性函数:$\forall a,b$ ，满足$f(ab) = f(a)(b)$<h3 id="几个性质和例子"><a href="#几个性质和例子" class="headerlink" title="几个性质和例子"></a>几个性质和例子</h3></li>
+</ul>
+<ol>
+<li>欧拉函数:$\varphi(n) = \sum_{i=1}^n[gcd(i,n)==1]$，是积性函数。</li>
+<li>莫比乌斯函数：$\mu$,当n有平方因子的时候，$\mu(n)=0$，否则设 $n$ 为 $k$ 个不同质因子的乘积。$\mu(n) = (-1)^k$。</li>
+<li>除数函数:这不是完全积性函数，$\sigma<em>a n = \sum</em>{d|n} d^a$。其中$d(n) = \sigma_0{n}$为n的因数个数，$\sigma_1(n) = \sigma(n)$为$n$的约数之和。</li>
+<li>幂函数:完全积性函数。$id_k(n)$,表示$n^k$</li>
+<li>单位函数:完全积性函数。$e(n) = [n = 1]$    </li>
+</ol>
+<p><img src="https://i.loli.net/2020/02/03/L1iMOWjCGSAe6U4.png" alt="from tls %%%"> </p>
+<script type="math/tex; mode=display">\sum_{d|n}\mu(d)=
+\begin{cases}
+1, & \text{ $n=1$ } \\
+0, & \text{ $n\gt1$}
+\end{cases}</script><p><img src="https://i.loli.net/2020/02/03/4IpTtvueoShWFiX.png" alt="from tls %%%"></p>
+<h2 id="Dirichlet卷积"><a href="#Dirichlet卷积" class="headerlink" title="Dirichlet卷积"></a>Dirichlet卷积</h2><h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><p>函数$f$与$g$的Dirichlet卷积定义如下：</p>
+<script type="math/tex; mode=display">(f*g)(n) = \sum_{d|n}f(d)\times g(\frac{n}{d})</script><p>等价于</p>
+<script type="math/tex; mode=display">(f*g)(n) = \sum_{i*j = n}f(i)\times g(j)</script><p>类似的，不难得出</p>
+<script type="math/tex; mode=display">(f*g*h)(n)=\sum_{i*j*k=n}f(i)\times g(j) \times h(k)</script><h3 id="性质"><a href="#性质" class="headerlink" title="性质:"></a>性质:</h3><ul>
+<li>交换律，结合律：略</li>
+<li>分配律：$f<em>(g+h)=f</em>g+g*h$<br>证明如下：<script type="math/tex; mode=display">(g+h)\times f=\sum_{d|n}(g(d)+h(d))f(\frac{n}{d})
+\\=\sum_{d|n}g(d)f(\frac{n}{d})+\sum_{d|n}h(d)f(\frac{n}{d})
+\\=g\times f+h\times f</script></li>
+<li><p>单位元：$f*e=f$<br>证明如下：</p>
+<script type="math/tex; mode=display">(f\times e)(n)=\sum_{d|n}f(d)e(\frac{n}{d})\\=\sum_{d|n}f(d)[\frac{n}{d}==1]\\=\sum_{d|n}f(d)[n==d]=f(n)</script></li>
+<li><p>如果$f,g$都为积性函数，那么$f*g$也是积性函数。<br>证明如下：</p>
+<script type="math/tex; mode=display">h=f\times g=\sum_{d|n}f(d)g(\frac{n}{d})</script><p>对于$h$，有</p>
+<script type="math/tex; mode=display">h(x)h(y)=(\sum_{d_1|x}f(d_1)g(\frac{x}{d_1}))(\sum_{d_2|y}f(d_2)g(\frac{y}{d_2}))
+\\=\sum_{d_1|x,d_2|y}f(d_1d_2)g(\frac{xy}{d_1d_2})\\=\sum_{d|xy}f(d)g(\frac{xy}{d})=h(xy)</script></li>
+</ul>
+<p>对于任意一个函数$f$,则一定存在一个函数$g$满足$f*g=e$,则$g$叫做$f$的Dirichlet逆。</p>
+<h3 id="计算Dirichlet卷积"><a href="#计算Dirichlet卷积" class="headerlink" title="计算Dirichlet卷积"></a>计算Dirichlet卷积</h3><p>设$h=f*g$<br>计算$h(n)$:根据定义，枚举因数，时间复杂度为$O(\sqrt n)$<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">h(n)=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i*i&lt;=n;i++)&#123;</span><br><span class="line">    <span class="keyword">if</span> (n%i)</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    h(n)+=f(i)*g(n/i);</span><br><span class="line">    <span class="keyword">if</span> (i*i!=n)</span><br><span class="line">        h(n)+=f(n/i)*g(i);</span><br><span class="line">&#125;</span><br><span class="line">```  </span><br><span class="line">计算$h$，其中h的定义域为<span class="number">1</span>~n,类似筛法，不难得到$O(n\ <span class="built_in">log</span>\ n)$</span><br><span class="line">```cpp</span><br><span class="line"><span class="built_in">memset</span>(h,<span class="number">0</span>,<span class="keyword">sizeof</span> h);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>;i*j&lt;=n;j++)</span><br><span class="line">        h(i*j)+=f(i)*g(j);</span><br></pre></td></tr></table></figure></p>
+<h3 id="几个Dirichlet卷积"><a href="#几个Dirichlet卷积" class="headerlink" title="几个Dirichlet卷积"></a>几个Dirichlet卷积</h3><ul>
+<li>除数函数卷上1。$(1 = id_0)$</li>
+</ul>
+<script type="math/tex; mode=display">d(n) = \sum_{d|n}1\Rightarrow  d = 1*1</script><script type="math/tex; mode=display">\sigma(n)=\sum_{d|n}d\Rightarrow \sigma=id*1</script><ul>
+<li>莫比乌斯函数与1的卷积：很重要!<br>其中 $k$ 为 $n$ 不同种类的质因数个数。<br>$\sum<em>{d|n}\mu(n)=\sum</em>{i=0}^{k}(-1)^i\times \binom{k}{i}=(1-1)^{k}=0^{k}$<br>其中，对于$0^0$没有定义，考虑到$k = 0$的只有$n = 1$,而$\mu (1)  = 1$，所以有</li>
+</ul>
+<p>$\sum_{d|n}\mu(n)=[n=1]=e(n)$  [P]表示P成立时候为1，否则为0。</p>
+<p>所以就会有:$e = \mu * 1 $ &emsp;这里可以看出 $\mu$ 和 $1$在Dirichlet卷积的意义下互为逆元。记住这个式子！！这个对于莫比乌斯反演非常非常非常的重要！！！</p>
+<ul>
+<li>常用的卷积：<script type="math/tex; mode=display">\varphi*1=??</script> 考虑到，若d为n的因数，则$φ(d)$即与n的最大公约数为$\frac{n}{d}$的数的个数。所以：<script type="math/tex; mode=display">\sum_{d|n}\varphi(d)=n \quad \Longrightarrow \varphi*1=id</script></li>
+<li>关于幂函数<script type="math/tex; mode=display">id_k\times(a*b)=(id_k\times a)*(id_k\times b)</script><script type="math/tex; mode=display">(\varphi\times id_k)*id_k=id_{k+1}</script></li>
+</ul>
+<h2 id="莫比乌斯反演"><a href="#莫比乌斯反演" class="headerlink" title="莫比乌斯反演"></a>莫比乌斯反演</h2><h3 id="一些题目-1"><a href="#一些题目-1" class="headerlink" title="一些题目"></a>一些题目</h3><ol>
+<li><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1101" target="_blank" rel="noopener">bzoj1101Zap反演经典题目</a><h4 id="题意：-4"><a href="#题意：-4" class="headerlink" title="题意："></a>题意：</h4></li>
+</ol>
+<h4 id="思路：-4"><a href="#思路：-4" class="headerlink" title="思路："></a>思路：</h4><ol>
+<li><p><a href="https://codeforces.com/gym/101982" target="_blank" rel="noopener">gym101982Coprime Integers</a></p>
+<h4 id="题意"><a href="#题意" class="headerlink" title="题意:"></a>题意:</h4><h4 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h4></li>
+<li><p><a href="https://www.luogu.com.cn/problem/P5572" target="_blank" rel="noopener">P5572 [CmdOI2019]简单的数论题</a></p>
+<h3 id="参考代码-1"><a href="#参考代码-1" class="headerlink" title="参考代码"></a>参考代码</h3></li>
+<li><p><a href="https://loj.ac/problem/2185" target="_blank" rel="noopener">2015SDOI约数个数和</a></p>
+<h4 id="题意：-5"><a href="#题意：-5" class="headerlink" title="题意："></a>题意：</h4><h4 id="思路：-5"><a href="#思路：-5" class="headerlink" title="思路："></a>思路：</h4><h4 id="参考代码："><a href="#参考代码：" class="headerlink" title="参考代码："></a>参考代码：</h4><p><a href="https://loj.ac/submission/757692" target="_blank" rel="noopener">分块的预处理（慢一些）</a><br><a href="https://loj.ac/submission/757693" target="_blank" rel="noopener">优化预处理d</a></p>
+</li>
+</ol>
+<h2 id="杜教筛"><a href="#杜教筛" class="headerlink" title="杜教筛"></a>杜教筛</h2><p>利用Dirichlet卷积来构造递推式，从而对一些数论函数进行快速求和的方法。</p>
+<p>杜教筛不像是传统的筛法（雾）</p>
+<h3 id="例子："><a href="#例子：" class="headerlink" title="例子："></a>例子：</h3><p>快速求$$</p>
+<h2 id="洲阁筛"><a href="#洲阁筛" class="headerlink" title="洲阁筛"></a>洲阁筛</h2><h2 id="MIN-25筛"><a href="#MIN-25筛" class="headerlink" title="MIN_25筛"></a>MIN_25筛</h2><h2 id="一些阅读资料"><a href="#一些阅读资料" class="headerlink" title="一些阅读资料"></a>一些阅读资料</h2><p>我可能有些一些也没读过…(羞愧.jpg)<br><a href="https://enkerewpo.github.io/files/THE_XUANKU_INVERSION_MAGIC.pdf" target="_blank" rel="noopener">炫酷反演魔术       —VFleaKing</a></p>
+
+    </div>
+     
+    
+    
+    
+    <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #FFC0CB;font-size:16px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/莫比乌斯函数与莫比乌斯反演/" rel="tag"><i class="fa fa-tag"></i> 莫比乌斯函数与莫比乌斯反演</a>
+          
+            <a href="/tags/杜教筛/" rel="tag"><i class="fa fa-tag"></i> 杜教筛</a>
+          
+            <a href="/tags/Number-Theory-Function/" rel="tag"><i class="fa fa-tag"></i> Number Theory Function</a>
+          
+        </div>
+        <div class="post-widgets">
+        
+
+        
+
+        
+          <div class="social-share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2020/02/02/2020CCPCWannaflyWinterCamp/" rel="next" title="2020 CCPC Wannafly Winter Camp">
+                <i class="fa fa-chevron-left"></i> 2020 CCPC Wannafly Winter Camp
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+              <a href="/2020/02/04/TeamRound15/" rel="prev" title="Team Round #15: 2019 Multi-University Training Contest 9">
+                Team Round #15: 2019 Multi-University Training Contest 9 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/-4fdf7b2d53898e7a.jpg"
+      alt="miniLCT">
+  <p class="site-author-name" itemprop="name">miniLCT</p>
+  <div class="site-description motion-element" itemprop="description">博觀而約取，厚積而薄發</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+      
+        
+      
+        <a href="https://github.com/miniLCT" title="GitHub &rarr; https://github.com/miniLCT" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+      
+        
+      
+        <a href="mailto:iamnotmyself@vip.qq.com" title="E-Mail &rarr; mailto:iamnotmyself@vip.qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+      
+        
+      
+        <a href="https://blog.csdn.net/qq_43696359" title="CSDN &rarr; https://blog.csdn.net/qq_43696359" rel="noopener" target="_blank"><i class="fa fa-fw fa-heartbeat"></i></a>
+      </span>
+    
+  </div>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前前置："><span class="nav-number">1.</span> <span class="nav-text">前前置：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#卷积：Convolution"><span class="nav-number">1.1.</span> <span class="nav-text">卷积：Convolution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反演：Inversion"><span class="nav-number">1.2.</span> <span class="nav-text">反演：Inversion</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#二项式反演："><span class="nav-number">1.2.1.</span> <span class="nav-text">二项式反演：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前置：整除分块"><span class="nav-number">2.</span> <span class="nav-text">前置：整除分块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引入："><span class="nav-number">2.1.</span> <span class="nav-text">引入：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些题目"><span class="nav-number">2.2.</span> <span class="nav-text">一些题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意："><span class="nav-number">2.2.1.</span> <span class="nav-text">题意：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路："><span class="nav-number">2.2.2.</span> <span class="nav-text">思路：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题意：-1"><span class="nav-number">2.2.3.</span> <span class="nav-text">题意：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路：-1"><span class="nav-number">2.2.4.</span> <span class="nav-text">思路：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题意：-2"><span class="nav-number">2.2.5.</span> <span class="nav-text">题意：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路：-2"><span class="nav-number">2.2.6.</span> <span class="nav-text">思路：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题意：-3"><span class="nav-number">2.2.7.</span> <span class="nav-text">题意：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路：-3"><span class="nav-number">2.2.8.</span> <span class="nav-text">思路：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考代码"><span class="nav-number">2.3.</span> <span class="nav-text">参考代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数论函数基础知识"><span class="nav-number">3.</span> <span class="nav-text">数论函数基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#几个定义"><span class="nav-number">3.1.</span> <span class="nav-text">几个定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几个性质和例子"><span class="nav-number">3.2.</span> <span class="nav-text">几个性质和例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dirichlet卷积"><span class="nav-number">4.</span> <span class="nav-text">Dirichlet卷积</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义："><span class="nav-number">4.1.</span> <span class="nav-text">定义：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性质"><span class="nav-number">4.2.</span> <span class="nav-text">性质:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算Dirichlet卷积"><span class="nav-number">4.3.</span> <span class="nav-text">计算Dirichlet卷积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几个Dirichlet卷积"><span class="nav-number">4.4.</span> <span class="nav-text">几个Dirichlet卷积</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#莫比乌斯反演"><span class="nav-number">5.</span> <span class="nav-text">莫比乌斯反演</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一些题目-1"><span class="nav-number">5.1.</span> <span class="nav-text">一些题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意：-4"><span class="nav-number">5.1.1.</span> <span class="nav-text">题意：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路：-4"><span class="nav-number">5.1.2.</span> <span class="nav-text">思路：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题意"><span class="nav-number">5.1.3.</span> <span class="nav-text">题意:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">5.1.4.</span> <span class="nav-text">思路:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考代码-1"><span class="nav-number">5.2.</span> <span class="nav-text">参考代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意：-5"><span class="nav-number">5.2.1.</span> <span class="nav-text">题意：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路：-5"><span class="nav-number">5.2.2.</span> <span class="nav-text">思路：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考代码："><span class="nav-number">5.2.3.</span> <span class="nav-text">参考代码：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#杜教筛"><span class="nav-number">6.</span> <span class="nav-text">杜教筛</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例子："><span class="nav-number">6.1.</span> <span class="nav-text">例子：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#洲阁筛"><span class="nav-number">7.</span> <span class="nav-text">洲阁筛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MIN-25筛"><span class="nav-number">8.</span> <span class="nav-text">MIN_25筛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些阅读资料"><span class="nav-number">9.</span> <span class="nav-text">一些阅读资料</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">miniLCT</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">58k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">3:14</span>
+  <a href="http://www.beian.miit.gov.cn">浙ICP备20021511号</a>
+</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+  
+<script src="/lib/needsharebutton/needsharebutton.js"></script>
+<script>
+    pbOptions = {};
+      pbOptions.iconStyle = "box";
+    
+      pbOptions.boxForm = "horizontal";
+    
+      pbOptions.position = "bottomCenter";
+    
+      pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+    
+    new needShareButton('#needsharebutton-postbottom', pbOptions);
+</script>
+
+
+  </div>
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+  
+  <script src="/js/affix.js?v=7.2.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+
+  
+    
+      <script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.2.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: true,
+    appId: '3zME3GE14GrJRaivOYsmPfUv-gzGzoHsz',
+    appKey: 'HSiozlc5dAoUa5UvYWC2Jzvy',
+    placeholder: '快來評論叭',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true,
+    lang: '' || 'zh-cn'
+  });
+</script>
+
+
+<script type="text/javascript" src="/js/clicklove.js"></script>
+</body>
+</html>

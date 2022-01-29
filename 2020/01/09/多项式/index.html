@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<script language="javascript" type="text/javascript" src="https://cdn.staticfile.org/jquery/1.7.2/jquery.min.js"></script>
+
+
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon200.png?v=7.2.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png?v=7.2.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png?v=7.2.0">
+  <link rel="mask-icon" href="/images/favicon200.png?v=7.2.0" color="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|SimHei, Verdana, sans-serif:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false},
+    search: {
+      root: '/',
+      path: 'search.xml'
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="本文记录了多项式学习">
+<meta name="keywords" content="Math,多项式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多项式学习笔记">
+<meta property="og:url" content="http://yoursite.com/2020/01/09/多项式/index.html">
+<meta property="og:site_name" content="Mini   LCT">
+<meta property="og:description" content="本文记录了多项式学习">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-20T07:04:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="多项式学习笔记">
+<meta name="twitter:description" content="本文记录了多项式学习">
+  <link rel="alternate" href="/atom.xml" title="Mini   LCT" type="application/atom+xml">
+  <link rel="canonical" href="http://yoursite.com/2020/01/09/多项式/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>多项式学习笔记 | Mini   LCT</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/miniLCT" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#FD6C6C; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mini   LCT</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">及时当勉励</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+      
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签<span class="badge">45</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+      
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类<span class="badge">19</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档<span class="badge">61</span></a>
+
+  </li>
+        <li class="menu-item menu-item-search">
+          <a href="javascript:;" class="popup-trigger">
+          
+            <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
+        </li>
+      
+    </ul>
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+    </div>
+</nav>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/09/多项式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="miniLCT">
+      <meta itemprop="description" content="博觀而約取，厚積而薄發">
+      <meta itemprop="image" content="/images/-4fdf7b2d53898e7a.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mini   LCT">
+    </span>
+      <header class="post-header">
+
+        
+          <h2 class="post-title" itemprop="name headline">多项式学习笔记
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+         
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-01-09 00:08:05" itemprop="dateCreated datePublished" datetime="2020-01-09T00:08:05+08:00">2020-01-09</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-03-20 15:04:40" itemprop="dateModified" datetime="2020-03-20T15:04:40+08:00">2020-03-20</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span id="/2020/01/09/多项式/" class="post-meta-item leancloud_visitors" data-flag-title="多项式学习笔记">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+            
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="fa fa-comment-o"></i>
+    </span>
+    
+      <span class="post-meta-item-text">评论数：</span>
+    
+  
+    <a href="/2020/01/09/多项式/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/01/09/多项式/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+          <br/>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">1.7k</span>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">6 分钟</span>
+            </span>
+          
+            <div class="post-description"><center>本文记录了多项式学习</center></div>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>十六岁没能送你玫瑰，二十六岁请你喝一次勇闯天涯叭。  <kb><br>[toc]</kb></p>
+</blockquote>
+<p>目前想完成的任务是：多项式之快速傅里叶变换（FFT）/数论变换（NTT）</p>
+<h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><ul>
+<li><p>对复数和复平面有一定的了解</p>
+</li>
+<li><p>了解逆元，原根，中国剩余定理</p>
+</li>
+<li><p>对多项式有一定认识，能写$O（n^2）$的高精乘</p>
+</li>
+<li><p><del>对分治很了解</del></p>
+</li>
+<li><p>UPD:本文之前只是介绍$FFT$，后来慢慢扩展得有点多，似乎前置知识有点多。</p>
+<h2 id="多项式"><a href="#多项式" class="headerlink" title="多项式"></a>多项式</h2><h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><p>定义<kbd>多项式</kbd>为形如下式的<kbd>代数表达式</kbd>。</p>
+<script type="math/tex; mode=display">P(x) = \sum_{i=0}^n a_ix^i = a_0+a_1x+a_2x^2+…a_nx^n</script><p>其中$a_0,a_1,a_2……a_n$称为多项式的系数。<br>最高项的指数n叫做多项式的<kbd>度</kbd>，$Degree ,n = deg P$,也可以说是多项式的系数。<strong>本文没特殊说明情况下默认$n = deg\ F$</strong></p>
+<h3 id="多项式的卷积形式"><a href="#多项式的卷积形式" class="headerlink" title="多项式的卷积形式"></a>多项式的卷积形式</h3><p>设有两个多项式$g(x), f(x)$,设他们的度数分别为$n , m$，则卷积具有如下形式：</p>
+<script type="math/tex; mode=display">h(x) = g(x)f(x)=\sum_{i=0}^{n}\sum_{j=0}^m \ g_i\ f_j\ x^{i+j}=\sum_{i=0}^{n+m}\sum_{j=0}^{i}g_j\ f_{i-j}\ x^i</script></li>
+</ul>
+<p>基础的，我们可以通过$O(n*m)$来获得卷积结果。</p>
+<h2 id="Karatsuba乘法"><a href="#Karatsuba乘法" class="headerlink" title="Karatsuba乘法"></a>Karatsuba乘法</h2><p>值得一提的是，$Karatsuba$ 算法是<strong>第一个</strong>比小学二次乘法算法渐进快速的算法。</p>
+<p>对于上面的卷积，$Karatsuba$ 提出如下方法：<br>对于多项式 $F$ ,不妨设$n = deg \ F+1$,此时有：<script type="math/tex">F(x)=\sum_{i=0}^{n-1}a_ix^i</script><br>令$F(x) = F_0(x)+x^{\frac{n}{2}}F_1(x),G(x)=G_0(X)+x^{\frac{n}{2}}G_1(x)$<br>其中有:$deg\ F_0=deg\ F_1=deg\ G_0=deg\ G_1=\frac n2$<br>那么得到：<script type="math/tex">(F\times G)(x)=(F_0\times G_0)(x)+x^{\frac n2}(F_0\times G_1+F_1\times G_0)(x)+x^n(F_1\times G_1)(x)</script><br>不让令$M(x)=((F_0+F_1)\times(G_0+G_1))(x)$<br>不难发现：</p>
+<script type="math/tex; mode=display">(F_0\times G_1+F_1\times G_0)(x)=M(x)-(F_0\times G_0)(x)-(F_1\times G_1)(x)</script><p>至此，我们只需要三个多项式的卷积 $M(x),(F_0\times G_0)(x)-(F_1\times G_1)(x)$ 即可。</p>
+<p>采用分治的做法。时间复杂度为：<script type="math/tex">T(n)=3T(\frac n2)+O(n)=n^{\log_23}\approx n^{1.585}</script></p>
+<p>$python$ 的代码实现<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Python 2 and 3</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">karatsuba</span><span class="params">(num1, num2)</span>:</span></span><br><span class="line">    num1Str, num2Str = str(num1), str(num2)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> num1Str[<span class="number">0</span>] == <span class="string">'-'</span>: <span class="keyword">return</span> -karatsuba(-num1, num2)</span><br><span class="line">    <span class="keyword">if</span> num2Str[<span class="number">0</span>] == <span class="string">'-'</span>: <span class="keyword">return</span> -karatsuba(num1, -num2)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> num1 &lt; <span class="number">10</span> <span class="keyword">or</span> num2 &lt; <span class="number">10</span>: <span class="keyword">return</span> num1 * num2</span><br><span class="line">    </span><br><span class="line">    maxLength = max(len(num1Str), len(num2Str))</span><br><span class="line">    num1Str = <span class="string">''</span>.join(list(<span class="string">'0'</span> * maxLength)[:-len(num1Str)] + list(num1Str))</span><br><span class="line">    num2Str = <span class="string">''</span>.join(list(<span class="string">'0'</span> * maxLength)[:-len(num2Str)] + list(num2Str))</span><br><span class="line">    </span><br><span class="line">    splitPosition = maxLength // <span class="number">2</span></span><br><span class="line">    high1, low1 = int(num1Str[:-splitPosition]), int(num1Str[-splitPosition:])</span><br><span class="line">    high2, low2 = int(num2Str[:-splitPosition]), int(num2Str[-splitPosition:])</span><br><span class="line">    z0, z2 = karatsuba(low1, low2), karatsuba(high1, high2)</span><br><span class="line">    z1 = karatsuba((low1 + high1), (low2 + high2))</span><br><span class="line">    <span class="keyword">return</span> z2 * <span class="number">10</span> ** (<span class="number">2</span> * splitPosition) + (z1 - z2 - z0) * <span class="number">10</span> ** (splitPosition) + z0</span><br></pre></td></tr></table></figure></p>
+<p>此外，<a href="https://en.wikipedia.org/wiki/Toom%E2%80%93Cook_multiplication" target="_blank" rel="noopener">Toom–Cook multiplication</a>是此算法更快速的泛型。对于$n$足够大时还有<a href="https://en.wikipedia.org/wiki/Sch%C3%B6nhage%E2%80%93Strassen_algorithm" target="_blank" rel="noopener">Schönhage–Strassen algorithm</a>算法是更快的，它的时间复杂度为$O(n\ log \ n\ log\  log n)$.</p>
+<h2 id="多项式的系数表示与点值表示"><a href="#多项式的系数表示与点值表示" class="headerlink" title="多项式的系数表示与点值表示"></a>多项式的系数表示与点值表示</h2><h3 id="系数表示"><a href="#系数表示" class="headerlink" title="系数表示"></a>系数表示</h3><p>对于多项式<script type="math/tex">f(x)=a_0+a_1x+a_2x^2+\cdots a_nx^n</script><br>我们将 $\mathbf{a}$ 数组看作$n+1$维向量 $\vec{a} = (a_0,a_1,\cdots,a_n)$，其<strong>系数表示</strong>就是向量$\vec a$。 </p>
+<h3 id="点值表示"><a href="#点值表示" class="headerlink" title="点值表示"></a>点值表示</h3><p><del>由小学知识可知</del>，$n$ 个点$(x_i,y_i)$便可以唯一确定一个多项式$y=F(x)$</p>
+<p>现在取任意$n+1$个点</p>
+<h2 id="拉格朗日插值法（Lagrange）"><a href="#拉格朗日插值法（Lagrange）" class="headerlink" title="拉格朗日插值法（Lagrange）"></a>拉格朗日插值法（Lagrange）</h2><p><a href="https://www.zhihu.com/question/58333118/answer/262507694" target="_blank" rel="noopener">在知乎学数学.jpg</a> &emsp;有点想吐槽一下最近知乎越来越…了，钓鱼问题乱飞。。</p>
+<h3 id="一般方法"><a href="#一般方法" class="headerlink" title="一般方法"></a>一般方法</h3><h3 id="重心拉格朗日插值法"><a href="#重心拉格朗日插值法" class="headerlink" title="重心拉格朗日插值法"></a>重心拉格朗日插值法</h3><h2 id="复数与单位根"><a href="#复数与单位根" class="headerlink" title="复数与单位根"></a>复数与单位根</h2><h2 id="FFT-快速傅里叶变换"><a href="#FFT-快速傅里叶变换" class="headerlink" title="FFT(快速傅里叶变换)"></a>FFT(快速傅里叶变换)</h2><h3 id="为什么引入FFT"><a href="#为什么引入FFT" class="headerlink" title="为什么引入FFT"></a>为什么引入FFT</h3><p>两个多项式相乘朴素算法的复杂度是$O(n^2)$而使用FFT优化之后可以把复杂度降为$O(nlogn)$</p>
+<h2 id="NTT-数论变换"><a href="#NTT-数论变换" class="headerlink" title="NTT(数论变换)"></a>NTT(数论变换)</h2><h2 id="分治FFT"><a href="#分治FFT" class="headerlink" title="分治FFT"></a>分治FFT</h2><h2 id="拆系数FFT与三模数FFT"><a href="#拆系数FFT与三模数FFT" class="headerlink" title="拆系数FFT与三模数FFT"></a>拆系数FFT与三模数FFT</h2><h2 id="一些题目及其思路"><a href="#一些题目及其思路" class="headerlink" title="一些题目及其思路"></a>一些题目及其思路</h2><h3 id="1-【模板】多项式乘法"><a href="#1-【模板】多项式乘法" class="headerlink" title="1. 【模板】多项式乘法"></a>1. <a href="https://www.luogu.com.cn/problem/P3803" target="_blank" rel="noopener">【模板】多项式乘法</a></h3><p>$FFT$:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">double</span> LD;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i, x, y) for (decay<span class="meta-string">&lt;decltype(y)&gt;::type i = (x), _##i = (y); i &lt; _##i; ++i)</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FORD(i, x, y) for (decay<span class="meta-string">&lt;decltype(x)&gt;::type i = (x), _##i = (y); i &gt; _##i; --i)</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">5e6</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> LD PI = <span class="built_in">acos</span>(<span class="number">-1</span>);</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">C</span> &#123;</span></span><br><span class="line">    LD r, i;</span><br><span class="line">    C(LD r = <span class="number">0</span>, LD i = <span class="number">0</span>) : r(r), i(i) &#123;&#125;</span><br><span class="line">&#125; A[MAXN], B[MAXN];</span><br><span class="line">C <span class="keyword">operator</span>+(<span class="keyword">const</span> C&amp; a, <span class="keyword">const</span> C&amp; b) &#123; <span class="keyword">return</span> C(a.r + b.r, a.i + b.i); &#125;</span><br><span class="line">C <span class="keyword">operator</span>-(<span class="keyword">const</span> C&amp; a, <span class="keyword">const</span> C&amp; b) &#123; <span class="keyword">return</span> C(a.r - b.r, a.i - b.i); &#125;</span><br><span class="line">C <span class="keyword">operator</span>*(<span class="keyword">const</span> C&amp; a, <span class="keyword">const</span> C&amp; b) &#123; <span class="keyword">return</span> C(a.r * b.r - a.i * b.i, a.r * b.i + a.i * b.r); &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FFT</span><span class="params">(C x[], <span class="keyword">int</span> n, <span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, t = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i &gt; t)</span><br><span class="line">            swap(x[i], x[t]);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = n &gt;&gt; <span class="number">1</span>; (t ^= j) &lt; j; j &gt;&gt;= <span class="number">1</span>)</span><br><span class="line">            ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> h = <span class="number">2</span>; h &lt;= n; h &lt;&lt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="function">C <span class="title">wn</span><span class="params">(<span class="built_in">cos</span>(p * <span class="number">2</span> * PI / h), <span class="built_in">sin</span>(p * <span class="number">2</span> * PI / h))</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i += h) &#123;</span><br><span class="line">            C w(1, 0), u;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i, k = h &gt;&gt; <span class="number">1</span>; j &lt; i + k; ++j) &#123;</span><br><span class="line">                u = x[j + k] * w;</span><br><span class="line">                x[j + k] = x[j] - u;</span><br><span class="line">                x[j] = x[j] + u;</span><br><span class="line">                w = w * wn;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (p == <span class="number">-1</span>)</span><br><span class="line">        FOR(i, <span class="number">0</span>, n)</span><br><span class="line">    x[i].r /= n;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">conv</span><span class="params">(C a[], C b[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    FFT(a, n, <span class="number">1</span>);</span><br><span class="line">    FFT(b, n, <span class="number">1</span>);</span><br><span class="line">    FOR(i, <span class="number">0</span>, n)</span><br><span class="line">    a[i] = a[i] * b[i];</span><br><span class="line">    FFT(a, n, <span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a, b, n;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>),<span class="built_in">cin</span>.tie(<span class="number">0</span>),<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= a; i++) &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; A[i].r;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= b; i++) &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; B[i].r;</span><br><span class="line">    &#125;</span><br><span class="line">    n = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (a + b &gt;= n) &#123;</span><br><span class="line">        n *= <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    conv(A, B, n);</span><br><span class="line">    <span class="comment">// cout &lt;&lt; "n ==== " &lt;&lt; n &lt;&lt; endl;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= a + b; i++) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; (<span class="keyword">int</span>)(A[i].r + <span class="number">0.5</span>) &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>$NTT$<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i, x, y) for (decay<span class="meta-string">&lt;decltype(y)&gt;::type i = (x), _##i = (y); i &lt; _##i; ++i)</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FORD(i, x, y) for (decay<span class="meta-string">&lt;decltype(x)&gt;::type i = (x), _##i = (y); i &gt; _##i; --i)</span></span></span><br><span class="line"><span class="keyword">using</span> LL = <span class="keyword">long</span> <span class="keyword">long</span> ;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long </span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD = <span class="number">998244353</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">998244353</span>;</span><br><span class="line"><span class="keyword">int</span> G = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">5e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span>+<span class="number">10</span>;</span><br><span class="line">LL wn[N &lt;&lt; <span class="number">2</span>], rev[N &lt;&lt; <span class="number">2</span>];</span><br><span class="line"><span class="function">LL <span class="title">bin</span><span class="params">(LL x, LL n, LL MOD)</span> </span>&#123;</span><br><span class="line">    LL ret = MOD != <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (x %= MOD; n; n &gt;&gt;= <span class="number">1</span>, x = x * x % MOD)</span><br><span class="line">        <span class="keyword">if</span> (n &amp; <span class="number">1</span>) ret = ret * x % MOD;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> LL <span class="title">get_inv</span><span class="params">(LL x, LL p)</span> </span>&#123; <span class="keyword">return</span> bin(x, p - <span class="number">2</span>, p); &#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">NTT_init</span><span class="params">(<span class="keyword">int</span> n_)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> step = <span class="number">0</span>; <span class="keyword">int</span> n = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> ( ; n &lt;= n_; n &lt;&lt;= <span class="number">1</span>) ++step;</span><br><span class="line">    FOR (i, <span class="number">1</span>, n)</span><br><span class="line">        rev[i] = (rev[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; (step - <span class="number">1</span>));</span><br><span class="line">    <span class="keyword">int</span> g = bin(G, (MOD - <span class="number">1</span>) / n, MOD);</span><br><span class="line">    wn[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        wn[i] = wn[i - <span class="number">1</span>] * g % MOD;</span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">NTT</span><span class="params">(LL a[], <span class="keyword">int</span> n, <span class="keyword">int</span> f)</span> </span>&#123;</span><br><span class="line">    FOR (i, <span class="number">0</span>, n) <span class="keyword">if</span> (i &lt; rev[i])</span><br><span class="line">        <span class="built_in">std</span>::swap(a[i], a[rev[i]]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span>; k &lt; n; k &lt;&lt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i += (k &lt;&lt; <span class="number">1</span>)) &#123;</span><br><span class="line">            <span class="keyword">int</span> t = n / (k &lt;&lt; <span class="number">1</span>);</span><br><span class="line">            FOR (j, <span class="number">0</span>, k) &#123;</span><br><span class="line">                LL w = f == <span class="number">1</span> ? wn[t * j] : wn[n - t * j];</span><br><span class="line">                LL x = a[i + j];</span><br><span class="line">                LL y = a[i + j + k] * w % MOD;</span><br><span class="line">                a[i + j] = (x + y) % MOD;</span><br><span class="line">                a[i + j + k] = (x - y + MOD) % MOD;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (f == <span class="number">-1</span>) &#123;</span><br><span class="line">        LL ninv = get_inv(n, MOD);</span><br><span class="line">        FOR (i, <span class="number">0</span>, n)</span><br><span class="line">            a[i] = a[i] * ninv % MOD;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n , m, a[maxn], b[maxn],limit = <span class="number">1</span>, L;</span><br><span class="line"><span class="function"><span class="keyword">int32_t</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>),<span class="built_in">cin</span>.tie(<span class="number">0</span>),<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++)<span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= m; j++)<span class="built_in">cin</span> &gt;&gt; b[j];</span><br><span class="line">    <span class="keyword">while</span>(limit &lt;= n+m)limit++,L++;</span><br><span class="line">    limit = NTT_init(m+n);</span><br><span class="line">    <span class="comment">//cout &lt;&lt; "limit === "&lt;&lt;limit &lt;&lt; endl;</span></span><br><span class="line">    NTT(a,limit , <span class="number">1</span>);NTT(b , limit, <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; limit; i++) a[i] = (a[i] * b[i]) % MOD;</span><br><span class="line">    NTT(a,limit , <span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n+m; i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; (a[i] + mod) % mod &lt;&lt;<span class="string">" "</span>;</span><br><span class="line">    &#125;<span class="comment">//cout &lt;&lt; '\n';</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-【模板】A-B-Problem升级版（FFT快速傅里叶）"><a href="#2-【模板】A-B-Problem升级版（FFT快速傅里叶）" class="headerlink" title="2.【模板】A*B Problem升级版（FFT快速傅里叶）"></a>2.<a href="https://www.luogu.com.cn/problem/P1919" target="_blank" rel="noopener">【模板】A*B Problem升级版（FFT快速傅里叶）</a></h3><p>给定两个大整数$A,B$,求$A\times B$<br>把$A$看作$A=\sum_{i=0}^{n-1}a_i*10^i$<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// fft不同位数的乘法。A*B 看作A = 累加a*10^Pi</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">double</span> LD;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i, x, y) \</span></span><br><span class="line">    <span class="keyword">for</span> (decay&lt;<span class="keyword">decltype</span>(y)&gt;::type i = (x), _##i = (y); i &lt; _##i; ++i)</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FORD(i, x, y) \</span></span><br><span class="line">    <span class="keyword">for</span> (decay&lt;<span class="keyword">decltype</span>(x)&gt;::type i = (x), _##i = (y); i &gt; _##i; --i)</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> LD PI = <span class="built_in">acos</span>(<span class="number">-1</span>);</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">C</span> &#123;</span></span><br><span class="line">    LD r, i;</span><br><span class="line">    C(LD r = <span class="number">0</span>, LD i = <span class="number">0</span>) : r(r), i(i) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line">C <span class="keyword">operator</span>+(<span class="keyword">const</span> C&amp; a, <span class="keyword">const</span> C&amp; b) &#123; <span class="keyword">return</span> C(a.r + b.r, a.i + b.i); &#125;</span><br><span class="line">C <span class="keyword">operator</span>-(<span class="keyword">const</span> C&amp; a, <span class="keyword">const</span> C&amp; b) &#123; <span class="keyword">return</span> C(a.r - b.r, a.i - b.i); &#125;</span><br><span class="line">C <span class="keyword">operator</span>*(<span class="keyword">const</span> C&amp; a, <span class="keyword">const</span> C&amp; b) &#123;</span><br><span class="line">    <span class="keyword">return</span> C(a.r * b.r - a.i * b.i, a.r * b.i + a.i * b.r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FFT</span><span class="params">(C x[], <span class="keyword">int</span> n, <span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, t = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i &gt; t) swap(x[i], x[t]);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = n &gt;&gt; <span class="number">1</span>; (t ^= j) &lt; j; j &gt;&gt;= <span class="number">1</span>)</span><br><span class="line">            ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> h = <span class="number">2</span>; h &lt;= n; h &lt;&lt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="function">C <span class="title">wn</span><span class="params">(<span class="built_in">cos</span>(p * <span class="number">2</span> * PI / h), <span class="built_in">sin</span>(p * <span class="number">2</span> * PI / h))</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i += h) &#123;</span><br><span class="line">            C w(1, 0), u;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i, k = h &gt;&gt; <span class="number">1</span>; j &lt; i + k; ++j) &#123;</span><br><span class="line">                u = x[j + k] * w;</span><br><span class="line">                x[j + k] = x[j] - u;</span><br><span class="line">                x[j] = x[j] + u;</span><br><span class="line">                w = w * wn;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (p == <span class="number">-1</span>) FOR(i, <span class="number">0</span>, n)</span><br><span class="line">    x[i].r /= n;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">conv</span><span class="params">(C a[], C b[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    FFT(a, n, <span class="number">1</span>);</span><br><span class="line">    FFT(b, n, <span class="number">1</span>);</span><br><span class="line">    FOR(i, <span class="number">0</span>, n)</span><br><span class="line">    a[i] = a[i] * b[i];</span><br><span class="line">    FFT(a, n, <span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> limit = <span class="number">1</span>, bit = <span class="number">0</span>;  <span class="comment">// limit为最终扩充的长度 limit = 1&lt;&lt;bit</span></span><br><span class="line"><span class="keyword">int</span> wz[maxn &lt;&lt; <span class="number">2</span>];</span><br><span class="line"><span class="keyword">int</span> re[maxn &lt;&lt; <span class="number">2</span>];  <span class="comment">//存储结果</span></span><br><span class="line">C a[maxn &lt;&lt; <span class="number">2</span>], b[maxn &lt;&lt; <span class="number">2</span>];</span><br><span class="line"><span class="keyword">char</span> s1[maxn], s2[maxn];  <span class="comment">//存储两个整数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s%s"</span>, s1, s2);</span><br><span class="line">    <span class="keyword">int</span> len1 = <span class="built_in">strlen</span>(s1), len2 = <span class="built_in">strlen</span>(s2);</span><br><span class="line">    <span class="keyword">while</span> (limit &lt;= len1 + len2) &#123;</span><br><span class="line">        limit &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        bit++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// cout &lt;&lt; "limit === "  &lt;&lt; limit &lt;&lt; endl &lt;&lt; "bit ==== " &lt;&lt; bit &lt;&lt; endl;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = len1 - <span class="number">1</span>, j = <span class="number">0</span>; i &gt;= <span class="number">0</span>; i--, j++) &#123;</span><br><span class="line">        a[j].r = s1[i] - <span class="number">48</span>;</span><br><span class="line">        a[j].i = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = len2 - <span class="number">1</span>, j = <span class="number">0</span>; i &gt;= <span class="number">0</span>; i--, j++) &#123;</span><br><span class="line">        b[j].r = s2[i] - <span class="number">48</span>;</span><br><span class="line">        b[j].i = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// for(int i=0;i&lt;limit;i++)</span></span><br><span class="line">    <span class="comment">// wz[i]=(wz[i&gt;&gt;1]&gt;&gt;1)|((i&amp;1)&lt;&lt;(bit-1));</span></span><br><span class="line">    conv(a, b, limit);</span><br><span class="line">    <span class="built_in">memset</span>(re, <span class="number">0</span>, <span class="keyword">sizeof</span>(re));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= limit; i++) &#123;</span><br><span class="line">        re[i] += (<span class="keyword">int</span>)(a[i].r + <span class="number">0.5</span>);</span><br><span class="line">        <span class="keyword">if</span> (re[i] &gt;= <span class="number">10</span>)  <span class="comment">//进位</span></span><br><span class="line">        &#123;</span><br><span class="line">            re[i + <span class="number">1</span>] += re[i] / <span class="number">10</span>;</span><br><span class="line">            re[i] %= <span class="number">10</span>;</span><br><span class="line">            <span class="keyword">if</span> (i == limit) ++limit;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (!re[limit] &amp;&amp; limit &gt;= <span class="number">1</span>)  <span class="comment">//去除高位的0</span></span><br><span class="line">        limit--;</span><br><span class="line">    <span class="keyword">while</span> (limit &gt;= <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"%d"</span>, re[limit--]);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+    </div>
+     
+    
+    
+    
+    <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #FFC0CB;font-size:16px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/Math/" rel="tag"><i class="fa fa-tag"></i> Math</a>
+          
+            <a href="/tags/多项式/" rel="tag"><i class="fa fa-tag"></i> 多项式</a>
+          
+        </div>
+        <div class="post-widgets">
+        
+
+        
+
+        
+          <div class="social-share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2020/01/06/TeamRound12/" rel="next" title="Team Round #12:2016-2017 ACM-ICPC Asia-Bangkok Regional Contest">
+                <i class="fa fa-chevron-left"></i> Team Round #12:2016-2017 ACM-ICPC Asia-Bangkok Regional Contest
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+              <a href="/2020/01/23/TeamRound13/" rel="prev" title="Team Round #13:2016 Multi-University Training Contest 6">
+                Team Round #13:2016 Multi-University Training Contest 6 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/-4fdf7b2d53898e7a.jpg"
+      alt="miniLCT">
+  <p class="site-author-name" itemprop="name">miniLCT</p>
+  <div class="site-description motion-element" itemprop="description">博觀而約取，厚積而薄發</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+      
+        
+      
+        <a href="https://github.com/miniLCT" title="GitHub &rarr; https://github.com/miniLCT" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+      
+        
+      
+        <a href="mailto:iamnotmyself@vip.qq.com" title="E-Mail &rarr; mailto:iamnotmyself@vip.qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+      
+        
+      
+        <a href="https://blog.csdn.net/qq_43696359" title="CSDN &rarr; https://blog.csdn.net/qq_43696359" rel="noopener" target="_blank"><i class="fa fa-fw fa-heartbeat"></i></a>
+      </span>
+    
+  </div>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前置知识"><span class="nav-number">1.</span> <span class="nav-text">前置知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多项式"><span class="nav-number">2.</span> <span class="nav-text">多项式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义："><span class="nav-number">2.1.</span> <span class="nav-text">定义：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式的卷积形式"><span class="nav-number">2.2.</span> <span class="nav-text">多项式的卷积形式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Karatsuba乘法"><span class="nav-number">3.</span> <span class="nav-text">Karatsuba乘法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多项式的系数表示与点值表示"><span class="nav-number">4.</span> <span class="nav-text">多项式的系数表示与点值表示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#系数表示"><span class="nav-number">4.1.</span> <span class="nav-text">系数表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#点值表示"><span class="nav-number">4.2.</span> <span class="nav-text">点值表示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拉格朗日插值法（Lagrange）"><span class="nav-number">5.</span> <span class="nav-text">拉格朗日插值法（Lagrange）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一般方法"><span class="nav-number">5.1.</span> <span class="nav-text">一般方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重心拉格朗日插值法"><span class="nav-number">5.2.</span> <span class="nav-text">重心拉格朗日插值法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复数与单位根"><span class="nav-number">6.</span> <span class="nav-text">复数与单位根</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FFT-快速傅里叶变换"><span class="nav-number">7.</span> <span class="nav-text">FFT(快速傅里叶变换)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么引入FFT"><span class="nav-number">7.1.</span> <span class="nav-text">为什么引入FFT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NTT-数论变换"><span class="nav-number">8.</span> <span class="nav-text">NTT(数论变换)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分治FFT"><span class="nav-number">9.</span> <span class="nav-text">分治FFT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拆系数FFT与三模数FFT"><span class="nav-number">10.</span> <span class="nav-text">拆系数FFT与三模数FFT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些题目及其思路"><span class="nav-number">11.</span> <span class="nav-text">一些题目及其思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-【模板】多项式乘法"><span class="nav-number">11.1.</span> <span class="nav-text">1. 【模板】多项式乘法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-【模板】A-B-Problem升级版（FFT快速傅里叶）"><span class="nav-number">11.2.</span> <span class="nav-text">2.【模板】A*B Problem升级版（FFT快速傅里叶）</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">miniLCT</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">58k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">3:14</span>
+  <a href="http://www.beian.miit.gov.cn">浙ICP备20021511号</a>
+</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+  
+<script src="/lib/needsharebutton/needsharebutton.js"></script>
+<script>
+    pbOptions = {};
+      pbOptions.iconStyle = "box";
+    
+      pbOptions.boxForm = "horizontal";
+    
+      pbOptions.position = "bottomCenter";
+    
+      pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+    
+    new needShareButton('#needsharebutton-postbottom', pbOptions);
+</script>
+
+
+  </div>
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+  
+  <script src="/js/affix.js?v=7.2.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+
+  
+    
+      <script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.2.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: true,
+    appId: '3zME3GE14GrJRaivOYsmPfUv-gzGzoHsz',
+    appKey: 'HSiozlc5dAoUa5UvYWC2Jzvy',
+    placeholder: '快來評論叭',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true,
+    lang: '' || 'zh-cn'
+  });
+</script>
+
+
+<script type="text/javascript" src="/js/clicklove.js"></script>
+</body>
+</html>

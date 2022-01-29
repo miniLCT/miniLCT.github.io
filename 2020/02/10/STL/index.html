@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<script language="javascript" type="text/javascript" src="https://cdn.staticfile.org/jquery/1.7.2/jquery.min.js"></script>
+
+
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon200.png?v=7.2.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png?v=7.2.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png?v=7.2.0">
+  <link rel="mask-icon" href="/images/favicon200.png?v=7.2.0" color="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|SimHei, Verdana, sans-serif:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false},
+    search: {
+      root: '/',
+      path: 'search.xml'
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="本文记录了STL的学习">
+<meta name="keywords" content="STL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="陌生的STL 和 pbds初步">
+<meta property="og:url" content="http://yoursite.com/2020/02/10/STL/index.html">
+<meta property="og:site_name" content="Mini   LCT">
+<meta property="og:description" content="本文记录了STL的学习">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2020/02/10/16vCELgoKOjUlXQ.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/20/wYmRcEa56Aexhok.png">
+<meta property="og:updated_time" content="2021-01-18T09:52:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="陌生的STL 和 pbds初步">
+<meta name="twitter:description" content="本文记录了STL的学习">
+<meta name="twitter:image" content="https://i.loli.net/2020/02/10/16vCELgoKOjUlXQ.png">
+  <link rel="alternate" href="/atom.xml" title="Mini   LCT" type="application/atom+xml">
+  <link rel="canonical" href="http://yoursite.com/2020/02/10/STL/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>陌生的STL 和 pbds初步 | Mini   LCT</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/miniLCT" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#FD6C6C; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mini   LCT</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">及时当勉励</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+      
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签<span class="badge">45</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+      
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类<span class="badge">19</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档<span class="badge">61</span></a>
+
+  </li>
+        <li class="menu-item menu-item-search">
+          <a href="javascript:;" class="popup-trigger">
+          
+            <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
+        </li>
+      
+    </ul>
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+    </div>
+</nav>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/10/STL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="miniLCT">
+      <meta itemprop="description" content="博觀而約取，厚積而薄發">
+      <meta itemprop="image" content="/images/-4fdf7b2d53898e7a.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mini   LCT">
+    </span>
+      <header class="post-header">
+
+        
+          <h2 class="post-title" itemprop="name headline">陌生的STL 和 pbds初步
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+         
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-02-10 22:49:15" itemprop="dateCreated datePublished" datetime="2020-02-10T22:49:15+08:00">2020-02-10</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2021-01-18 17:52:18" itemprop="dateModified" datetime="2021-01-18T17:52:18+08:00">2021-01-18</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/STL/" itemprop="url" rel="index"><span itemprop="name">STL</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span id="/2020/02/10/STL/" class="post-meta-item leancloud_visitors" data-flag-title="陌生的STL 和 pbds初步">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+            
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="fa fa-comment-o"></i>
+    </span>
+    
+      <span class="post-meta-item-text">评论数：</span>
+    
+  
+    <a href="/2020/02/10/STL/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/10/STL/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+          <br/>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">1.8k</span>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">6 分钟</span>
+            </span>
+          
+            <div class="post-description"><center>本文记录了STL的学习</center></div>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>真的有很多人，他们的代码如诗一般。</p>
+<p>有两个有趣的事情。 ①<del>部分</del>很多 $ACMer$ 对 $Vector$ 有这样的想法 : 这个东西是会带大常数的，可是现场赛没卡过，所以很喜欢用（外国选手也非常喜欢？）。 ②我们常常感觉 $stack$ 和 $queue$ 常数特别大，事实上，他的空间特别大， 比时间问题大多了。不信开个$queue\lt int\gt a[1000000]$ 试试呗😂。事实上，$std::queue $ 和 $std::stack$ 是默认基于 $std::deque$ 实现的。</p>
+</blockquote>
+<p>起因是看到著名OI爷<a href="https://codeforces.com/profile/jiangly" target="_blank" rel="noopener">jiangly</a>的代码，虎躯一震。他的代码风格真的好好啊！他对于stl的掌控，真的！！！%%%%%%%</p>
+<p>回想自己，经常问队友什么什么怎么用，就很<strong>离谱</strong>。</p>
+<p><img src="https://i.loli.net/2020/02/10/16vCELgoKOjUlXQ.png" alt="像这种窒息的对话常常出现，就很无奈。。"><br>遂学习一波</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>不知道从什么地方开始写，就来碎碎念。</p>
+<p>打过 $OI$ 的会感觉 $stl$ 在时间效率上比较低下。而在 $XCPC$ 中，是开$-O2$ 优化的。 &emsp;&emsp;&emsp;<font color="red">当然，不要觉得，编译器什么都可以优化。</font></p>
+<h2 id="Part-Ⅰ"><a href="#Part-Ⅰ" class="headerlink" title="Part Ⅰ"></a>Part Ⅰ</h2><h3 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h3><p>没系统的学过，之前看过但是都忘记了。除了字典树$(trie)$等几个算法或数据结构外,都用的不多把（包括trie也是可以用数组模拟的）？除此之外的地方，指针也基本上可以被引用代替。</p>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>在扩展欧几里得算法中用到了实参引用。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//找出a,b最大公因数，且求出x，y满足ax+by =gcd(a,b)。</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">ext_gcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> &amp;x,<span class="keyword">int</span> &amp;y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> d = a;</span><br><span class="line">	<span class="keyword">if</span>(b != <span class="number">0</span>)&#123;</span><br><span class="line">		d = ext_gcd(b , a%b ,y , x);</span><br><span class="line">		y -= (a / b) * x;</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		x = <span class="number">1</span>;</span><br><span class="line">		y = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> d;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>和指针传参效果一样，但是相比于用指针传递参数而言要方便很多。在要传占用内存较大的变量或类时可以用指针传递来加快效率。</p>
+<h3 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h3><p>在结构体中，我们经常会用到运算符重载。旨在实现扩展c++自带的类型，或者达到自己的运算（或比较）目的。<br>比如在fft中重写Complex。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">C</span> &#123;</span></span><br><span class="line">    LD r, i;</span><br><span class="line">    C(LD r = <span class="number">0</span>, LD i = <span class="number">0</span>) : r(r), i(i) &#123;&#125;</span><br><span class="line">&#125; A[MAXN], B[MAXN];</span><br><span class="line">C <span class="keyword">operator</span>+(<span class="keyword">const</span> C&amp; a, <span class="keyword">const</span> C&amp; b) &#123; <span class="keyword">return</span> C(a.r + b.r, a.i + b.i); &#125;</span><br><span class="line">C <span class="keyword">operator</span>-(<span class="keyword">const</span> C&amp; a, <span class="keyword">const</span> C&amp; b) &#123; <span class="keyword">return</span> C(a.r - b.r, a.i - b.i); &#125;</span><br><span class="line">C <span class="keyword">operator</span>*(<span class="keyword">const</span> C&amp; a, <span class="keyword">const</span> C&amp; b) &#123; <span class="keyword">return</span> C(a.r * b.r - a.i * b.i, a.r * b.i + a.i * b.r); &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="auto关键字"><a href="#auto关键字" class="headerlink" title="auto关键字"></a>auto关键字</h3><p>$auto$ 关键字可以在声明变量的时候根据变量初始值的类型自动为此变量选择匹配的类型，配合同是  $C++ 11$标准加入的 $for$ 语句的新用法在有的时候可以加快代码的编写速度。</p>
+<p>比如以前遍历 $set$ 的一般写法是:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> &lt;<span class="keyword">int</span>&gt; iterator::itr;</span><br><span class="line"><span class="keyword">for</span> (itr = st.begin(); itr != st.end(); itr++)&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *itr &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>比如遍历某容器时现可以写作:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> it : st)&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; it &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这种写法中，$for$ 循环会从头到尾遍历一遍 $st$ 容器，将其中的值取出。需要注意的是，如果要修改元素的值的话，应该声明成引用$auto\&amp;\quad i$。</p>
+<h3 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h3><p>$cf$ 上著名选手 tourist 的代码就有很多模板。然而我很多看不懂用不来。<br>卑微如我只能写个快读模板。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">read</span><span class="params">(T &amp;x)</span> </span>&#123;</span><br><span class="line">    x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> f = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(ch)) &#123;</span><br><span class="line">        <span class="keyword">if</span> (ch == <span class="string">'-'</span>) f = <span class="number">-1</span>;</span><br><span class="line">        ch = getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">isdigit</span>(ch)) &#123;</span><br><span class="line">        x = x * <span class="number">10</span> + (ch ^ <span class="number">48</span>);</span><br><span class="line">        ch = getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    x *= f;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(T x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">putchar</span>(<span class="string">'-'</span>);</span><br><span class="line">        x = -x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (x &gt; <span class="number">9</span>) write(x / <span class="number">10</span>);</span><br><span class="line">    <span class="built_in">putchar</span>(x % <span class="number">10</span> + <span class="string">'0'</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Part-Ⅱ"><a href="#Part-Ⅱ" class="headerlink" title="Part Ⅱ"></a>Part Ⅱ</h2><h3 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h3><p>vector 的实现基于动态数组，结合倍增思想（空间开不下了就全部删掉再开 $2$ 倍）。单次操作复杂度基本都是均摊 $O(1)$ 的。</p>
+<h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; a;<span class="comment">//新建一个空的vector </span></span><br><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; b(<span class="number">5</span>,<span class="number">3</span>);<span class="comment">//新建一个包含 5 个 3 的 vector</span></span><br><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; c(<span class="number">5</span>);<span class="comment">// = vector &lt;int&gt; c(5,0);</span></span><br><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; d(b.begin()+<span class="number">1</span>,b.end()<span class="number">-1</span>);<span class="comment">// 用 [b.begin()+1,b.end()-1) 这一段构成的数组生成 vector </span></span><br><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; e(d);<span class="comment">// 生成一个和 d 相同的 vector e</span></span><br><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">iota(v.begin(),v.end(),<span class="number">0</span>); <span class="comment">//在vector里创建一个0,1...n-1的数列</span></span><br></pre></td></tr></table></figure>
+<h4 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h4><ul>
+<li>back() &emsp;v.back() 返回 v 的最后一个元素的引用 </li>
+<li>front() &emsp;v.front() 返回 v 的第一个元素的引用</li>
+<li>begin() &emsp;v.begin()返回一个迭代器，指向 v 的第一个元素。</li>
+<li>end() &emsp;v.end()返回一个迭代器，指向 v 的最后一个元素的后一个位置。</li>
+<li>clear() &emsp;v.clear() 表示将 v 清空（内存不释放）。  Complexity：与容器大小线性。</li>
+<li>empty() &emsp;v.empty()返回一个布尔值，表示 v 是否为空。</li>
+<li><p>erase </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">v</span><span class="params">(<span class="number">10</span>)</span></span>;</span><br><span class="line">iota(v.begin(), v.end(), <span class="number">1</span>);</span><br><span class="line">v.erase(v.begin() + <span class="number">5</span>);  <span class="comment">//删除 v.begin()+5 这个位置的元素</span></span><br><span class="line">v.erase(v.begin(), v.begin() + <span class="number">3</span>);  <span class="comment">//删除 [v.begin(),v.end()) 这个区间之间的所有元素</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> i : v) <span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="string">" "</span>;</span><br><span class="line"><span class="comment">//输出结果 4 5 7 8 9 10</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>insert</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; v(<span class="number">3</span>,<span class="number">1</span>);</span><br><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; :: iterator it=v.begin();</span><br><span class="line">it=v.insert(it,<span class="number">2</span>);<span class="comment">//在 it 处插入一个 2</span></span><br><span class="line">v.insert(it,<span class="number">2</span>,<span class="number">3</span>);<span class="comment">//在 it 处插入 2 个 3 ，注意这个语句执行完之后 it 就失效了</span></span><br><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; u(<span class="number">3</span>,<span class="number">1</span>);</span><br><span class="line">u.insert(u.begin(),v.begin(),v.end());<span class="comment">//在 u.begin() 处插入 [v.begin(),v.end()) 这个范围内的元素</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>resize<br>这个聚好用！<br>多组时候可以这样v.clear();v.resize(n);<br>unique_sort时候可以这样 (sort(c.begin(),c.end()), c.resize(distance(c.begin(),unique(c.begin(),c.end()))))好像有点长，有个很简短写法我忘记了。。 a.resize(unique(a.begin(),a.end())-a.begin());大概这样？</p>
+</li>
+<li><p>emplace_back()/push_back()&emsp; 在 v 的最后插入一个元素。</p>
+</li>
+<li>pop_back()&emsp;弹出最后一个元素。</li>
+</ul>
+<h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><p>单次操作的复杂度基本都是 $O(log\ Size)$的。<br>一样的操作就省略了。</p>
+<h4 id="基本操作-1"><a href="#基本操作-1" class="headerlink" title="基本操作"></a>基本操作</h4><ul>
+<li>count<br><code>S.count(x)</code>表示求 $S$ 中 $x$ 元素的出现次数。由于 $set$ 中各个元素互不相同，所以只会返回 $0$ 或 $1$ 。<br>单次操作时间复杂度为 $O(log \ Size)$<br>​1000000 次 count 用时在 0.3s 到 1s 左右，取决于电脑运行效率。</li>
+<li><p>erase<br>用于删除元素</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">S.erase(it);<span class="comment">// 删除 set 迭代器 it 指向的元素。删除完之后这个迭代器就失效了。</span></span><br><span class="line">S.erase(x);<span class="comment">// 删除元素 x </span></span><br><span class="line">S.erase(it1,it2);<span class="comment">// 删除 [it1,it2) 的所有元素 </span></span><br><span class="line">S.erase(it,S.end());<span class="comment">// 上一种用法的一个实例</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>find<br><code>S.find(x)</code>返回一个迭代器，这个迭代器指向的元素值为 $x$。</p>
+</li>
+<li>insert<br><code>S.insert(x)</code> 表示在 S 中插入元素 $x$ ，并返回一个 <code>pair <set <int> :: iterator,bool&gt;</set></code> ，第一个元素表示插入元素 $x$ 之后 $x$ 的迭代器（如果原本就有 $x$ 就返回原来的 $x$ 的迭代器），第二个元素表示这次插入是否有效，如果 $x$ 原先不在 $S$ 中，那么返回 $true$，否则返回 $false$。<br>​<code>S.insert(it1,it2) </code>表示在 S 中插入 $[it1,it2)$ 的所有元素。</li>
+<li><p>swap </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">S.swap(S1);<span class="comment">//复杂度是常数</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>lower_bound/upper_bound<br>返回的是迭代器。<strong>大于等于</strong> / <strong>大于</strong></p>
+</li>
+</ul>
+<h3 id="multiset"><a href="#multiset" class="headerlink" title="multiset"></a>multiset</h3><p>multiset 是可重集，也就是说容器内可以有多个相同元素。我以前很喜欢用。<br>大部分用法和 set 一样，这里讲不太一样的。<br>奥！！一定要说的一个点是 multiset 的常数比 set 的常数大若干倍！</p>
+<h4 id="较为不同的"><a href="#较为不同的" class="headerlink" title="较为不同的"></a>较为不同的</h4><ul>
+<li>count<br><code>S.count(x)</code>单次 count 复杂度在 $O(log\ Size + S.count(x))$<br><img src="https://i.loli.net/2020/05/20/wYmRcEa56Aexhok.png" alt="实测 from others"></li>
+<li>erase<br><code>S.erase(x)</code>的作用是删除 S 中所有等于 x 的元素。<br>删除一个的时候写成<code>S.erase(S.find(x))</code></li>
+</ul>
+<h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><p>基于 rbtree。<br>一般用于离散化，单次操作的时间复杂度基本都是 $0(log \ Size)$</p>
+<p>用得好map真的很方便！ dqy 就比较会。</p>
+<h3 id="unordered-map"><a href="#unordered-map" class="headerlink" title="unordered_map"></a>unordered_map</h3><p>基于 hash 表。是map的弱化版，由于实现原理不同，map有的很多功能他都么得，但是他单次操作时间复杂度$O(1)$，但在 cf 上可以被卡。neal文章有写 <a href="https://codeforces.com/blog/entry/62393" target="_blank" rel="noopener">Blowing up unordered_map, and how to stop getting hacked on it</a><br>​<br>需要 c++11 以上的编译器才可以使用。</p>
+<h3 id="priority-queue"><a href="#priority-queue" class="headerlink" title="priority_queue"></a>priority_queue</h3><p>优先队列，堆，完全可以用 set 代替，功能比 set 弱，单次操作 $O(log \ Size)$，没有迭代器，系统默认大根堆。</p>
+<p>但他常数比set小，约为0.5倍。</p>
+<p>定义一个 int 类型的大根堆 priority_queue<int> q;</int></p>
+<p>定义一个 char 类型的大根堆 priority_queue<char , vector<char>, greater<char> &gt; Q;</char></char></p>
+<p>重载比较运算符：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">cmp</span>&#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">operator</span> <span class="params">()</span> <span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">        <span class="comment">//......</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">priority_queue &lt;<span class="keyword">int</span>,<span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt;,cmp&gt; Q3;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Part-Ⅲ-pb-ds初步："><a href="#Part-Ⅲ-pb-ds初步：" class="headerlink" title="Part Ⅲ:pb_ds初步："></a>Part Ⅲ:pb_ds初步：</h2><p>主要看的是于纪平《C++的pb_ds库在OI中的应用.pdf》</p>
+<p>什么是__gnu_pbds?Policy based data structures！简称<del>平板电视</del>pbds。在使用pbds前，你需要：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ext/pb_ds/assoc_container.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ext/pb_ds/tree_policy.hpp&gt;//用tree</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ext/pb_ds/hash_policy.hpp&gt;//用hash</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ext/pb_ds/trie_policy.hpp&gt;//用trie</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ext/pb_ds/priority_queue.hpp&gt;//用priority_queue</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> __gnu_pbds;</span><br></pre></td></tr></table></figure>
+<p>有没有形如<code>#include&lt;bits/stdc++.h&gt;</code>的写法呢？</p>
+<p>答案是有的！</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/extc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> __gnu_pbds;</span><br><span class="line"><span class="comment">//bits/extc++.h与bits/stdc++.h类似，bits/extc++.h是所有拓展库，bits/stdc++.h是所有标准库,然而在某些ide下会显示缺少东西。</span></span><br></pre></td></tr></table></figure>
+<h3 id="hash"><a href="#hash" class="headerlink" title="hash"></a>hash</h3><p>hash_table的用法与map类似，它是这么定义的：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cc_hash_table&lt;<span class="keyword">int</span>,<span class="keyword">bool</span>&gt; h;</span><br><span class="line">gp_hash_table&lt;<span class="keyword">int</span>,<span class="keyword">bool</span>&gt; h;</span><br></pre></td></tr></table></figure></p>
+<p>其中cc开头为拉链法，gp开头为探测法，实测探测法稍微快一些。</p>
+<p>用法：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ext/pb_ds/assoc_container.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ext/pb_ds/hash_policy.hpp&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> __gnu_pbds;</span><br><span class="line">gp_hash_table&lt;<span class="built_in">string</span>,<span class="keyword">int</span>&gt; h;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">judge</span><span class="params">(<span class="built_in">string</span> s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(h.find(s)!=h.end())</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"orz %%%"</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"fuck"</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    h[<span class="string">"aa"</span>]=<span class="number">1</span>;</span><br><span class="line">    h.insert(make_pair(<span class="string">"nn"</span>,<span class="number">1</span>));</span><br><span class="line">    <span class="built_in">string</span> str;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;str)</span><br><span class="line">        judge(str);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>等一等？和map一样，那不如直接用 <code>map</code> 了。不不不，<code>map</code> 的总时间复杂度是 $O(nlog_n)$ 的，而hash_table的总时间复杂度仅为 $O(n)$</p>
+<h3 id="Tree"><a href="#Tree" class="headerlink" title="Tree"></a>Tree</h3><p>pbds里面的tree都是平衡树，其中有rb_tree,splay_tree,ov_tree（后两种都容易超时，所以请不要用它们）。</p>
+<p>食用芝士：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pii pair<span class="meta-string">&lt;int,int&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mp(x,y) make_pair(x,y) </span></span><br><span class="line">tree&lt;pii,null_type,less&lt;pii&gt;,rb_tree_tag,tree_order_statistics_node_update&gt; tr;</span><br><span class="line">pii <span class="comment">//存储的类型</span></span><br><span class="line">null_type <span class="comment">//无映射(低版本g++为null_mapped_type)</span></span><br><span class="line">less&lt;pii&gt; <span class="comment">//从小到大排序</span></span><br><span class="line">rb_tree_tag <span class="comment">//红黑树</span></span><br><span class="line">tree_order_statistics_node_update <span class="comment">//更新方式 </span></span><br><span class="line">tr.insert(mp(x,y)); <span class="comment">//插入;</span></span><br><span class="line">tr.erase(mp(x,y)); <span class="comment">//删除;</span></span><br><span class="line">tr.order_of_key(pii(x,y)); <span class="comment">//求排名 </span></span><br><span class="line">tr.find_by_order(x); <span class="comment">//找k小值，返回迭代器 </span></span><br><span class="line">tr.join(b); <span class="comment">//将b并入tr，前提是两棵树类型一样且没有重复元素 </span></span><br><span class="line">tr.split(v,b); <span class="comment">//分裂，key小于等于v的元素属于tr，其余的属于b</span></span><br><span class="line">tr.lower_bound(x); <span class="comment">//返回第一个大于等于x的元素的迭代器</span></span><br><span class="line">tr.upper_bound(x); <span class="comment">//返回第一个大于x的元素的迭代器</span></span><br><span class="line"><span class="comment">//以上所有操作的时间复杂度均为O(logn)</span></span><br></pre></td></tr></table></figure></p>
+<p>对于<a href="https://www.luogu.com.cn/problem/P3369" target="_blank" rel="noopener">洛谷P3369 普通平衡树</a>，我们用此很容易解决。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ext/pb_ds/assoc_container.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ext/pb_ds/tree_policy.hpp&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> __gnu_pbds;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line">tree&lt;ll,null_type,less&lt;ll&gt;,rb_tree_tag,tree_order_statistics_node_update&gt; bbt;</span><br><span class="line"><span class="keyword">int</span> n;ll k,ans;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;<span class="keyword">char</span> ch=getchar();</span><br><span class="line">    <span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>)&#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>)f=<span class="number">-1</span>;ch=getchar();&#125;</span><br><span class="line">    <span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>)&#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;ch=getchar();&#125;</span><br><span class="line">    <span class="keyword">return</span> x*f;</span><br><span class="line">&#125; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    n=read();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,opt;i&lt;=n;i++)&#123;</span><br><span class="line">        opt=read();k=read();</span><br><span class="line">        <span class="keyword">if</span>(opt==<span class="number">1</span>) bbt.insert((k&lt;&lt;<span class="number">20</span>)+i);</span><br><span class="line">        <span class="keyword">if</span>(opt==<span class="number">2</span>) bbt.erase(bbt.lower_bound(k&lt;&lt;<span class="number">20</span>));</span><br><span class="line">        <span class="keyword">if</span>(opt==<span class="number">3</span>) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,bbt.order_of_key(k&lt;&lt;<span class="number">20</span>)+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span>(opt==<span class="number">4</span>) ans=*bbt.find_by_order(k<span class="number">-1</span>),<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans&gt;&gt;<span class="number">20</span>);</span><br><span class="line">        <span class="keyword">if</span>(opt==<span class="number">5</span>) ans=*--bbt.lower_bound(k&lt;&lt;<span class="number">20</span>),<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans&gt;&gt;<span class="number">20</span>);</span><br><span class="line">        <span class="keyword">if</span>(opt==<span class="number">6</span>) ans=*bbt.upper_bound((k&lt;&lt;<span class="number">20</span>)+n),<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans&gt;&gt;<span class="number">20</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Trie"><a href="#Trie" class="headerlink" title="Trie"></a>Trie</h3><p>trie即为字典树，我们先看如何定义一个trie与它的操作：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> trie&lt;<span class="built_in">string</span>,null_type,trie_string_access_traits&lt;&gt;,pat_trie_tag,trie_prefix_search_node_update&gt; tr;</span><br><span class="line"><span class="comment">//第一个参数必须为字符串类型，tag也有别的tag，但pat最快，与tree相同，node_update支持自定义</span></span><br><span class="line">tr.insert(s); <span class="comment">//插入s </span></span><br><span class="line">tr.erase(s); <span class="comment">//删除s </span></span><br><span class="line">tr.join(b); <span class="comment">//将b并入tr </span></span><br><span class="line">pair<span class="comment">//pair的使用如下：</span></span><br><span class="line">pair&lt;tr::iterator,tr::iterator&gt; range=base.prefix_range(x);</span><br><span class="line"><span class="keyword">for</span>(tr::iterator it=range.first;it!=range.second;it++)</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;*it&lt;&lt;<span class="string">' '</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="comment">//pair中第一个是起始迭代器，第二个是终止迭代器，遍历过去就可以找到所有字符串了。</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="priority-queue-1"><a href="#priority-queue-1" class="headerlink" title="priority_queue"></a>priority_queue</h3><p>priority_queue为优先队列，用堆实现，priority_queue的定义与操作：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">priority_queue&lt;<span class="keyword">int</span>,greater&lt;<span class="keyword">int</span>&gt;,TAG&gt; Q;<span class="comment">//小根堆，大根堆写less&lt;int&gt;</span></span><br><span class="line"><span class="comment">/*其中的TAG为类型，有以下几种：</span></span><br><span class="line"><span class="comment">pairing_heap_tag 默认是pairing_heap_tag </span></span><br><span class="line"><span class="comment">thin_heap_tag</span></span><br><span class="line"><span class="comment">binomial_heap_tag</span></span><br><span class="line"><span class="comment">rc_binomial_heap_tag </span></span><br><span class="line"><span class="comment">binary_heap_tag</span></span><br><span class="line"><span class="comment">其中pairing_help_tag最快*/</span></span><br><span class="line">Q.push(x);</span><br><span class="line">Q.pop();</span><br><span class="line">Q.top();</span><br><span class="line">Q.join(b);</span><br><span class="line">Q.empty();</span><br><span class="line">Q.size(); </span><br><span class="line">Q.modify(it,<span class="number">6</span>);</span><br><span class="line">Q.erase(it);</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.luogu.com.cn/blog/Chanis/gnu-pbds" target="_blank" rel="noopener">堆优化dijkstra</a><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ext/pb_ds/priority_queue.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Rep(i,a,b) for(register int i=(a),i##end=(b);i&lt;=i##end;++i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Repe(i,a,b) for(register int i=(a),i##end=(b);i&gt;=i##end;--i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> For(i,a,b) for(i=(a),i&lt;=(b);++i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Forward(i,a,b) for(i=(a),i&gt;=(b);--i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Chkmax(a,b) a=a&gt;b?a:b</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(T &amp;x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    T f=<span class="number">1</span>;x=<span class="number">0</span>;<span class="keyword">char</span> c;</span><br><span class="line">    <span class="keyword">for</span>(c=getchar();!<span class="built_in">isdigit</span>(c);c=getchar())<span class="keyword">if</span>(c==<span class="string">'-'</span>)f=<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>(;<span class="built_in">isdigit</span>(c);c=getchar())x=x*<span class="number">10</span>+(c^<span class="number">48</span>);</span><br><span class="line">    x*=f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!x)&#123;<span class="built_in">putchar</span>(<span class="number">48</span>);<span class="built_in">putchar</span>(<span class="string">'\n'</span>);<span class="keyword">return</span>;&#125;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> sta[<span class="number">45</span>],tp;</span><br><span class="line">    <span class="keyword">for</span>(tp=<span class="number">0</span>;x;x/=<span class="number">10</span>)sta[++tp]=x%<span class="number">10</span>;</span><br><span class="line">    <span class="keyword">for</span>(;tp;<span class="built_in">putchar</span>(sta[tp--]^<span class="number">48</span>));</span><br><span class="line">    <span class="built_in">putchar</span>(<span class="string">'\n'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">file</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">    freopen(<span class="string">"water.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">    freopen(<span class="string">"water.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e5</span>+<span class="number">7</span>,MAXM=<span class="number">4e5</span>+<span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> n,m;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">edg</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> u,v,w,h;</span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(edg a,edg b)&#123;<span class="keyword">return</span> a.h&gt;b.h;&#125;</span><br><span class="line">&#125;EDG[MAXM];</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> v,w,nxt;</span><br><span class="line">&#125;P[MAXM&lt;&lt;<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> head[MAXN],e;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;P[++e]=(edge)&#123;v,w,head[u]&#125;;head[u]=e;&#125;</span><br><span class="line"></span><br><span class="line">__gnu_pbds::priority_queue&lt;pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;,greater&lt;pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; &gt; &gt;G;</span><br><span class="line"></span><br><span class="line">__gnu_pbds::priority_queue&lt;pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;,greater&lt;pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; &gt; &gt;::point_iterator its[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> dis[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF=<span class="number">2e9</span>+<span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dijkst</span><span class="params">(<span class="keyword">int</span> s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    G.clear();</span><br><span class="line">    its[s]=G.push(make_pair(<span class="number">0</span>,s));dis[s]=<span class="number">0</span>;</span><br><span class="line">    Rep(i,<span class="number">2</span>,n)dis[i]=INF,its[i]=G.push(make_pair(INF,i));</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> u;</span><br><span class="line">    <span class="keyword">while</span>(!G.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        u=G.top().second;G.pop();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> v=head[u];v;v=P[v].nxt)</span><br><span class="line">            <span class="keyword">if</span>(dis[P[v].v]&gt;dis[u]+P[v].w)</span><br><span class="line">            &#123;</span><br><span class="line">                dis[P[v].v]=dis[u]+P[v].w;</span><br><span class="line">                G.modify(its[P[v].v],make_pair(dis[u]+P[v].w,P[v].v));</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> s;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    read(n);read(m);read(s);</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> u,v,w;</span><br><span class="line">    Rep(i,<span class="number">1</span>,m)read(u),read(v),read(w),add(u,v,w);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    dijkst(s);</span><br><span class="line">    Rep(i,<span class="number">1</span>,n)<span class="built_in">printf</span>(<span class="string">"%d "</span>,dis[i]);</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    file();</span><br><span class="line">    init();</span><br><span class="line">    solve();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+    </div>
+     
+    
+    
+    
+    <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #FFC0CB;font-size:16px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/STL/" rel="tag"><i class="fa fa-tag"></i> STL</a>
+          
+        </div>
+        <div class="post-widgets">
+        
+
+        
+
+        
+          <div class="social-share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2020/02/09/TeamRound16/" rel="next" title="Team Round #16: 2019 Multi-University Training Contest 8">
+                <i class="fa fa-chevron-left"></i> Team Round #16: 2019 Multi-University Training Contest 8
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+              <a href="/2020/02/14/TeamRound17/" rel="prev" title="Team Round #17:ICPC 2019-2020 North-Western Russia Regional Contest">
+                Team Round #17:ICPC 2019-2020 North-Western Russia Regional Contest <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/-4fdf7b2d53898e7a.jpg"
+      alt="miniLCT">
+  <p class="site-author-name" itemprop="name">miniLCT</p>
+  <div class="site-description motion-element" itemprop="description">博觀而約取，厚積而薄發</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+      
+        
+      
+        <a href="https://github.com/miniLCT" title="GitHub &rarr; https://github.com/miniLCT" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+      
+        
+      
+        <a href="mailto:iamnotmyself@vip.qq.com" title="E-Mail &rarr; mailto:iamnotmyself@vip.qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+      
+        
+      
+        <a href="https://blog.csdn.net/qq_43696359" title="CSDN &rarr; https://blog.csdn.net/qq_43696359" rel="noopener" target="_blank"><i class="fa fa-fw fa-heartbeat"></i></a>
+      </span>
+    
+  </div>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Part-Ⅰ"><span class="nav-number">2.</span> <span class="nav-text">Part Ⅰ</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#指针"><span class="nav-number">2.1.</span> <span class="nav-text">指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用"><span class="nav-number">2.2.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符重载"><span class="nav-number">2.3.</span> <span class="nav-text">运算符重载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#auto关键字"><span class="nav-number">2.4.</span> <span class="nav-text">auto关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模板"><span class="nav-number">2.5.</span> <span class="nav-text">模板</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Part-Ⅱ"><span class="nav-number">3.</span> <span class="nav-text">Part Ⅱ</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vector"><span class="nav-number">3.1.</span> <span class="nav-text">vector</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化"><span class="nav-number">3.1.1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本操作"><span class="nav-number">3.1.2.</span> <span class="nav-text">基本操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set"><span class="nav-number">3.2.</span> <span class="nav-text">set</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本操作-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">基本操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multiset"><span class="nav-number">3.3.</span> <span class="nav-text">multiset</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#较为不同的"><span class="nav-number">3.3.1.</span> <span class="nav-text">较为不同的</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#map"><span class="nav-number">3.4.</span> <span class="nav-text">map</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#unordered-map"><span class="nav-number">3.5.</span> <span class="nav-text">unordered_map</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#priority-queue"><span class="nav-number">3.6.</span> <span class="nav-text">priority_queue</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Part-Ⅲ-pb-ds初步："><span class="nav-number">4.</span> <span class="nav-text">Part Ⅲ:pb_ds初步：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hash"><span class="nav-number">4.1.</span> <span class="nav-text">hash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tree"><span class="nav-number">4.2.</span> <span class="nav-text">Tree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Trie"><span class="nav-number">4.3.</span> <span class="nav-text">Trie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#priority-queue-1"><span class="nav-number">4.4.</span> <span class="nav-text">priority_queue</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">miniLCT</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">58k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">3:14</span>
+  <a href="http://www.beian.miit.gov.cn">浙ICP备20021511号</a>
+</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+  
+<script src="/lib/needsharebutton/needsharebutton.js"></script>
+<script>
+    pbOptions = {};
+      pbOptions.iconStyle = "box";
+    
+      pbOptions.boxForm = "horizontal";
+    
+      pbOptions.position = "bottomCenter";
+    
+      pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+    
+    new needShareButton('#needsharebutton-postbottom', pbOptions);
+</script>
+
+
+  </div>
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+  
+  <script src="/js/affix.js?v=7.2.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+
+  
+    
+      <script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.2.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: true,
+    appId: '3zME3GE14GrJRaivOYsmPfUv-gzGzoHsz',
+    appKey: 'HSiozlc5dAoUa5UvYWC2Jzvy',
+    placeholder: '快來評論叭',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true,
+    lang: '' || 'zh-cn'
+  });
+</script>
+
+
+<script type="text/javascript" src="/js/clicklove.js"></script>
+</body>
+</html>

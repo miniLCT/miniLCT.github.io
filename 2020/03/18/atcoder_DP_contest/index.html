@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<script language="javascript" type="text/javascript" src="https://cdn.staticfile.org/jquery/1.7.2/jquery.min.js"></script>
+
+
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon200.png?v=7.2.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png?v=7.2.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png?v=7.2.0">
+  <link rel="mask-icon" href="/images/favicon200.png?v=7.2.0" color="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|SimHei, Verdana, sans-serif:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false},
+    search: {
+      root: '/',
+      path: 'search.xml'
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="本文记录了atc Educational DP Contest的A-Z题">
+<meta name="keywords" content="dp,Atc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Atc Educational DP Contest">
+<meta property="og:url" content="http://yoursite.com/2020/03/18/atcoder_DP_contest/index.html">
+<meta property="og:site_name" content="Mini   LCT">
+<meta property="og:description" content="本文记录了atc Educational DP Contest的A-Z题">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-03-07T13:14:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Atc Educational DP Contest">
+<meta name="twitter:description" content="本文记录了atc Educational DP Contest的A-Z题">
+  <link rel="alternate" href="/atom.xml" title="Mini   LCT" type="application/atom+xml">
+  <link rel="canonical" href="http://yoursite.com/2020/03/18/atcoder_DP_contest/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Atc Educational DP Contest | Mini   LCT</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/miniLCT" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#FD6C6C; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mini   LCT</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">及时当勉励</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+      
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签<span class="badge">45</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+      
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类<span class="badge">19</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档<span class="badge">61</span></a>
+
+  </li>
+        <li class="menu-item menu-item-search">
+          <a href="javascript:;" class="popup-trigger">
+          
+            <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
+        </li>
+      
+    </ul>
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+    </div>
+</nav>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/18/atcoder_DP_contest/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="miniLCT">
+      <meta itemprop="description" content="博觀而約取，厚積而薄發">
+      <meta itemprop="image" content="/images/-4fdf7b2d53898e7a.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mini   LCT">
+    </span>
+      <header class="post-header">
+
+        
+          <h2 class="post-title" itemprop="name headline">Atc Educational DP Contest
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+         
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-18 00:05:20" itemprop="dateCreated datePublished" datetime="2020-03-18T00:05:20+08:00">2020-03-18</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2021-03-07 21:14:48" itemprop="dateModified" datetime="2021-03-07T21:14:48+08:00">2021-03-07</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Dynamic-Programming/" itemprop="url" rel="index"><span itemprop="name">Dynamic Programming</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span id="/2020/03/18/atcoder_DP_contest/" class="post-meta-item leancloud_visitors" data-flag-title="Atc Educational DP Contest">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+            
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="fa fa-comment-o"></i>
+    </span>
+    
+      <span class="post-meta-item-text">评论数：</span>
+    
+  
+    <a href="/2020/03/18/atcoder_DP_contest/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/18/atcoder_DP_contest/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+          <br/>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">2.6k</span>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">9 分钟</span>
+            </span>
+          
+            <div class="post-description"><center>本文记录了atc Educational DP Contest的A-Z题</center></div>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a href="https://atcoder.jp/contests/dp" target="_blank" rel="noopener">传送门</a></p>
+<p>体现了<strong>Educational</strong>。感觉对于萌新（我）或者回顾回顾还是不错的。</p>
+<h2 id="A-Frog-1"><a href="#A-Frog-1" class="headerlink" title="A - Frog 1"></a><a href="https://atcoder.jp/contests/dp/tasks/dp_a" target="_blank" rel="noopener">A - Frog 1</a></h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>给定 $n$ 个石头,石头高度分别为$h_1…h_n$。现在要求小青蛙从 $1$ 号石头跳到 $n$ 号石头，每次小青蛙可以选择从 $i$ 号石头跳到 $i+1$ 或 $i+2$ 号石头，代价是起跳点与落点的高度差的绝对值。求最小代价。</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>暴力dp。</p>
+<p>令 $dp[i]$ 表示小青蛙跳到第 $i$ 号石头时的最小代价。</p>
+<p>Complexity: $O(n)$</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constexpr</span> <span class="keyword">int</span> maxn = <span class="number">1e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> dp[maxn],a[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i &gt;= <span class="number">3</span>)&#123;</span><br><span class="line">            dp[i] = min(dp[i<span class="number">-2</span>]+<span class="built_in">abs</span>(a[i]-a[i<span class="number">-2</span>]),<span class="built_in">abs</span>(a[i]-a[i<span class="number">-1</span>])+dp[i<span class="number">-1</span>]);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            dp[i] = <span class="built_in">abs</span>(a[i]-a[i<span class="number">-1</span>])+dp[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; dp[n] &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="B-Frog-2"><a href="#B-Frog-2" class="headerlink" title="B - Frog 2"></a><a href="https://atcoder.jp/contests/dp/tasks/dp_b" target="_blank" rel="noopener">B - Frog 2</a></h2><h3 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h3><p>给定 $n$ 个石头，第 $i$ 个石头的高度为 $h_i$ 。现要求小青蛙从 $1$ 号石头跳到 $n$ 号石头，每次小青蛙可以选择从 $i$ 号石头跳到 $i+t(1\le t\le k)$ 号石头，代价是起跳点与落点的高度差的绝对值。求最小代价。</p>
+<h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h3><p>暴力dp</p>
+<p>设 $dp[i]$ 为小青蛙跳到第 $i$ 号石头时最小代价。</p>
+<p>Complexity: $O(k*n)$</p>
+<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constexpr</span> <span class="keyword">int</span> maxn = <span class="number">1e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">constexpr</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">constexpr</span> ll linf = <span class="number">0x3f3f3f3f3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">constexpr</span> <span class="keyword">int</span> mod = <span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> n , k,a[maxn],dp[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">memset</span>(dp, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> dp);</span><br><span class="line">    dp[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= k; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i-j&lt;=<span class="number">0</span>)<span class="keyword">continue</span>;</span><br><span class="line">            dp[i] = min(dp[i-j]+<span class="built_in">abs</span>(a[i]-a[i-j]),dp[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*for(int i = 1; i &lt;=n ; i++)&#123;</span></span><br><span class="line"><span class="comment">        printf("dp[%d]===%d\n",i,dp[i]);</span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; dp[n] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="C-Vacation"><a href="#C-Vacation" class="headerlink" title="C - Vacation"></a><a href="https://atcoder.jp/contests/dp/tasks/dp_c" target="_blank" rel="noopener">C - Vacation</a></h2><h3 id="Description-2"><a href="#Description-2" class="headerlink" title="Description"></a>Description</h3><p>Taro有 $n$ 天假期，每天他可以进行三种活动中的一种，每种活动给他带来的愉悦值各不相同。如果当天进行过某一种活动，第二天即不能进行另一种活动，求 $n$ 天后Taro能获得的最大愉悦值。</p>
+<h3 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution"></a>Solution</h3><p>令 $dp[i][j]$ 分别记录在第 $i$ 天选做第 $j$ 件娱乐活动的最大愉悦值。</p>
+<p>Complexity: $O(n)$</p>
+<h3 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n , a[maxn], b[maxn], c[maxn], dp[maxn][<span class="number">3</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a[i] &gt;&gt; b[i] &gt;&gt; c[i];</span><br><span class="line">    &#125;</span><br><span class="line">    dp[<span class="number">1</span>][<span class="number">1</span>] = a[<span class="number">1</span>],dp[<span class="number">1</span>][<span class="number">2</span>] = b[<span class="number">1</span>],dp[<span class="number">1</span>][<span class="number">3</span>]=c[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        dp[i][<span class="number">1</span>] = a[i]+max(dp[i<span class="number">-1</span>][<span class="number">2</span>],dp[i<span class="number">-1</span>][<span class="number">3</span>]);</span><br><span class="line">        dp[i][<span class="number">3</span>] = c[i]+max(dp[i<span class="number">-1</span>][<span class="number">2</span>],dp[i<span class="number">-1</span>][<span class="number">1</span>]);</span><br><span class="line">        dp[i][<span class="number">2</span>] = b[i]+max(dp[i<span class="number">-1</span>][<span class="number">1</span>],dp[i<span class="number">-1</span>][<span class="number">3</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; max(max(dp[n][<span class="number">1</span>],dp[n][<span class="number">2</span>]),dp[n][<span class="number">3</span>]) &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="D-Knapsack-1"><a href="#D-Knapsack-1" class="headerlink" title="D - Knapsack 1"></a><a href="https://atcoder.jp/contests/dp/tasks/dp_d" target="_blank" rel="noopener">D - Knapsack 1</a></h2><h3 id="Description-3"><a href="#Description-3" class="headerlink" title="Description"></a>Description</h3><p>01背包板子题</p>
+<h3 id="Solution-3"><a href="#Solution-3" class="headerlink" title="Solution"></a>Solution</h3><p>设 $dp[i]$ 为背包重量不超过 $i$ 时候最大价值。<br>Complexity: $O(N*W)$</p>
+<h3 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> N , W, w[maxn],v[maxn],dp[<span class="number">105</span>][<span class="number">100005</span>];</span><br><span class="line"><span class="function"><span class="keyword">int32_t</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; N &gt;&gt; W;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; w[i] &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= W;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(w[i] &lt;= j)&#123;</span><br><span class="line">                dp[i][j] = max(dp[i<span class="number">-1</span>][j],dp[i<span class="number">-1</span>][j-w[i]]+v[i]);</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                dp[i][j] = dp[i<span class="number">-1</span>][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; dp[N][W];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="E-Knapsack-2"><a href="#E-Knapsack-2" class="headerlink" title="E - Knapsack 2"></a><a href="https://atcoder.jp/contests/dp/tasks/dp_e" target="_blank" rel="noopener">E - Knapsack 2</a></h2><h3 id="Description-4"><a href="#Description-4" class="headerlink" title="Description"></a>Description</h3><p>$n$ 件物品，大小和权值分别为 $w_i$，$v_i$,给定背包最大容量$W$ ，$MAX$ 化价值。</p>
+<h3 id="Solution-4"><a href="#Solution-4" class="headerlink" title="Solution"></a>Solution</h3><p>由于 $W$ 很大，所以不能如同 D 题的做法，但是发现价值很小，对价值进行背包。求出来达到某一个权值最小的重量，然后找到满足限制的最大的价值即可。(因为，如果能达到权值比这个还大的点，那么这个点很显然也是可以达到的。)</p>
+<p>令 $dp[i]$ 表示装填价值为 $i$ 的物品的最小权值。<br>Complexity: $O(N*v)$</p>
+<h3 id="Code-4"><a href="#Code-4" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> v[maxn], w[maxn], dp[maxn], N , V;</span><br><span class="line"><span class="function"><span class="keyword">int32_t</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; N &gt;&gt; V;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i] &gt;&gt; w[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">memset</span>(dp , <span class="number">0x3f</span>, <span class="keyword">sizeof</span> dp);</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> zz = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = zz + w[i]; j &gt;= w[i]; j--)&#123;</span><br><span class="line">            dp[j] = min(dp[j], dp[j-w[i]]+v[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        zz+=w[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = zz;  i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">        dp[i] = min(dp[i],dp[i+<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// for(int i = 1; i&lt;= V;i++)&#123;</span></span><br><span class="line">    <span class="comment">//     printf("dp[%lld]===%lld\n",i,dp[i]);</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    <span class="keyword">while</span>(dp[ans] &lt;= V)ans++;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans - <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="F-LCS"><a href="#F-LCS" class="headerlink" title="F - LCS"></a><a href="https://atcoder.jp/contests/dp/tasks/dp_f" target="_blank" rel="noopener">F - LCS</a></h2><h3 id="Description-5"><a href="#Description-5" class="headerlink" title="Description"></a>Description</h3><p>输出字符串$s,t$的最长公共子串。</p>
+<h3 id="Solution-5"><a href="#Solution-5" class="headerlink" title="Solution"></a>Solution</h3><p>令 $dp[i][j]$ 表示 $s$ 的长度为 $i$ 的前缀和 $t$ 的长度为 $j$ 的前缀的最长公共子串。</p>
+<p>自底向上输出这个串。</p>
+<p>Complexity: $O(n^2)$</p>
+<h3 id="Code-5"><a href="#Code-5" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">3005</span>][<span class="number">3005</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">string</span> a, b, t = <span class="string">""</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= a.size(); i++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= b.size(); j++)</span><br><span class="line">            <span class="keyword">if</span> (a[i - <span class="number">1</span>] == b[j - <span class="number">1</span>])</span><br><span class="line">                dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                dp[i][j] = max(dp[i - <span class="number">1</span>][j], dp[i][j - <span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">int</span> i = a.size(), j = b.size();</span><br><span class="line">    <span class="keyword">while</span> (dp[i][j])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (dp[i][j] == dp[i - <span class="number">1</span>][j])</span><br><span class="line">            i--;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (dp[i][j] == dp[i][j - <span class="number">1</span>])</span><br><span class="line">            j--;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (dp[i][j] &gt; dp[i - <span class="number">1</span>][j - <span class="number">1</span>])</span><br><span class="line">            i--, j--, t += a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    reverse(t.begin(), t.end());</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="G-Longest-Path"><a href="#G-Longest-Path" class="headerlink" title="G - Longest Path"></a><a href="https://atcoder.jp/contests/dp/tasks/dp_g" target="_blank" rel="noopener">G - Longest Path</a></h2><h3 id="Description-6"><a href="#Description-6" class="headerlink" title="Description"></a>Description</h3><p>求 DAG 上的最长路径。</p>
+<h3 id="Solution-6"><a href="#Solution-6" class="headerlink" title="Solution"></a>Solution</h3><p>DAG上 dp。<br>Complexity: $O(n)$</p>
+<h3 id="Code-6"><a href="#Code-6" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span>+<span class="number">100</span>;</span><br><span class="line"><span class="keyword">int</span> n , m , x , y ,dp[N], deg[N];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span> &gt; G[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m ; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y;</span><br><span class="line">        deg[y]++;G[x].pb(y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">int</span> &gt; q ;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!deg[i])q.push(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">        <span class="keyword">int</span> now = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        <span class="comment">// cout &lt;&lt; "now === " &lt;&lt; now &lt;&lt; endl;</span></span><br><span class="line">        <span class="comment">/*for(int it = 0; it &lt; G[now].size(); it++)&#123;</span></span><br><span class="line"><span class="comment">            dp[G[now][it]] = max(dp[now]+1, dp[G[now][it]]);</span></span><br><span class="line"><span class="comment">            deg[G[now][it]]--;</span></span><br><span class="line"><span class="comment">            if(!deg[G[now][it]])q.push(G[now][it]);</span></span><br><span class="line"><span class="comment">            // cout &lt;&lt; "it ==" &lt;&lt;  it &lt;&lt; endl;</span></span><br><span class="line"><span class="comment">        &#125;*/</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> it : G[now])&#123;</span><br><span class="line">            dp[it] = max(dp[it] , dp[now]+<span class="number">1</span>);</span><br><span class="line">            deg[it] --;</span><br><span class="line">            <span class="keyword">if</span>(!deg[it])q.push(it);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        ans = max(dp[i], ans);</span><br><span class="line">    &#125;<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>按照 <strong>$DFS$ 序</strong>，$f[i]$ 表示从 $i$ 号点出发的最长路径上点的数量。</p>
+<p>Complexity: $O(n)$<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100001</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M 100001</span></span><br><span class="line"><span class="keyword">int</span> hd[N], nx[M], e[M];</span><br><span class="line"><span class="keyword">int</span> f[N], v[N], n, m;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (f[x]) <span class="keyword">return</span> f[x];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = hd[x]; i; i = nx[i]) f[x] = max(f[x], dfs(e[i]));</span><br><span class="line">    <span class="keyword">return</span> ++f[x];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, Num = <span class="number">0</span>, x, y; i &lt;= m; i++) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;x, &amp;y);</span><br><span class="line">        nx[++Num] = hd[x], hd[x] = Num, e[Num] = y;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) ans = max(ans, dfs(i));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="H-Grid-1"><a href="#H-Grid-1" class="headerlink" title="H - Grid 1"></a><a href="https://atcoder.jp/contests/dp/tasks/dp_h" target="_blank" rel="noopener">H - Grid 1</a></h2><h3 id="Description-7"><a href="#Description-7" class="headerlink" title="Description"></a>Description</h3><p>给定一个 $H，W$ 的网格，每次$(i,j)$可以到达$(i+1,j)$或者$(i),j+1$，有一些障碍。求从$(1,1)$到达$(H,W)$ 的方案数。</p>
+<h3 id="Solution-7"><a href="#Solution-7" class="headerlink" title="Solution"></a>Solution</h3><p>暴力dp</p>
+<p>设$dp[i][j]$表示从$(1,1)$到达$(i,j)$的移动方案。</p>
+<p>Complexity: $O(H\times W)$</p>
+<h3 id="Code-7"><a href="#Code-7" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// She is Pretty pretty!</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ff first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ss second</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e3</span> + <span class="number">100</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> h, w;</span><br><span class="line"><span class="keyword">char</span> a[N][N];</span><br><span class="line"><span class="keyword">int</span> dp[N][N];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x &lt;= h &amp;&amp; y &lt;= w &amp;&amp; x &gt;= <span class="number">1</span> &amp;&amp; y &gt;= <span class="number">1</span>)<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; h &gt;&gt; w;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= h; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= w; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; a[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dp[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= h; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= w; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[i][j] == <span class="string">'.'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(check(i<span class="number">-1</span>,j) &amp;&amp; a[i<span class="number">-1</span>][j] == <span class="string">'.'</span>)&#123;</span><br><span class="line">                    dp[i][j] += dp[i<span class="number">-1</span>][j];</span><br><span class="line">                    dp[i][j] %= mod;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(check(i,j<span class="number">-1</span>) &amp;&amp; a[i][j<span class="number">-1</span>] == <span class="string">'.'</span>)&#123;</span><br><span class="line">                    dp[i][j] += dp[i][j<span class="number">-1</span>];</span><br><span class="line">                    dp[i][j] %= mod;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span> dp[i][j] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; dp[h][w];</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="I-Coins"><a href="#I-Coins" class="headerlink" title="I - Coins"></a><a href="https://atcoder.jp/contests/dp/tasks/dp_i" target="_blank" rel="noopener">I - Coins</a></h2><h3 id="Description-8"><a href="#Description-8" class="headerlink" title="Description"></a>Description</h3><p>给定 $n(is \ odd)$ 个硬币，扔第 $i$ 个硬币时，它正面朝上的概率为 $p_i$ 。<br>求每一个硬币扔一次，正面朝上的数量多余反面朝上的硬币的数量的概率。</p>
+<h3 id="Solution-8"><a href="#Solution-8" class="headerlink" title="Solution"></a>Solution</h3><p>概率DP，记有 $i$ 个正面朝上的概率</p>
+<p>Complexity: $O(n^2)$</p>
+<h3 id="Code-8"><a href="#Code-8" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// She is Pretty pretty!</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ff first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ss second</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span>+<span class="number">100</span>;</span><br><span class="line"><span class="keyword">int</span> n ;</span><br><span class="line"><span class="keyword">double</span> p[N], dp[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; p[i];</span><br><span class="line">    &#125;</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">1.0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &gt;= <span class="number">1</span>; j--)&#123;</span><br><span class="line">            dp[j] = (dp[j] * (<span class="number">1.0</span>-p[i]) + dp[j<span class="number">-1</span>]*p[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        dp[<span class="number">0</span>] *= <span class="number">1.0</span> - p[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*for(int i = 1; i &lt;= n; i++)&#123;</span></span><br><span class="line"><span class="comment">        printf("%.6f\n",dp[i]);</span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">    <span class="keyword">double</span> ans = <span class="number">0.0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = n/<span class="number">2</span> + <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        ans += dp[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%.10f"</span>,ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="J-Sushi"><a href="#J-Sushi" class="headerlink" title="J - Sushi"></a><a href="https://atcoder.jp/contests/dp/tasks/dp_j" target="_blank" rel="noopener">J - Sushi</a></h2><h3 id="Description-9"><a href="#Description-9" class="headerlink" title="Description"></a>Description</h3><p>有$n$个盘子，每盘里有 1到 3份食物。每次随机选中一份食物，若该盘中有食物，则吃掉一份。</p>
+<p>求期望选择次数。</p>
+<h3 id="Solution-9"><a href="#Solution-9" class="headerlink" title="Solution"></a>Solution</h3><p>期望问题。<br>记忆化搜索。<br>设$dp[i][j][k]$为有 i 盘一份食物， j 盘二份食物， k 盘三份食物的期望选择次数。<br>Complexity: $O(n^3)$?? dont know</p>
+<h3 id="Code-9"><a href="#Code-9" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// She is Pretty pretty!</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ff first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ss second</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">310</span>;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">4</span>], x, n;</span><br><span class="line"><span class="keyword">double</span> dp[N][N][N];</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (dp[i][j][k]) <span class="keyword">return</span> dp[i][j][k];</span><br><span class="line">    <span class="keyword">if</span> (i + j + k == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="comment">/*double ans = 1;  //ok as well</span></span><br><span class="line"><span class="comment">    if(i) ans += dfs(i - 1, j , k) * i / n;</span></span><br><span class="line"><span class="comment">    if(j) ans += dfs(i + 1, j - 1, k) * j / n;</span></span><br><span class="line"><span class="comment">    if(k) ans += dfs(i , j+1 , k-1) * k / n;</span></span><br><span class="line"><span class="comment">    if(i+j+k!=n)ans*=1.0*n/(j+k+i);*/</span></span><br><span class="line">    <span class="keyword">double</span> ans = <span class="number">1.0</span> * n / (i + j + k);</span><br><span class="line">    <span class="keyword">if</span> (i) ans += dfs(i - <span class="number">1</span>, j, k) * i / (i + j + k);</span><br><span class="line">    <span class="keyword">if</span> (j) ans += dfs(i + <span class="number">1</span>, j - <span class="number">1</span>, k) * j / (i + j + k);</span><br><span class="line">    <span class="keyword">if</span> (k) ans += dfs(i, j + <span class="number">1</span>, k - <span class="number">1</span>) * k / (i + j + k);</span><br><span class="line">    <span class="keyword">return</span> dp[i][j][k] = ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; x;</span><br><span class="line">        a[x]++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%.10f"</span>, dfs(a[<span class="number">1</span>], a[<span class="number">2</span>], a[<span class="number">3</span>]));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="K-Stones"><a href="#K-Stones" class="headerlink" title="K - Stones"></a><a href="https://atcoder.jp/contests/dp/tasks/dp_k" target="_blank" rel="noopener">K - Stones</a></h2><h3 id="Description-10"><a href="#Description-10" class="headerlink" title="Description"></a>Description</h3><p>给定 $n,k$ ,和集合 $\mathbb{A}$,$a_i\in\mathbb{A}$,总共$k$个石子，每次在集合 $\mathbb{A}$ 可取石 $x$,无法取石子的为输。问赢家是谁。</p>
+<h3 id="Solution-10"><a href="#Solution-10" class="headerlink" title="Solution"></a>Solution</h3><p>博弈结论。<br>设 $dp[i]$ 为先手的胜负状态。 胜负 <strong>局面</strong> 转移一下就行了。</p>
+<h3 id="Code-10"><a href="#Code-10" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// She is Pretty pretty!</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ff first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ss second</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span>+<span class="number">100</span>;</span><br><span class="line"><span class="keyword">int</span> n , k , a[N], dp[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">boyi</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(dp[x]) <span class="keyword">return</span> dp[x];</span><br><span class="line">    <span class="keyword">int</span> fl = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a[i] &lt;= x &amp;&amp; boyi(x - a[i]) == <span class="number">-1</span>)&#123;</span><br><span class="line">            fl = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[x] =  (fl ? <span class="number">1</span> : <span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>),<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">-1</span>;</span><br><span class="line">    <span class="built_in">puts</span>(boyi(k) == <span class="number">1</span>? <span class="string">"First"</span>:<span class="string">"Second"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="L-Deque"><a href="#L-Deque" class="headerlink" title="L - Deque"></a><a href="https://atcoder.jp/contests/dp/tasks/dp_l" target="_blank" rel="noopener">L - Deque</a></h2><h3 id="Description-11"><a href="#Description-11" class="headerlink" title="Description"></a>Description</h3><p>给定一个序列 $a$ ，alice和bob轮流进行博弈，太郎先行。</p>
+<p>每次可以从序列的两端中任取一端，删去那一段的第一个元素，并获取等量的分数。</p>
+<p>alice 和 bob 都希望能最大化自己与对面的得分差，询问你最终 alice 与 bob 的得分差。</p>
+<h3 id="Solution-11"><a href="#Solution-11" class="headerlink" title="Solution"></a>Solution</h3><p>设 $dp[i][j]$表示剩余区间为 $[i,j]$ 时候的最大得分差。</p>
+<p>状态转移方程为：$dp[l][r] = max(a[l] - dp[l+1][r], a[r]-dp[l][r-1] );$</p>
+<p>取减号是因为：上一个人的负值是下一个人的正值。</p>
+<p>Complexity: $O(n^2)$</p>
+<h3 id="Code-11"><a href="#Code-11" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// She is Pretty pretty!</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ff first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ss second</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">3e3</span>+<span class="number">100</span>;</span><br><span class="line">ll dp[N][N];</span><br><span class="line"><span class="keyword">int</span> a[N], n;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = i ; j &lt;= n; j++)&#123;<span class="comment">//[j-i+1,j]</span></span><br><span class="line">            <span class="keyword">int</span> l = j - i + <span class="number">1</span>, r = j;</span><br><span class="line">            dp[l][r] = max(a[l] - dp[l+<span class="number">1</span>][r], a[r]-dp[l][r<span class="number">-1</span>] ); <span class="comment">// 上一个人的负值是下一个人的正值。</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; dp[<span class="number">1</span>][n] &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="M-Candies"><a href="#M-Candies" class="headerlink" title="M - Candies"></a><a href="https://atcoder.jp/contests/dp/tasks/dp_m" target="_blank" rel="noopener">M - Candies</a></h2><h3 id="Description-12"><a href="#Description-12" class="headerlink" title="Description"></a>Description</h3><p>有 $n$ 个小朋友的需求，第 $i$ 个小朋友的需求为 $a_i$ ，表示他可以接受 $[0,a_i]$ 个糖果。<br>给定 $m$ 个糖果，把这些糖果全部分配出去，求有多少种分配方案。</p>
+<h3 id="Solution-12"><a href="#Solution-12" class="headerlink" title="Solution"></a>Solution</h3><p>设$dp[i][j]$为分配前 $i$ 个小朋友还剩 $j$ 个糖果的方案数。</p>
+<p>Complexity: $O(n*k)$</p>
+<h3 id="Code-12"><a href="#Code-12" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PB push_back</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> POP pop_back()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PII pair<span class="meta-string">&lt;int, int&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ULL unsigned long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> pi = <span class="built_in">acos</span>(<span class="number">-1</span>), eps = <span class="number">1e-10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1</span> &lt;&lt; <span class="number">17</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e2</span> + <span class="number">10</span>, M = <span class="number">1e5</span> + <span class="number">100</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> dp[N][M], sum[N][M], n, k, a[N];</span><br><span class="line"><span class="comment">// dp[i][j] 表示到第i个人剩下j的数量</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>), <span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    dp[<span class="number">0</span>][k] = sum[<span class="number">0</span>][k] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= k; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            dp[i][j] = (sum[i - <span class="number">1</span>][min(k, j + a[i])] - sum[i - <span class="number">1</span>][j - <span class="number">1</span>] + mod) % mod;</span><br><span class="line">        &#125;</span><br><span class="line">        sum[i][<span class="number">0</span>] = dp[i][<span class="number">0</span>] = sum[i - <span class="number">1</span>][a[i]];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= k; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            sum[i][j] = (sum[i][j - <span class="number">1</span>] + dp[i][j]) % mod;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; dp[n][<span class="number">0</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="N-Slimes"><a href="#N-Slimes" class="headerlink" title="N - Slimes"></a><a href="https://atcoder.jp/contests/dp/tasks/dp_n" target="_blank" rel="noopener">N - Slimes</a></h2><h3 id="Description-13"><a href="#Description-13" class="headerlink" title="Description"></a>Description</h3><h3 id="Solution-13"><a href="#Solution-13" class="headerlink" title="Solution"></a>Solution</h3><h3 id="Code-13"><a href="#Code-13" class="headerlink" title="Code"></a>Code</h3><h2 id="O-Matching"><a href="#O-Matching" class="headerlink" title="O - Matching"></a><a href="https://atcoder.jp/contests/dp/tasks/dp_o" target="_blank" rel="noopener">O - Matching</a></h2><h3 id="Description-14"><a href="#Description-14" class="headerlink" title="Description"></a>Description</h3><h3 id="Solution-14"><a href="#Solution-14" class="headerlink" title="Solution"></a>Solution</h3><h3 id="Code-14"><a href="#Code-14" class="headerlink" title="Code"></a>Code</h3><h2 id="P-Independent-Set"><a href="#P-Independent-Set" class="headerlink" title="P - Independent Set"></a><a href="https://atcoder.jp/contests/dp/tasks/dp_p" target="_blank" rel="noopener">P - Independent Set</a></h2><h3 id="Description-15"><a href="#Description-15" class="headerlink" title="Description"></a>Description</h3><h3 id="Solution-15"><a href="#Solution-15" class="headerlink" title="Solution"></a>Solution</h3><h3 id="Code-15"><a href="#Code-15" class="headerlink" title="Code"></a>Code</h3><h2 id="R-Walk"><a href="#R-Walk" class="headerlink" title="R - Walk"></a><a href="https://atcoder.jp/contests/dp/tasks/dp_r" target="_blank" rel="noopener">R - Walk</a></h2><h3 id="Description-16"><a href="#Description-16" class="headerlink" title="Description"></a>Description</h3><h3 id="Solution-16"><a href="#Solution-16" class="headerlink" title="Solution"></a>Solution</h3><h3 id="Code-16"><a href="#Code-16" class="headerlink" title="Code"></a>Code</h3><h2 id="S-Digit-Sum"><a href="#S-Digit-Sum" class="headerlink" title="S - Digit Sum"></a><a href="https://atcoder.jp/contests/dp/tasks/dp_s" target="_blank" rel="noopener">S - Digit Sum</a></h2><h3 id="Description-17"><a href="#Description-17" class="headerlink" title="Description"></a>Description</h3><h3 id="Solution-17"><a href="#Solution-17" class="headerlink" title="Solution"></a>Solution</h3><h3 id="Code-17"><a href="#Code-17" class="headerlink" title="Code"></a>Code</h3><h2 id="T-Permutation"><a href="#T-Permutation" class="headerlink" title="T - Permutation"></a><a href="https://atcoder.jp/contests/dp/tasks/dp_t" target="_blank" rel="noopener">T - Permutation</a></h2><h3 id="Description-18"><a href="#Description-18" class="headerlink" title="Description"></a>Description</h3><h3 id="Solution-18"><a href="#Solution-18" class="headerlink" title="Solution"></a>Solution</h3><h3 id="Code-18"><a href="#Code-18" class="headerlink" title="Code"></a>Code</h3><h2 id="U-Grouping"><a href="#U-Grouping" class="headerlink" title="U - Grouping"></a><a href="https://atcoder.jp/contests/dp/tasks/dp_u" target="_blank" rel="noopener">U - Grouping</a></h2><h3 id="Description-19"><a href="#Description-19" class="headerlink" title="Description"></a>Description</h3><h3 id="Solution-19"><a href="#Solution-19" class="headerlink" title="Solution"></a>Solution</h3><h3 id="Code-19"><a href="#Code-19" class="headerlink" title="Code"></a>Code</h3><h2 id="V-Subtree"><a href="#V-Subtree" class="headerlink" title="V - Subtree"></a><a href="https://atcoder.jp/contests/dp/tasks/dp_v" target="_blank" rel="noopener">V - Subtree</a></h2><h3 id="Description-20"><a href="#Description-20" class="headerlink" title="Description"></a>Description</h3><h3 id="Solution-20"><a href="#Solution-20" class="headerlink" title="Solution"></a>Solution</h3><h3 id="Code-20"><a href="#Code-20" class="headerlink" title="Code"></a>Code</h3><h2 id="W-Intervals"><a href="#W-Intervals" class="headerlink" title="W - Intervals"></a><a href="https://atcoder.jp/contests/dp/tasks/dp_w" target="_blank" rel="noopener">W - Intervals</a></h2><h3 id="Description-21"><a href="#Description-21" class="headerlink" title="Description"></a>Description</h3><h3 id="Solution-21"><a href="#Solution-21" class="headerlink" title="Solution"></a>Solution</h3><h3 id="Code-21"><a href="#Code-21" class="headerlink" title="Code"></a>Code</h3><h2 id="X-Tower"><a href="#X-Tower" class="headerlink" title="X - Tower"></a><a href="https://atcoder.jp/contests/dp/tasks/dp_x" target="_blank" rel="noopener">X - Tower</a></h2><h3 id="Description-22"><a href="#Description-22" class="headerlink" title="Description"></a>Description</h3><h3 id="Solution-22"><a href="#Solution-22" class="headerlink" title="Solution"></a>Solution</h3><h3 id="Code-22"><a href="#Code-22" class="headerlink" title="Code"></a>Code</h3><h2 id="Y-Grid-2"><a href="#Y-Grid-2" class="headerlink" title="Y - Grid 2"></a><a href="https://atcoder.jp/contests/dp/tasks/dp_y" target="_blank" rel="noopener">Y - Grid 2</a></h2><h3 id="Description-23"><a href="#Description-23" class="headerlink" title="Description"></a>Description</h3><h3 id="Solution-23"><a href="#Solution-23" class="headerlink" title="Solution"></a>Solution</h3><h3 id="Code-23"><a href="#Code-23" class="headerlink" title="Code"></a>Code</h3><h2 id="Z-Frog-3"><a href="#Z-Frog-3" class="headerlink" title="Z - Frog 3"></a><a href="https://atcoder.jp/contests/dp/tasks/dp_z" target="_blank" rel="noopener">Z - Frog 3</a></h2><h3 id="Description-24"><a href="#Description-24" class="headerlink" title="Description"></a>Description</h3><h3 id="Solution-24"><a href="#Solution-24" class="headerlink" title="Solution"></a>Solution</h3><h3 id="Code-24"><a href="#Code-24" class="headerlink" title="Code"></a>Code</h3>
+    </div>
+     
+    
+    
+    
+    <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #FFC0CB;font-size:16px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/dp/" rel="tag"><i class="fa fa-tag"></i> dp</a>
+          
+            <a href="/tags/Atc/" rel="tag"><i class="fa fa-tag"></i> Atc</a>
+          
+        </div>
+        <div class="post-widgets">
+        
+
+        
+
+        
+          <div class="social-share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2020/02/26/TeamRound19/" rel="next" title="Team Round #19: 2019 icpc online ShenYang">
+                <i class="fa fa-chevron-left"></i> Team Round #19: 2019 icpc online ShenYang
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+              <a href="/2020/03/24/hash/" rel="prev" title="hash在ACM中的一些运用">
+                hash在ACM中的一些运用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/-4fdf7b2d53898e7a.jpg"
+      alt="miniLCT">
+  <p class="site-author-name" itemprop="name">miniLCT</p>
+  <div class="site-description motion-element" itemprop="description">博觀而約取，厚積而薄發</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+      
+        
+      
+        <a href="https://github.com/miniLCT" title="GitHub &rarr; https://github.com/miniLCT" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+      
+        
+      
+        <a href="mailto:iamnotmyself@vip.qq.com" title="E-Mail &rarr; mailto:iamnotmyself@vip.qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+      
+        
+      
+        <a href="https://blog.csdn.net/qq_43696359" title="CSDN &rarr; https://blog.csdn.net/qq_43696359" rel="noopener" target="_blank"><i class="fa fa-fw fa-heartbeat"></i></a>
+      </span>
+    
+  </div>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Frog-1"><span class="nav-number">1.</span> <span class="nav-text">A - Frog 1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">1.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">1.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">1.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Frog-2"><span class="nav-number">2.</span> <span class="nav-text">B - Frog 2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-1"><span class="nav-number">2.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-1"><span class="nav-number">2.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-1"><span class="nav-number">2.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Vacation"><span class="nav-number">3.</span> <span class="nav-text">C - Vacation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-2"><span class="nav-number">3.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-2"><span class="nav-number">3.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-2"><span class="nav-number">3.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Knapsack-1"><span class="nav-number">4.</span> <span class="nav-text">D - Knapsack 1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-3"><span class="nav-number">4.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-3"><span class="nav-number">4.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-3"><span class="nav-number">4.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-Knapsack-2"><span class="nav-number">5.</span> <span class="nav-text">E - Knapsack 2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-4"><span class="nav-number">5.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-4"><span class="nav-number">5.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-4"><span class="nav-number">5.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F-LCS"><span class="nav-number">6.</span> <span class="nav-text">F - LCS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-5"><span class="nav-number">6.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-5"><span class="nav-number">6.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-5"><span class="nav-number">6.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#G-Longest-Path"><span class="nav-number">7.</span> <span class="nav-text">G - Longest Path</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-6"><span class="nav-number">7.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-6"><span class="nav-number">7.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-6"><span class="nav-number">7.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#H-Grid-1"><span class="nav-number">8.</span> <span class="nav-text">H - Grid 1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-7"><span class="nav-number">8.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-7"><span class="nav-number">8.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-7"><span class="nav-number">8.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I-Coins"><span class="nav-number">9.</span> <span class="nav-text">I - Coins</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-8"><span class="nav-number">9.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-8"><span class="nav-number">9.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-8"><span class="nav-number">9.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#J-Sushi"><span class="nav-number">10.</span> <span class="nav-text">J - Sushi</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-9"><span class="nav-number">10.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-9"><span class="nav-number">10.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-9"><span class="nav-number">10.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#K-Stones"><span class="nav-number">11.</span> <span class="nav-text">K - Stones</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-10"><span class="nav-number">11.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-10"><span class="nav-number">11.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-10"><span class="nav-number">11.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L-Deque"><span class="nav-number">12.</span> <span class="nav-text">L - Deque</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-11"><span class="nav-number">12.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-11"><span class="nav-number">12.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-11"><span class="nav-number">12.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#M-Candies"><span class="nav-number">13.</span> <span class="nav-text">M - Candies</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-12"><span class="nav-number">13.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-12"><span class="nav-number">13.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-12"><span class="nav-number">13.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#N-Slimes"><span class="nav-number">14.</span> <span class="nav-text">N - Slimes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-13"><span class="nav-number">14.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-13"><span class="nav-number">14.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-13"><span class="nav-number">14.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#O-Matching"><span class="nav-number">15.</span> <span class="nav-text">O - Matching</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-14"><span class="nav-number">15.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-14"><span class="nav-number">15.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-14"><span class="nav-number">15.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P-Independent-Set"><span class="nav-number">16.</span> <span class="nav-text">P - Independent Set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-15"><span class="nav-number">16.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-15"><span class="nav-number">16.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-15"><span class="nav-number">16.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#R-Walk"><span class="nav-number">17.</span> <span class="nav-text">R - Walk</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-16"><span class="nav-number">17.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-16"><span class="nav-number">17.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-16"><span class="nav-number">17.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S-Digit-Sum"><span class="nav-number">18.</span> <span class="nav-text">S - Digit Sum</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-17"><span class="nav-number">18.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-17"><span class="nav-number">18.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-17"><span class="nav-number">18.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T-Permutation"><span class="nav-number">19.</span> <span class="nav-text">T - Permutation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-18"><span class="nav-number">19.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-18"><span class="nav-number">19.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-18"><span class="nav-number">19.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#U-Grouping"><span class="nav-number">20.</span> <span class="nav-text">U - Grouping</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-19"><span class="nav-number">20.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-19"><span class="nav-number">20.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-19"><span class="nav-number">20.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#V-Subtree"><span class="nav-number">21.</span> <span class="nav-text">V - Subtree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-20"><span class="nav-number">21.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-20"><span class="nav-number">21.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-20"><span class="nav-number">21.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#W-Intervals"><span class="nav-number">22.</span> <span class="nav-text">W - Intervals</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-21"><span class="nav-number">22.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-21"><span class="nav-number">22.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-21"><span class="nav-number">22.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#X-Tower"><span class="nav-number">23.</span> <span class="nav-text">X - Tower</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-22"><span class="nav-number">23.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-22"><span class="nav-number">23.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-22"><span class="nav-number">23.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Y-Grid-2"><span class="nav-number">24.</span> <span class="nav-text">Y - Grid 2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-23"><span class="nav-number">24.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-23"><span class="nav-number">24.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-23"><span class="nav-number">24.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Z-Frog-3"><span class="nav-number">25.</span> <span class="nav-text">Z - Frog 3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-24"><span class="nav-number">25.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-24"><span class="nav-number">25.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-24"><span class="nav-number">25.3.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">miniLCT</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">58k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">3:14</span>
+  <a href="http://www.beian.miit.gov.cn">浙ICP备20021511号</a>
+</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+  
+<script src="/lib/needsharebutton/needsharebutton.js"></script>
+<script>
+    pbOptions = {};
+      pbOptions.iconStyle = "box";
+    
+      pbOptions.boxForm = "horizontal";
+    
+      pbOptions.position = "bottomCenter";
+    
+      pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+    
+    new needShareButton('#needsharebutton-postbottom', pbOptions);
+</script>
+
+
+  </div>
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+  
+  <script src="/js/affix.js?v=7.2.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+
+  
+    
+      <script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.2.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: true,
+    appId: '3zME3GE14GrJRaivOYsmPfUv-gzGzoHsz',
+    appKey: 'HSiozlc5dAoUa5UvYWC2Jzvy',
+    placeholder: '快來評論叭',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true,
+    lang: '' || 'zh-cn'
+  });
+</script>
+
+
+<script type="text/javascript" src="/js/clicklove.js"></script>
+</body>
+</html>
