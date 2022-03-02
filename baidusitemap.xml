@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite.com/2021/01/17/campushoy-auto-clock-in/</loc>
+    <lastmod>2022-03-02</lastmod>
+  </url>
+  <url>
+    <loc>http://yoursite.com/2022/03/02/cpp_cast/</loc>
+    <lastmod>2022-03-02</lastmod>
+  </url>
+  <url>
+    <loc>http://yoursite.com/2022/01/29/201PrinciplesOfSoftwareDevelopment/</loc>
+    <lastmod>2022-01-29</lastmod>
+  </url>
+  <url>
     <loc>http://yoursite.com/2021/03/29/GYM102091E/</loc>
     <lastmod>2021-03-29</lastmod>
   </url>
@@ -27,10 +39,6 @@
   <url>
     <loc>http://yoursite.com/2020/03/30/dp1/</loc>
     <lastmod>2021-02-18</lastmod>
-  </url>
-  <url>
-    <loc>http://yoursite.com/2021/01/17/campushoy-auto-clock-in/</loc>
-    <lastmod>2021-02-17</lastmod>
   </url>
   <url>
     <loc>http://yoursite.com/2021/02/02/Trick/</loc>
